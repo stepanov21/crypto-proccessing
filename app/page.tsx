@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
 import authSelector from '@/redux/auth/selectors'
 import { useRouter } from "next/navigation";
+import MerchantWasCreated from "@/components/custom/MerchantWasCreated";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>()

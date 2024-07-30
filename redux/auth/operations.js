@@ -50,6 +50,7 @@ const logoutUser = createAsyncThunk(
       );
 
       token.unset();
+      localStorage.removeItem('persist:auth')
 
       return response.data;
     } catch (error) {

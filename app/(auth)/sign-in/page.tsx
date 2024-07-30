@@ -32,7 +32,7 @@ const Page = () => {
     } catch (err) {
       console.log(err);
     }
-    router.push("/");
+    router.push("/wallet");
   };
 
   return (

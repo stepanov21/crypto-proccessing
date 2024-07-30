@@ -3,6 +3,7 @@ import API from './operations.js';
 
 const authSlice = createSlice({
   name: 'authReducer',
+
   initialState: {
     token: null,
     isLoggedIn: false,

@@ -70,9 +70,14 @@
 
 body {
   background: #0C0716;
-  font-weight: 500;
+  font-weight: 400;
+  color: white;
 }
 
 .purple-gradient {
   background: linear-gradient(91.88deg, #252032 1.59%, rgba(37, 32, 50, 0.5) 67.44%, rgba(37, 32, 50, 0.3) 96.35%);
+}
+
+.light-purple-gradient {
+  background: linear-gradient(119.69deg, #76649F 9.91%, #423957 90.09%);
 }
