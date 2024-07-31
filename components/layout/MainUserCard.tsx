@@ -9,12 +9,12 @@ import useToken from "@/hooks/useToken";
 
 
 const MainUserCard = () => {
-  // const {config} = useToken()
-  // const {data} = useQuery({ queryKey: ['todos'], queryFn: () => {
-  //   axios.get('https://app.neutronx.com/user/balance', config)
-  // }})
-  const data = true;
-  // console.log(data)
+  const {config} = useToken()
+  const {data} = useQuery({ queryKey: ['todos'], queryFn: () => {
+    axios.get('https://app.neutronx.com/user/balance', config)
+  }})
+
+  console.log(data)
 
   return (
     <div className="purple-gradient px-[30px] pt-10 pb-[60px] rounded-[18px]">

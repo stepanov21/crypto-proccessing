@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         wallet: "light-purple-gradient flex justify-between rounded-[18px]",
-        aside: "bg-ourPurple text-white w-full"
+        aside: "bg-ourPurple text-white w-full font-semibold"
       },
       size: {
         default: "h-[60px] px-20",

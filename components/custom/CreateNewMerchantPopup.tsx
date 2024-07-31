@@ -36,7 +36,7 @@ const CreateNewMerchantPopup = () => {
     <div>
       <Title>Мерчанты</Title>
       {isOpen ? (
-        <div className="w-[570px] px-7 pt-10 pb-20 flex flex-col bg-ourDarkPurple gap-[60px] rounded-[18px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="w-[570px] px-7 pt-10 pb-20 flex flex-col bg-ourDarkPurple gap-[60px] rounded-[18px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <Title>Создать нового продавца</Title>
           <div className="space-y-2.5">
             <Label>Введите имя продавца</Label>

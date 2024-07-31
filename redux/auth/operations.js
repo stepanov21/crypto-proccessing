@@ -1,6 +1,7 @@
 import { token } from "@/lib/utils";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { persistor } from "../store";
 
 const registerUser = createAsyncThunk(
   "authReducer/register",
@@ -50,7 +51,7 @@ const logoutUser = createAsyncThunk(
       );
 
       token.unset();
-      localStorage.removeItem('persist:auth')
+      persistor.purge();
 
       return response.data;
     } catch (error) {
