@@ -19,9 +19,12 @@ const CreateNewMerchantPopup = () => {
 
   const mutation = useMutation({
     mutationFn: ({ name }: { name: string }) => {
-      return axios.post("https://app.neutronx.com/merchant/create_merchant", {
-        name: name
-      });
+      return axios.post(
+        "https://app.neutronx.com/merchant/create_merchant",
+        {
+          name,
+        },
+      );
     },
     onSuccess: (data) => {
       // Invalidate and refetch
@@ -30,7 +33,8 @@ const CreateNewMerchantPopup = () => {
   });
 
   return (
-    <>
+    <div>
+      <Title>Мерчанты</Title>
       {isOpen ? (
         <div className="w-[570px] px-7 pt-10 pb-20 flex flex-col bg-ourDarkPurple gap-[60px] rounded-[18px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Title>Создать нового продавца</Title>
@@ -57,12 +61,12 @@ const CreateNewMerchantPopup = () => {
       ) : null}
       {isWasAdded ? <MerchantWasCreated /> : null}
       <Button
-        className="bg-ourPurple text-white"
+        variant={'aside'}
         onClick={() => setIsOpen(true)}
       >
         Создать продавца
       </Button>
-    </>
+    </div>
   );
 };
 

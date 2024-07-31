@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -72,6 +74,7 @@ body {
   background: #0C0716;
   font-weight: 400;
   color: white;
+  line-height: 0.8;
 }
 
 .purple-gradient {
@@ -81,3 +84,8 @@ body {
 .light-purple-gradient {
   background: linear-gradient(119.69deg, #76649F 9.91%, #423957 90.09%);
 }
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
