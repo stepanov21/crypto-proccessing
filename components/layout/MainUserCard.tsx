@@ -25,7 +25,7 @@ const MainUserCard = () => {
   console.log(data);
 
   return (
-    <div className="purple-gradient rounded-[18px] px-[30px] pb-[60px] pt-10">
+    <div className="purple-gradient rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-black">
       <div className="flex items-center">
         <span className="mr-auto text-[32px] font-semibold">
           Личный кабинет

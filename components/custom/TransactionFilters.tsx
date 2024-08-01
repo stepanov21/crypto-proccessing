@@ -10,8 +10,6 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "../ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { ArrowDownToLine, ChevronDown, Search } from "lucide-react";
 

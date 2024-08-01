@@ -4,8 +4,6 @@ import WalletItem from "@/components/custom/WalletItem";
 import WalletsList from "@/components/custom/WalletsList";
 import Header from "@/components/layout/Header";
 import MainUserCard from "@/components/layout/MainUserCard";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import React from "react";
 
 const layout = ({
@@ -14,7 +12,10 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="container grid grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px]">
+    <div
+      data-mode="dark"
+      className="container grid grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px]"
+    >
       <Header />
       <MainUserCard />
       <aside className="space-y-[60px]">

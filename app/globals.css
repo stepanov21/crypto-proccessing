@@ -188,3 +188,6 @@ body {
     transform: scaleY(-1) rotate(-135deg);
   }
 }
+
+*[data-mode="dark"] .bg-ourGreen {
+}

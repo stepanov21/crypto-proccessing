@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import WalletItem from "./WalletItem";
 import { Title } from "../ui/title";
@@ -5,8 +7,13 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Plus, Search, X } from "lucide-react";
 import SelectPaymentVariant from "./SelectPaymentVariant";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import useWalletList from "@/hooks/useWalletList";
+import { transformWalletsList } from "@/lib/utils";
 
 const WalletsList = () => {
+  const { walletList } = useWalletList();
   return (
     <div>
       <div className="flex">
@@ -21,10 +28,11 @@ const WalletsList = () => {
         </Button>
       </div>
       <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10">
-        <WalletItem />
-        <WalletItem />
-        <WalletItem />
-        <WalletItem />
+        {transformWalletsList(walletList).map((item) => (
+          <WalletItem balance={item.balance} key={item.id} icon={item.icon}>
+            {item.id}
+          </WalletItem>
+        ))}
       </div>
       <Button variant={"aside"}>Показать больше</Button>
     </div>
