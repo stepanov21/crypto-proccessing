@@ -14,22 +14,22 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className="grid grid-cols-[4fr_8fr] px-[30px] pt-[110px] gap-x-[30px] gap-y-[40px] container">
+    <div className="container grid grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px]">
       <Header />
       <MainUserCard />
-      <aside className=" space-y-[60px]">
+      <aside className="space-y-[60px]">
         <WalletsList />
 
         <CreateNewMerchantPopup />
       </aside>
       <div>
-        <TransactionFilters/>
-        {children}
+        <TransactionFilters />
+        <main className="max-w-[520px]">{children}</main>
       </div>
       {/* Background glow */}
       {/* <Image className="absolute -top-72" src={'/glow.png'} width={800} height={800} alt="glow"/>
       <Image className="absolute -bottom-72 right-80 object-cover" src={'/glow.png'} width={800} height={800} alt="glow"/> */}
-    </main>
+    </div>
   );
 };
 

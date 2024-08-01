@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from "react";
 
-const layout = ({children} : {children: ReactNode}) => {
+const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className='flex items-center justify-center h-screen'>{children}</div>
-  )
-}
+    <div className="flex h-screen items-center justify-center">{children}</div>
+  );
+};
 
-export default layout
+export default layout;

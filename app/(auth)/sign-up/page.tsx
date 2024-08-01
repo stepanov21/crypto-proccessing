@@ -34,14 +34,14 @@ const Page = () => {
     try {
       //@ts-ignore
       await dispatch(AUTH_API.registerUser(data));
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
     router.push("/sign-in");
   };
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="w-[350px] purple-gradient text-white">
+      <Card className="purple-gradient w-[350px] text-white">
         <CardHeader>
           <CardTitle className="text-center">Create account</CardTitle>
         </CardHeader>
@@ -49,25 +49,25 @@ const Page = () => {
           <div className="grid w-full items-center">
             <div className="flex flex-col space-y-2.5">
               <Input
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="email"
                 placeholder="Email"
                 {...register("email")}
               />
               <Input
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="username"
                 placeholder="Login"
                 {...register("username")}
               />
               <Input
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="password"
                 placeholder="Password"
                 {...register("password")}
               />
               <Input
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="repeatPassword"
                 placeholder="Repeat password"
               />
@@ -75,7 +75,7 @@ const Page = () => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">
-          <Button className="w-full bg-white text-black rounded-full">
+          <Button className="w-full rounded-full bg-white text-black">
             Create account
           </Button>
           <Link href={"/sign-in"} className="w-full">

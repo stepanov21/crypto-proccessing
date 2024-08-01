@@ -19,12 +19,9 @@ const CreateNewMerchantPopup = () => {
 
   const mutation = useMutation({
     mutationFn: ({ name }: { name: string }) => {
-      return axios.post(
-        "https://app.neutronx.com/merchant/create_merchant",
-        {
-          name,
-        },
-      );
+      return axios.post("https://app.neutronx.com/merchant/create_merchant", {
+        name,
+      });
     },
     onSuccess: (data) => {
       // Invalidate and refetch
@@ -36,7 +33,7 @@ const CreateNewMerchantPopup = () => {
     <div>
       <Title>Мерчанты</Title>
       {isOpen ? (
-        <div className="w-[570px] px-7 pt-10 pb-20 flex flex-col bg-ourDarkPurple gap-[60px] rounded-[18px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+        <div className="absolute left-1/2 top-1/2 z-10 flex w-[570px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[60px] rounded-[18px] bg-ourDarkPurple px-7 pb-20 pt-10">
           <Title>Создать нового продавца</Title>
           <div className="space-y-2.5">
             <Label>Введите имя продавца</Label>
@@ -54,16 +51,13 @@ const CreateNewMerchantPopup = () => {
             Создать продавца
           </Button>
           <X
-            className="absolute top-11 right-7 cursor-pointer"
+            className="absolute right-7 top-11 cursor-pointer"
             onClick={() => setIsOpen(false)}
           />
         </div>
       ) : null}
       {isWasAdded ? <MerchantWasCreated /> : null}
-      <Button
-        variant={'aside'}
-        onClick={() => setIsOpen(true)}
-      >
+      <Button variant={"aside"} onClick={() => setIsOpen(true)}>
         Создать продавца
       </Button>
     </div>

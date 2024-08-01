@@ -37,7 +37,7 @@ const Page = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="w-[350px] purple-gradient text-white">
+      <Card className="purple-gradient w-[350px] text-white">
         <CardHeader>
           <CardTitle>Create account</CardTitle>
           <CardDescription>
@@ -49,14 +49,14 @@ const Page = () => {
             <div className="flex flex-col space-y-2.5">
               <Input
                 {...register("username")}
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="username"
                 placeholder="Login"
                 required
               />
               <Input
                 {...register("password")}
-                className="bg-transparent rounded-ourRadius"
+                className="rounded-ourRadius bg-transparent"
                 id="password"
                 placeholder="Password"
                 required
@@ -67,7 +67,7 @@ const Page = () => {
         <CardFooter className="flex flex-col">
           <Button
             type="submit"
-            className="w-full bg-white text-black rounded-full"
+            className="w-full rounded-full bg-white text-black"
           >
             Login
           </Button>

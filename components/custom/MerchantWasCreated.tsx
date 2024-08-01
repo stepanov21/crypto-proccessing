@@ -4,13 +4,13 @@ import { Title } from "../ui/title";
 
 const MerchantWasCreated = () => {
   return (
-    <div className="w-[570px] px-7 pt-10 pb-20 flex flex-col bg-ourDarkPurple gap-[60px] rounded-[18px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute left-1/2 top-1/2 flex w-[570px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[60px] rounded-[18px] bg-ourDarkPurple px-7 pb-20 pt-10">
       <div className="text-center">
         <Title>Поздравляем!</Title>
         <span>Новый продавец создан </span>
       </div>
-      <div className="flex gap-3 relative">
-        <div className="min-w-6 h-6 bg-ourGreen text-black flex items-center justify-center rounded-full font-semibold pb-0.5">
+      <div className="relative flex gap-3">
+        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen pb-0.5 font-semibold text-black">
           1
         </div>
         <div>
@@ -22,10 +22,10 @@ const MerchantWasCreated = () => {
             разместите их где угодно или отправьте каждому из своих клиентов.
           </p>
         </div>
-        <div className="absolute h-36 border-l-2 border-dashed border-ourGreen top-5 left-[11px]"></div>
+        <div className="absolute left-[11px] top-5 h-36 border-l-2 border-dashed border-ourGreen"></div>
       </div>
       <div className="flex gap-3">
-        <div className="min-w-6 h-6 bg-ourGreen text-black flex items-center justify-center rounded-full font-semibold pb-0.5">
+        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen pb-0.5 font-semibold text-black">
           2
         </div>
         <div>

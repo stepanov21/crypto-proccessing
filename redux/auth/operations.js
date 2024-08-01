@@ -9,14 +9,14 @@ const registerUser = createAsyncThunk(
     try {
       const response = await axios.post(
         "https://app.neutronx.com/auth/register",
-        data
+        data,
       );
 
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const loginUser = createAsyncThunk(
@@ -30,7 +30,7 @@ const loginUser = createAsyncThunk(
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        }
+        },
       );
 
       token.set(response.data.access_token);
@@ -39,7 +39,7 @@ const loginUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const logoutUser = createAsyncThunk(
@@ -47,7 +47,7 @@ const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://app.neutronx.com/auth/jwt/logout"
+        "https://app.neutronx.com/auth/jwt/logout",
       );
 
       token.unset();
@@ -57,7 +57,7 @@ const logoutUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 // const refreshUser = createAsyncThunk(

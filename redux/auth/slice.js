@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import API from './operations.js';
+import { createSlice } from "@reduxjs/toolkit";
+import API from "./operations.js";
 
 const authSlice = createSlice({
-  name: 'authReducer',
+  name: "authReducer",
 
   initialState: {
     token: null,
@@ -11,22 +11,22 @@ const authSlice = createSlice({
     error: null,
   },
 
-  extraReducers: builder => {
-    builder.addCase(API.registerUser.pending, state => {
+  extraReducers: (builder) => {
+    builder.addCase(API.registerUser.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
 
-    builder.addCase(API.registerUser.fulfilled, state => {
+    builder.addCase(API.registerUser.fulfilled, (state) => {
       state.isLoading = false;
     });
 
-    builder.addCase(API.registerUser.rejected, state => {
+    builder.addCase(API.registerUser.rejected, (state) => {
       state.isLoading = false;
       state.error = true;
     });
 
-    builder.addCase(API.loginUser.pending, state => {
+    builder.addCase(API.loginUser.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
@@ -37,23 +37,23 @@ const authSlice = createSlice({
       state.token = action.payload;
     });
 
-    builder.addCase(API.loginUser.rejected, state => {
+    builder.addCase(API.loginUser.rejected, (state) => {
       state.isLoading = false;
       state.error = true;
     });
 
-    builder.addCase(API.logoutUser.pending, state => {
+    builder.addCase(API.logoutUser.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
 
-    builder.addCase(API.logoutUser.fulfilled, state => {
+    builder.addCase(API.logoutUser.fulfilled, (state) => {
       state.isLoading = false;
       state.isLoggedIn = false;
       state.token = null;
     });
 
-    builder.addCase(API.logoutUser.rejected, state => {
+    builder.addCase(API.logoutUser.rejected, (state) => {
       state.isLoading = false;
       state.error = true;
     });
