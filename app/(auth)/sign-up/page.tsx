@@ -13,16 +13,12 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UserSchema } from "./types";
 
-interface IRegUser {
-  username: string;
-  email: string;
-  password: string;
-  repeatPassword: string;
-}
 
 const Page = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(UserSchema)});
   const { useRegisterUser } = useAuth();
   const router = useRouter();
 
@@ -37,7 +33,7 @@ const Page = () => {
   };
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="purple-gradient w-[350px] text-white">
+      <Card className="bg-ourDarkPurple sm:min-w-[400px] text-white dark:bg-ourGray">
         <CardHeader>
           <CardTitle className="text-center">Create account</CardTitle>
         </CardHeader>
@@ -47,25 +43,29 @@ const Page = () => {
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="email"
-                placeholder="Email"
+                placeholder={errors.email ? errors.email?.message as string : "Email"}
                 {...register("email")}
+                error={errors.email?.message as string}
               />
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="username"
-                placeholder="Login"
+                placeholder={errors.username ? errors.username?.message as string : "Login"}
                 {...register("username")}
+                error={errors.username?.message as string}
               />
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="password"
-                placeholder="Password"
+                placeholder={errors.password ? errors.password?.message as string : "Password"}
                 {...register("password")}
+                error={errors.password?.message as string}
               />
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="repeatPassword"
-                placeholder="Repeat password"
+                placeholder={errors.repeatPassword ? errors.repeatPassword?.message as string : "Repeat Password"}
+                error={errors.repeatPassword?.message as string}
               />
             </div>
           </div>

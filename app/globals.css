@@ -74,7 +74,11 @@ body {
   background: #0c0716;
   font-weight: 400;
   color: white;
-  line-height: 0.8;
+  line-height: 1;
+}
+
+p {
+  line-height: 1.2;
 }
 
 

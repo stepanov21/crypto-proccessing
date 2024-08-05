@@ -33,7 +33,7 @@ const Page = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="purple-gradient w-[350px] text-white">
+      <Card className="purple-gradient sm:min-w-[400px] text-white">
         <CardHeader>
           <CardTitle>Create account</CardTitle>
           <CardDescription>
