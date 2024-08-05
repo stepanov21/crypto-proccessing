@@ -1,21 +1,18 @@
 "use client";
 
+import { useAuth } from "@/api/auth/queries";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { default as AUTH_API } from "@/redux/auth/operations";
-import { AppDispatch } from "@/redux/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 
 interface IRegUser {
   username: string;
@@ -26,18 +23,17 @@ interface IRegUser {
 
 const Page = () => {
   const { register, handleSubmit } = useForm();
-  const dispatch = useDispatch<AppDispatch>();
+  const { useRegisterUser } = useAuth();
   const router = useRouter();
 
   const submitForm = async (data: any) => {
     console.log(data);
     try {
-      //@ts-ignore
-      await dispatch(AUTH_API.registerUser(data));
+      useRegisterUser.mutateAsync(data);
+      router.push("/sign-in");
     } catch (err) {
       console.log(err);
     }
-    router.push("/sign-in");
   };
   return (
     <form onSubmit={handleSubmit(submitForm)}>

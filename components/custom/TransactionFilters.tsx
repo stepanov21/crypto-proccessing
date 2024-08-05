@@ -29,13 +29,13 @@ const TransactionFilters = () => {
         </Select>
         <Popover>
           <PopoverTrigger asChild>
-            <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white bg-transparent px-4 text-white">
+            <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white dark:border-[#7F808D] bg-transparent px-4 text-white dark:bg-white dark:text-black">
               Тип транзакций
               <ChevronDown className="ml-auto" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="pt-0">
-            <div className="text-md w-[185px] space-y-4 rounded-[10px] border-[1px] border-[#37304B] bg-[#252032] p-2.5 text-white">
+          <PopoverContent className="pt-0 ">
+            <div className="text-md w-[185px] space-y-4 rounded-[10px] border-[1px] border-[#37304B] bg-ourDarkPurple p-2.5 text-white dark:border-[#7F808D] dark:bg-white dark:text-black">
               <div className="flex items-center justify-between space-x-2">
                 <label
                   htmlFor="1"
@@ -48,7 +48,7 @@ const TransactionFilters = () => {
               <div className="flex items-center justify-between space-x-2">
                 <label
                   htmlFor="2"
-                  className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 "
                 >
                   Полученные
                 </label>
@@ -57,7 +57,7 @@ const TransactionFilters = () => {
               <div className="flex items-center justify-between space-x-2">
                 <label
                   htmlFor="3"
-                  className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 "
                 >
                   Ошибочные
                 </label>

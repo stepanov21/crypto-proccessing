@@ -1,18 +1,11 @@
 "use client";
 
+import { ITransferPayload } from "@/api/transaction/types";
 import SelectWallet from "@/components/custom/SelectWallet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
-import useToken from "@/hooks/useToken";
+import { client } from "@/providers/TanstackQueryClientProvider";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -21,36 +14,28 @@ import { useForm } from "react-hook-form";
 const page = () => {
   const { register, handleSubmit } = useForm();
 
-  const { config } = useToken();
   const { data } = useQuery({
     queryKey: ["total-balance"],
     queryFn: () => {
-      return axios.get("https://app.neutronx.com/user/balance", config);
+      return client.get("https://app.neutronx.com/user/balance");
     },
   });
 
-  type TokenType =
-    | "balance_eth"
-    | "balance_usdt_erc"
-    | "balance_usdt_bep"
-    | "balance_usdt_arb"
-    | "balance_usdt_polygon"
-    | "balance_usdt_trc"
-    | "balance_usdt_optimism";
-
-  type WalletType = "erc" | "trc";
-
-  interface ITransferPayload {
-    token_field: TokenType;
-    amount: number;
-    wallet_type: WalletType;
-  }
-
   const mutation = useMutation({
     mutationFn: (body: ITransferPayload) => {
-      return axios.post("https://app.neutronx.com/merchant/transfer", {
-        ...body,
-      });
+      return client.post(
+        "/merchant/transfer",
+        {
+          token_field: body.token_field,
+          amount: +body.amount,
+          wallet_type: body.wallet_type,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
     },
     onSuccess: (data) => {
       // Invalidate and refetch
@@ -66,7 +51,7 @@ const page = () => {
       >
         <Title>Выберите кошелек</Title>
         <SelectWallet register={register} />
-        <Title>Передать</Title>
+        <Title className="mt-[30px]">Передать</Title>
         <Input
           {...register("wallet_type")}
           className="mb-[30px] mt-2"

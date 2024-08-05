@@ -4,7 +4,7 @@ import { Title } from "../ui/title";
 
 const MerchantWasCreated = () => {
   return (
-    <div className="absolute left-1/2 top-1/2 flex w-[570px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[60px] rounded-[18px] bg-ourDarkPurple px-7 pb-20 pt-10">
+    <div className="z-10 absolute left-1/2 top-1/2 flex w-[570px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[60px] rounded-[18px] bg-ourDarkPurple px-7 pb-20 pt-10">
       <div className="text-center">
         <Title>Поздравляем!</Title>
         <span>Новый продавец создан </span>

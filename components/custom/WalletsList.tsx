@@ -4,35 +4,39 @@ import React from "react";
 import WalletItem from "./WalletItem";
 import { Title } from "../ui/title";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { Plus, Search, X } from "lucide-react";
-import SelectPaymentVariant from "./SelectPaymentVariant";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import useWalletList from "@/hooks/useWalletList";
 import { transformWalletsList } from "@/lib/utils";
+import { useWallets } from "@/api/transaction/queries";
+import { client } from "@/providers/TanstackQueryClientProvider";
 
 const WalletsList = () => {
-  const { walletList } = useWalletList();
+  const { data } = useWallets();
+  const res = client.get("/auth/jwt/refresh").then(data => data.data);
+  console.log(res);
   return (
     <div>
       <div className="flex">
-        <Title className="mb-[18px] max-w-[200px]">
+        <Title className="mb-[18px] max-w-[200px] mr-auto">
           Балансы личных кошельков
         </Title>
-        <Button className="ml-auto bg-transparent text-white" size={"icon"}>
-          <Search size={24} />
+        <Button variant={'wallet'} size={"icon"}>
+          <Search size={20} />
         </Button>
-        <Button className="bg-transparent text-white" size={"icon"}>
+        <Button className="ml-4" variant={'wallet'} size={"icon"}>
           <Plus size={24} />
         </Button>
       </div>
       <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10">
-        {transformWalletsList(walletList).map((item) => (
-          <WalletItem balance={item.balance} key={item.id} icon={item.icon}>
-            {item.id}
-          </WalletItem>
-        ))}
+        {data &&
+          transformWalletsList(data).map((wallet) => (
+            <WalletItem
+              balance={wallet.balance}
+              key={wallet.id}
+              icon={wallet.icon}
+            >
+              {wallet.name}
+            </WalletItem>
+          ))}
       </div>
       <Button variant={"aside"}>Показать больше</Button>
     </div>

@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Raleway, Roboto } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
-import ReduxProvider from "@/providers/ReduxProvider";
 import TanstackQueryClientProvider from "@/providers/TanstackQueryClientProvider";
-import TransactionFilters from "@/components/custom/TransactionFilters";
-import CreateNewMerchantPopup from "@/components/custom/CreateNewMerchantPopup";
-import WalletsList from "@/components/custom/WalletsList";
-import MainUserCard from "@/components/layout/MainUserCard";
-import Header from "@/components/layout/Header";
+import ThemeProvider from "@/providers/ThemeProvider";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -23,11 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={raleway.className}>
-        <ReduxProvider>
-          <TanstackQueryClientProvider>{children}</TanstackQueryClientProvider>
-        </ReduxProvider>
-      </body>
+        <TanstackQueryClientProvider>
+          <ThemeProvider className={raleway.className}>{children}</ThemeProvider>
+        </TanstackQueryClientProvider>
     </html>
   );
 }

@@ -8,7 +8,7 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <h3
-        className={cn("mb-2.5 text-xl font-semibold", className)}
+        className={cn("mb-2.5 text-xl font-semibold dark:text-black", className)}
         ref={ref}
         {...props}
       >

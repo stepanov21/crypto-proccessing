@@ -1,46 +1,45 @@
 "use client";
-import React from "react";
-import { Button } from "../ui/button";
+import { useWallets } from "@/api/transaction/queries";
 import {
   ArrowDownLeft,
   ArrowRightLeft,
   ArrowUpRight,
   Bell,
+  MoonStar,
+  Sun,
   UserRound,
 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import useToken from "@/hooks/useToken";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { useAuth } from "@/api/auth/queries";
+import { useTheme } from "@/zustand/store";
 
 const MainUserCard = () => {
-  const { config } = useToken();
-  const { data } = useQuery({
-    queryKey: ["total-balance"],
-    queryFn: () => {
-      return axios.get("https://app.neutronx.com/user/balance", config);
-    },
-  });
-
-  console.log(data);
+  const { data } = useWallets()
+  const {useLogoutUser} = useAuth()
+  const changeTheme = useTheme((state) => state.changeTheme)
 
   return (
-    <div className="purple-gradient rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-black">
+    <div className="purple-gradient rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-none dark:bg-ourGray">
       <div className="flex items-center">
-        <span className="mr-auto text-[32px] font-semibold">
+        <span className="mr-auto text-[32px] font-semibold dark:text-black">
           Личный кабинет
         </span>
-        <Button className="light-purple-gradient mr-4 text-white" size={"icon"}>
-          <Bell size={18} />
+        <Button onClick={changeTheme} variant={'wallet'} size={"icon"}>
+          <Sun className={'dark:hidden '} size={20} />
+          <MoonStar className={'hidden dark:block'} size={20}/>
         </Button>
-        <Button className="light-purple-gradient text-white" size={"icon"}>
-          <UserRound size={18} />
+        <Button variant={'wallet'} size={"icon"}>
+          <Bell size={20} />
+        </Button>
+        <Button variant={'wallet'} size={"icon"}>
+          <UserRound size={20} />
         </Button>
       </div>
       <div className="mt-20 flex flex-col gap-2">
         <span className="text-xl text-ourLightPurple">Доступный баланс</span>
         {data ? (
-          <span className="roboto text-xl">$ {data.data.total_usdt}</span>
+          <span className="roboto text-xl">$ {data.total_usdt}</span>
         ) : null}
       </div>
       <div className="mt-9 flex justify-between gap-10">
@@ -57,7 +56,7 @@ const MainUserCard = () => {
           </Button>
         </Link>
         <Link className="w-full" href={"/wallet/transfer"}>
-          <Button className="w-full px-2.5 font-semibold" variant={"wallet"}>
+          <Button onClick={() => useLogoutUser.mutate()} className="w-full px-2.5 font-semibold" variant={"wallet"}>
             <span>Перевести</span>
             <ArrowRightLeft />
           </Button>

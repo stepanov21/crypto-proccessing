@@ -1,20 +1,26 @@
 "use client";
 
-import SelectPaymentVariant from "@/components/custom/SelectPaymentVariant";
+import CopyWalletAdress from "@/components/custom/CopyWalletAdress";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Title } from "@/components/ui/title";
+import { client } from "@/providers/TanstackQueryClientProvider";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 
 const page = () => {
+  const {data} = useQuery({queryKey: ['hello'], queryFn: () => client.get('/')})
+  console.log(data)
   return (
-    <form className="mt-10 max-w-[520px]">
-      <Label>Выберите кошелек</Label>
-      <Input className="mb-[30px] mt-2" placeholder="Выбрать крипто кошелек" />
-      <Label>Передать</Label>
-      <Input className="mb-[30px] mt-2" placeholder="Бизнес Кошелек" />
-      <Label>Введите сумму для отправки</Label>
-      <Input className="roboto mb-[30px] mt-2" placeholder="1000 USDT" />
-    </form>
+    <div>
+      <Title>Выберите кошелек</Title>
+      <Input className="mb-[30px]" placeholder="Выбрать крипто кошелек" />
+      <Title>Выберите сеть</Title>
+      <Input className="mb-[30px]" placeholder="Выбрать сеть" />
+      <Title>Тип получения</Title>
+      <Input className="mb-[30px]" placeholder="Крипто" />
+      <CopyWalletAdress />
+    </div>
   );
 };
 

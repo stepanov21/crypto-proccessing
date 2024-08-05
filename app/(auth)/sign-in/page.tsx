@@ -11,28 +11,24 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-import { default as AUTH_API } from "@/redux/auth/operations";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
+import { useAuth } from "@/api/auth/queries";
 
 const Page = () => {
   const { register, handleSubmit } = useForm();
-  const dispatch = useDispatch<AppDispatch>();
+  const { useLoginUser } = useAuth();
   const router = useRouter();
 
   const submitForm = async (data: any) => {
-    console.log(data);
     try {
-      //@ts-ignore
-      await dispatch(AUTH_API.loginUser(data));
+      await useLoginUser.mutateAsync(data);
+      router.push("/wallet");
     } catch (err) {
       console.log(err);
     }
-    router.push("/wallet");
   };
 
   return (

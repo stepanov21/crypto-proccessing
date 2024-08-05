@@ -6,28 +6,14 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Title } from "../ui/title";
 import { UserRound, X } from "lucide-react";
-import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import MerchantWasCreated from "./MerchantWasCreated";
+import { useMerchant } from "@/api/merchant/queries";
 
 const CreateNewMerchantPopup = () => {
+  const { useAddMerchant } = useMerchant();
   const [isOpen, setIsOpen] = useState(false);
   const [isWasAdded, setIsWasAdded] = useState(false);
   const [merchantName, setMerchantName] = useState("");
-  const router = useRouter();
-
-  const mutation = useMutation({
-    mutationFn: ({ name }: { name: string }) => {
-      return axios.post("https://app.neutronx.com/merchant/create_merchant", {
-        name,
-      });
-    },
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      setIsWasAdded(true);
-    },
-  });
 
   return (
     <div>
@@ -45,7 +31,13 @@ const CreateNewMerchantPopup = () => {
             />
           </div>
           <Button
-            onClick={() => mutation.mutateAsync({ name: merchantName })}
+            onClick={async () => {
+              try {
+                await useAddMerchant.mutateAsync({ name: merchantName });
+                setIsOpen(false);
+                setIsWasAdded(true);
+              } catch (e) {}
+            }}
             className="self-center"
           >
             Создать продавца

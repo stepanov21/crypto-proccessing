@@ -24,6 +24,7 @@ const config = {
         ourLightGreen: "#63DA6F",
         ourLightPurple: "#7F808D",
         ourDarkPurple: "#252032",
+        ourGray: "#F1F1F1",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

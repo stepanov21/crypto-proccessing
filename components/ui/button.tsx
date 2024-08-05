@@ -5,12 +5,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-block items-center justify-center whitespace-nowrap rounded-full text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-block items-center justify-center whitespace-nowrap rounded-full text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-[#f1f1f1] dark:text-black",
   {
     variants: {
       variant: {
-        default: "bg-primary text-black bg-ourGreen font-semibold",
-        form: "bg-ourLightGreen text-black",
+        default:
+          "bg-primary text-black bg-ourGreen font-semibold dark:bg-black dark:text-white",
+        form: "bg-ourLightGreen text-black dark:bg-[#f1f1f1]",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -18,15 +19,15 @@ const buttonVariants = cva(
         secondary: "w-full bg-transparent underline text-white",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        wallet: "light-purple-gradient flex justify-between rounded-[18px]",
-        aside: "bg-ourPurple text-white w-full font-semibold",
+        wallet: "light-purple-gradient flex justify-between rounded-[18px] dark:bg-none dark:bg-white",
+        aside: "bg-ourPurple text-white w-full font-semibold dark:bg-[#f1f1f1] ",
       },
       size: {
         default: "h-[60px] px-20",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         full: "w-full",
-        icon: "h-8 w-8 flex items-center justify-center",
+        icon: "h-8 w-8 ml-4 flex items-center justify-center",
       },
     },
     defaultVariants: {

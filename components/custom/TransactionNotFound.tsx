@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const TransactionNotFound = () => {
   return (
-    <div className="mx-auto mt-28 max-w-[540px] text-center">
+    <div className="mx-auto mt-28 max-w-[540px] text-center relative translate-x-1/3 ">
       <Title>Транзакций пока нет</Title>
       <p className="mb-[50px] mt-[18px] leading-normal">
         У вас пока нет успешных транзакций. Вы можете получить адрес своего

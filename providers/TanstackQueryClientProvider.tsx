@@ -1,24 +1,37 @@
 "use client";
 
-import select from "@/redux/auth/selectors";
-import { RootState } from "@/redux/store";
+import { BASE_URL } from "@/constants/varialbles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import React, { ReactNode, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { ReactNode } from "react";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
+
+//Всё что связанно с клиентом Axios, в конце есть интерцептор для отловли каждого запроса, для RefreshToken
+export const client = axios.create({
+  baseURL: BASE_URL,
+});
+
+export const setHeaderToken = (token: string) => {
+  localStorage.setItem("access_token", token);
+  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
+
+export const removeHeaderToken = () => {
+  //client.defaults.headers.common.Authorization = null;
+  delete client.defaults.headers.common["Authorization"];
+};
+
+client.interceptors.request.use((config) => {
+  config.headers["Authorization"] =
+    `Bearer ${localStorage.getItem("access_token")}`;
+
+    // const res = client.get('/auth/jwt/refresh')
+    // console.log(res)
+  return config;
+});
 
 const TanstackQueryClientProvider = ({ children }: { children: ReactNode }) => {
-  const { token } = useSelector((state: RootState) => state.auth);
-  const router = useRouter();
-  useEffect(() => {
-    axios.defaults.headers.common = { Authorization: `bearer ${token}` };
-    if (!token) {
-      router.push("/sign-in");
-    }
-  });
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
