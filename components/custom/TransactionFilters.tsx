@@ -16,7 +16,7 @@ import { ArrowDownToLine, ChevronDown, Search } from "lucide-react";
 const TransactionFilters = () => {
   return (
     <>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 ml-[30px]">
         <Select onValueChange={(e) => console.log(e)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Период" />

@@ -2,6 +2,7 @@
 
 import { ITransferPayload } from "@/api/transaction/types";
 import SelectWallet from "@/components/custom/SelectWallet";
+import WalletItem from "@/components/custom/WalletItem";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Title } from "@/components/ui/title";
@@ -55,8 +56,12 @@ const page = () => {
         <Input
           {...register("wallet_type")}
           className="mb-[30px] mt-2"
-          placeholder="Бизнес Кошелек"
+          placeholder="Личный Кошелек"
         />
+        
+        <Title className="text-[15px] font-medium">Ваши средства будут переведены на личный кошелек USDT</Title>
+        <div className="p-2.5 bg-ourPurple dark:bg-ourGray rounded-[18px] mb-[30px]"><WalletItem balance={300} icon="">{'USDT'}</WalletItem></div>
+        
         <Title>Введите сумму для отправки</Title>
         <Input
           {...register("amount")}

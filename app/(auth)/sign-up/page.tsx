@@ -14,11 +14,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserSchema } from "./types";
+import { registerUserSchema } from "./types";
 
 
 const Page = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(UserSchema)});
+  const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(registerUserSchema)});
   const { useRegisterUser } = useAuth();
   const router = useRouter();
 

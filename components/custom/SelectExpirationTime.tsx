@@ -4,7 +4,7 @@ import { Title } from "../ui/title";
 
 const SelectExpirationTime = () => {
   return (
-    <div>
+    <div className="mt-10">
       <Title>Выберите время истечения срока платежа</Title>
       <Slider className="mt-6" defaultValue={[1]} max={2} step={1} />
     </div>

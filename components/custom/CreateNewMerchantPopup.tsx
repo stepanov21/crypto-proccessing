@@ -23,6 +23,7 @@ const CreateNewMerchantPopup = () => {
 
   return (
     <div>
+      <Title>Мерчанты</Title>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant={"aside"}>Создать продавца</Button>
@@ -49,7 +50,7 @@ const CreateNewMerchantPopup = () => {
                     await useAddMerchant.mutateAsync({ name: merchantName });
                     setIsWasAdded(true);
                   } catch (e) {
-                    setIsWasAdded(true)
+                    setIsWasAdded(true);
                   }
                 }}
                 className="self-center"
@@ -62,7 +63,6 @@ const CreateNewMerchantPopup = () => {
           {isWasAdded ? <MerchantWasCreated /> : null}
         </DialogContent>
       </Dialog>
-      <Title>Мерчанты</Title>
     </div>
   );
 };

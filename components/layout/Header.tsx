@@ -11,15 +11,15 @@ const Header = () => {
         <span className="text-[32px] dark:text-black">Neutronx</span>
       </div>
       <nav className="mt-14 flex flex-col gap-[30px] dark:text-black">
-        <Link className="flex items-center gap-3" href={"/"}>
+        <Link className="flex items-center gap-3" href={"/wallet"}>
           <House size={24} />
           <span>Личный кошелек</span>
         </Link>
-        <Link className="flex items-center gap-3" href={"/"}>
+        <Link className="flex items-center gap-3" href={"/business-wallet"}>
           <Landmark size={24} />
           <span>Бизнес кошелек</span>
         </Link>
-        <Link className="flex items-center gap-3" href={"/"}>
+        <Link className="flex items-center gap-3" href={"/merchant"}>
           <GitCompareArrows size={24} />
           <span>Торговый кошелек P2P</span>
         </Link>

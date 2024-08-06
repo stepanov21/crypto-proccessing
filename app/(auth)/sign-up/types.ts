@@ -7,7 +7,7 @@ export interface IRegUser {
   repeatPassword: string;
 }
 
-export const UserSchema: ZodType<IRegUser> = z
+export const registerUserSchema: ZodType<IRegUser> = z
   .object({
     username: z.string().min(4, { message: "Username is too short" }),
     email: z.string().email({ message: "Invalid e-mail" }),

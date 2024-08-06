@@ -3,8 +3,8 @@ import TransactionFilters from "@/components/custom/TransactionFilters";
 import Image from "next/image";
 import WalletsList from "@/components/custom/WalletsList";
 import Header from "@/components/layout/Header";
-import MainUserCard from "@/components/layout/MainUserCard";
 import React from "react";
+import HeaderCard from "@/components/layout/HeaderCard";
 
 const layout = ({
   children,
@@ -16,7 +16,7 @@ const layout = ({
       className="container grid grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px]"
     >
       <Header />
-      <MainUserCard />
+      <HeaderCard/>
       <aside className="space-y-[60px]">
         <WalletsList />
 
