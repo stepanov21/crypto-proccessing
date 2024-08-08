@@ -24,7 +24,8 @@ export const sendWithdraw = async (body : IWithdrawPayload) => {
   const response = await client.post("/wallets/withdraw", {
     network: body.network,
     amount: +body.amount,
-    recipient_address: body.recipient_address
+    recipient_address: body.recipient_address,
+    token: "usdt_erc"
   }, {
     headers: {
       "Content-Type": "application/json",
@@ -37,3 +38,4 @@ export const sendWithdraw = async (body : IWithdrawPayload) => {
 
   throw new Error("Failed to create merchant");
 };
+

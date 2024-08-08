@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="font-semibold">
+    <header className="font-semibold lg:hidden">
       <div className="flex items-center gap-4">
         <Image src={"/Neutronx.svg"} className="dark:hidden" alt="logo" width={67} height={67} />
         <Image src={"/Neutronx-light.svg"} className="hidden dark:block" alt="logo" width={67} height={67} />

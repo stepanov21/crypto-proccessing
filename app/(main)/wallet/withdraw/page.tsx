@@ -28,7 +28,7 @@ const page = () => {
       <Title>Передать</Title>
       <Input
         {...register("recipient_address")}
-        defaultValue={"0x1Ae7da34846261c59f8A4D795F9F018A9e1FD6f6"}
+        defaultValue={"0xF5c2E252729136FbDC2E2e7486899859380c0B5B"}
         className="mb-[30px] mt-2"
         placeholder="Бизнес Кошелек"
       />

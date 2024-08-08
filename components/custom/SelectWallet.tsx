@@ -14,7 +14,7 @@ const SelectWallet = ({ register }: { register: any }) => {
   const { data, isError } = useWallets();
 
   return (
-    <Select onValueChange={(e) => register("token_field", { value: e })}>
+    <Select onValueChange={(e) => register("token_field", { value: 'balance_usdt_erc' })}>
       <SelectTrigger className="h-[60px] w-full">
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>

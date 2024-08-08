@@ -1,8 +1,10 @@
+import Transition from '@/providers/Transition'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>business-wallet</div>
+    
+    <Transition>business-wallet</Transition>
   )
 }
 

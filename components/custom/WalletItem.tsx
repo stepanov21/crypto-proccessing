@@ -11,7 +11,7 @@ const WalletItem = ({
   balance: number;
 }) => {
   return (
-    <div className="flex min-w-[450px] items-center gap-1.5 dark:text-black">
+    <div className="flex max-w-[450px] w-full items-center gap-1.5 dark:text-black">
       <div className="relative">
         <Image src={"/USDT.svg"} width={40} height={40} alt="usdt" />
         <Image

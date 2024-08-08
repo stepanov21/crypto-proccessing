@@ -21,6 +21,7 @@ const Page = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(registerUserSchema)});
   const { useRegisterUser } = useAuth();
   const router = useRouter();
+  console.log(errors)
 
   const submitForm = async (data: any) => {
     console.log(data);
@@ -64,6 +65,7 @@ const Page = () => {
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="repeatPassword"
+                {...register("repeatPassword")}
                 placeholder={errors.repeatPassword ? errors.repeatPassword?.message as string : "Repeat Password"}
                 error={errors.repeatPassword?.message as string}
               />

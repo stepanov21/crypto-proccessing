@@ -11,8 +11,6 @@ import { client } from "@/providers/TanstackQueryClientProvider";
 
 const WalletsList = () => {
   const { data } = useWallets();
-  const res = client.get("/auth/jwt/refresh").then(data => data.data);
-  console.log(res);
   return (
     <div>
       <div className="flex">
@@ -26,7 +24,7 @@ const WalletsList = () => {
           <Plus size={24} />
         </Button>
       </div>
-      <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10">
+      <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10 dark:bg-none dark:bg-ourGray">
         {data &&
           transformWalletsList(data).map((wallet) => (
             <WalletItem

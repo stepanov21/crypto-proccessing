@@ -36,7 +36,7 @@ const MainUserCard = () => {
           <UserRound size={20} />
         </Button>
       </div>
-      <div className="mt-20 flex flex-col gap-2">
+      <div className="mt-20 flex flex-col gap-2  dark:text-black">
         <span className="text-xl text-ourLightPurple">Доступный баланс</span>
         {data ? (
           <span className="roboto text-xl">$ {data.total_usdt}</span>

@@ -14,7 +14,7 @@ const ThemeProvider = ({
 
   return (
     <body
-      className={`${className} ${dark && "bg-white"}`}
+      className={`${className} ${dark ? "bg-white" : ""}`}
       data-mode={dark ? "dark" : ""}
     >
       {children}

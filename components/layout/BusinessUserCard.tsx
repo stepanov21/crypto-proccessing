@@ -24,9 +24,11 @@ const BusinessUserCard = () => {
         <span className="mr-auto text-[32px] font-semibold dark:text-black">
           Личный кабинет
         </span>
-        <Button className="h-8 px-4 mr-10" variant={"wallet"}>
-          API Документация
-        </Button>
+        <Link href={'/neutronx-api'}>
+          <Button className="mr-10 h-8 px-4" variant={"wallet"}>
+            API Документация
+          </Button>
+        </Link>
         <Button onClick={changeTheme} variant={"wallet"} size={"icon"}>
           <Sun className={"dark:hidden"} size={20} />
           <MoonStar className={"hidden dark:block"} size={20} />
@@ -42,14 +44,17 @@ const BusinessUserCard = () => {
           <UserRound size={20} />
         </Button>
       </div>
-      <div className="mt-20 flex flex-col gap-2">
+      <div className="mt-20 flex flex-col gap-2 dark:text-black">
         <span className="text-xl text-ourLightPurple">Доступный баланс</span>
         {data ? (
           <span className="roboto text-xl">$ {data.total_usdt}</span>
         ) : null}
       </div>
       <div className="mt-9 flex justify-between gap-10">
-        <Link className="w-full max-w-[256px]" href={"/business-wallet/transfer"}>
+        <Link
+          className="w-full max-w-[256px]"
+          href={"/business-wallet/transfer"}
+        >
           <Button className="w-full px-2.5 font-semibold" variant={"wallet"}>
             <span>Перевести</span>
             <ArrowRightLeft />
