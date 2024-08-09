@@ -1,0 +1,3 @@
+include:
+  - project: 'neutronx1/crypto_proccesing/devops'
+    file: 'ci_cd/crypto_front.yml'
