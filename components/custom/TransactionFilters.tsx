@@ -17,19 +17,9 @@ const TransactionFilters = () => {
   return (
     <>
       <div className="flex items-center gap-3 ml-[30px]">
-        <Select onValueChange={(e) => console.log(e)}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Период" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="30">30 дней</SelectItem>
-            <SelectItem value="7">7 дней</SelectItem>
-            <SelectItem value="1">1 день </SelectItem>
-          </SelectContent>
-        </Select>
         <Popover>
           <PopoverTrigger asChild>
-            <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white dark:border-[#7F808D] bg-transparent px-4 text-white dark:bg-white dark:text-black">
+            <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white dark:border-[#7F808D] bg-transparent px-4 text-white dark:bg-white dark:text-black text-sm">
               Тип транзакций
               <ChevronDown className="ml-auto" />
             </Button>
@@ -66,6 +56,16 @@ const TransactionFilters = () => {
             </div>
           </PopoverContent>
         </Popover>
+        <Select onValueChange={(e) => console.log(e)}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Период" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="30">30 дней</SelectItem>
+            <SelectItem value="7">7 дней</SelectItem>
+            <SelectItem value="1">1 день </SelectItem>
+          </SelectContent>
+        </Select>
         <Button className="ml-auto flex w-min gap-2.5 px-5" variant={"aside"}>
           <Search size={20} />
           Найти транзакцию

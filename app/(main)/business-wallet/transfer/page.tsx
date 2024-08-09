@@ -12,42 +12,13 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit } = useForm();
-
-  const { data } = useQuery({
-    queryKey: ["total-balance"],
-    queryFn: () => {
-      return client.get("https://app.neutronx.com/user/balance");
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: (body: ITransferPayload) => {
-      return client.post(
-        "/merchant/transfer",
-        {
-          token_field: body.token_field,
-          amount: +body.amount,
-          wallet_type: body.wallet_type,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-    },
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      console.log("Перевод оправлен", data);
-    },
-  });
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit((e) => mutation.mutate(e as ITransferPayload))}
+        
         className="mt-10 max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
@@ -74,4 +45,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

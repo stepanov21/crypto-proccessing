@@ -13,7 +13,7 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="container grid grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px] lg:grid-cols-1">
+    <div className="container grid max-w-[1400px] grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px] lg:grid-cols-1">
       <Header />
       <HeaderCard />
       <aside className="space-y-[60px]">
@@ -23,9 +23,7 @@ const layout = ({
       </aside>
       <div>
         <TransactionFilters />
-        <main className="max-w-[520px]">
-          {children}
-        </main>
+        <main className="max-w-[520px]">{children}</main>
       </div>
       {/* Background glow */}
       <Image
@@ -36,7 +34,7 @@ const layout = ({
         alt="glow"
       />
       <Image
-        className="pointer-events-none absolute -bottom-80 right-[5%] -z-10 object-cover opacity-30 dark:opacity-0"
+        className="pointer-events-none absolute right-[5%] top-80 -z-10 object-cover opacity-30 dark:opacity-0"
         src={"/glow.svg"}
         width={1200}
         height={1200}

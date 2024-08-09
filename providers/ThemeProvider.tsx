@@ -1,6 +1,7 @@
 "use client";
-import { useTheme } from "@/zustand/store";
-import React, { ReactNode } from "react";
+import { useTheme, useToken } from "@/zustand/store";
+import { useRouter } from "next/navigation";
+import React, { ReactNode, useEffect } from "react";
 
 const ThemeProvider = ({
   children,
@@ -10,7 +11,16 @@ const ThemeProvider = ({
   className: string;
 }) => {
   const dark = useTheme((state) => state.dark);
+  const { token } = useToken((state) => state)
   console.log(dark);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(token);
+    if (token) return 
+    router.push("/sign-in");
+  }, [token]);
 
   return (
     <body

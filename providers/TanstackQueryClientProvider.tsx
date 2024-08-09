@@ -13,18 +13,18 @@ export const client = axios.create({
 });
 
 export const setHeaderToken = (token: string) => {
-  localStorage.setItem("access_token", token);
   client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
 export const removeHeaderToken = () => {
-  //client.defaults.headers.common.Authorization = null;
   delete client.defaults.headers.common["Authorization"];
 };
 
 client.interceptors.request.use((config) => {
+  const token = JSON.parse(localStorage?.getItem("access_token") as string) || null
+
   config.headers["Authorization"] =
-    `Bearer ${localStorage.getItem("access_token")}`;
+    `Bearer ${token.state.token}`;
 
     // const res = client.get('/auth/jwt/refresh')
     // console.log(res)

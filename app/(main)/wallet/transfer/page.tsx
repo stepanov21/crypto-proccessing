@@ -9,7 +9,7 @@ import { Title } from "@/components/ui/title";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit } = useForm();
 
   const { useMerchantTransfer } = useMerchant()
@@ -41,4 +41,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

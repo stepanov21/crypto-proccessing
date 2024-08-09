@@ -16,6 +16,7 @@ import Link from "next/link";
 
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/api/auth/queries";
+import { Title } from "@/components/ui/title";
 
 const Page = () => {
   const { register, handleSubmit } = useForm();
@@ -33,12 +34,9 @@ const Page = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="purple-gradient sm:min-w-[400px] text-white">
+      <Card className="bg-ourDarkPurple min-w-[400px] text-white dark:bg-ourGray">
         <CardHeader>
-          <CardTitle>Create account</CardTitle>
-          <CardDescription>
-            Deploy your new project in one-click.
-          </CardDescription>
+          <Title className="text-center text-2xl mb-0">SIGN IN</Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center gap-4">

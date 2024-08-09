@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { addMerchant, merchantTransfer } from "./fetchers";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { addMerchant, IMerchantInvoice, merchantGetInvoice, merchantPostInvoice, merchantTransfer } from "./fetchers";
 import { ITransferPayload } from "../transaction/types";
 
 export const useMerchant = () => {
@@ -10,5 +10,11 @@ export const useMerchant = () => {
     mutationFn: (e: ITransferPayload) => merchantTransfer(e),
   });
 
-  return { useAddMerchant, useMerchantTransfer };
+  const useMerchantPostInvoice = () => useMutation({
+    mutationFn: (e: IMerchantInvoice) => merchantPostInvoice(e),
+  });
+
+  const useMerchantGetInvoice = () => useQuery({queryKey: ['merchant-invoice'], queryFn: () => merchantGetInvoice()})
+
+  return { useAddMerchant, useMerchantTransfer, useMerchantGetInvoice, useMerchantPostInvoice };
 };

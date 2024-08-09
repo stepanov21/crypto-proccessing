@@ -23,12 +23,12 @@ const WalletItem = ({
         />
       </div>
       <div className="mr-auto flex flex-col gap-2">
-        <span className="text-[18px]">USDT</span>
+        <span className="text-[18px]">{children === 'Eth' ? "ETH"  : "USDT"}</span>
         <span className="text-ourLightPurple">{children}</span>
       </div>
       <div className="roboto flex flex-col items-end gap-2 font-medium">
-        <span>{balance}</span>
-        <span>$ 0.00</span>
+        <span>$ {balance}</span>
+        <span>0.00</span>
       </div>
     </div>
   );

@@ -6,11 +6,33 @@ interface themeState {
   changeTheme: () => void;
 }
 
+interface tokenState {
+  token: string | null;
+  setToken: (e: string) => void;
+  deleteToken: () => void;
+}
+
 export const useTheme = create<themeState>()(
-  persist((set, get) => ({
-    dark: JSON.parse(localStorage.getItem('theme-storage') as string).dark || false,
-    changeTheme: () => set((state) => ({ dark: !state.dark })),
-  }), {
-    name: 'theme-storage'
-  }),
+  persist(
+    (set, get) => ({
+      dark: false,
+      changeTheme: () => set((state) => ({ dark: !state.dark })),
+    }),
+    {
+      name: "theme-storage",
+    },
+  ),
+);
+
+export const useToken = create<tokenState>()(
+  persist(
+    (set, get) => ({
+      token: null,
+      setToken: (e: string) => set((state) => ({ token: e })),
+      deleteToken: () => set((state) => ({ token: null })),
+    }),
+    {
+      name: "access_token",
+    },
+  ),
 );

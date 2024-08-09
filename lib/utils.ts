@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const transformWalletsList = (wallets: Record<string, number>) => {
+  console.log(wallets)
   const list = [];
   for (let wallet in wallets) {
     if (wallet.startsWith("balance")) {

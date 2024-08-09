@@ -12,7 +12,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit } = useForm();
 
   const { data } = useQuery({
@@ -74,4 +74,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

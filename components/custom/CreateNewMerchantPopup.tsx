@@ -11,7 +11,6 @@ import { useMerchant } from "@/api/merchant/queries";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";

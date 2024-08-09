@@ -17,15 +17,16 @@ export const getMyWallet = async (network: string) => {
 export interface IWithdrawPayload {
   network: TWithdrawNetwork;
   amount: number;
-  recipient_address: "0xRecipientAddress";
+  recipient_address: string;
+  token: "usdt_erc";
 }
 
 export const sendWithdraw = async (body : IWithdrawPayload) => {
   const response = await client.post("/wallets/withdraw", {
-    network: body.network,
+    network: 'arb',
     amount: +body.amount,
-    recipient_address: body.recipient_address,
-    token: "usdt_erc"
+    recipient_address: '0xAb0ec9BA36F01fe17aA5A2d9DF610b57A7b4380C',
+    token: "usdt_arb"
   }, {
     headers: {
       "Content-Type": "application/json",

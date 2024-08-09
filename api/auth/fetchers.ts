@@ -18,6 +18,7 @@ export const loginUser = async (body: TLoginPayload) => {
     const { data } = response;
 
     setHeaderToken(data.access_token);
+    
 
     return data;
   }
@@ -28,7 +29,7 @@ export const loginUser = async (body: TLoginPayload) => {
 export const logoutUser = async () => {
   const response = await client.post("/auth/jwt/logout");
 
-  if (response.status === 200) {
+  if (response.status === 200 || response.status === 204) {
     const { data } = response;
 
     removeHeaderToken();

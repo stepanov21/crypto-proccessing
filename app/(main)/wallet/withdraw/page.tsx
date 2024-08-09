@@ -2,6 +2,7 @@
 
 import { IWithdrawPayload } from "@/api/wallets/fetchers";
 import { useWithdraw } from "@/api/wallets/queries";
+import SelectNetwork from "@/components/custom/SelectNetwork";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,7 +10,7 @@ import { Title } from "@/components/ui/title";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit } = useForm<IWithdrawPayload>();
   const { useWithdrawSend } = useWithdraw();
 
@@ -19,16 +20,15 @@ const page = () => {
       className="mt-10 max-w-[520px]"
     >
       <Title>Выберите кошелек</Title>
+      <SelectNetwork/>
       <Input
         {...register("network")}
-        defaultValue={"erc20"}
         className="mb-[30px] mt-2"
         placeholder="Выбрать крипто кошелек"
       />
-      <Title>Передать</Title>
+      <Title>Адресс</Title>
       <Input
         {...register("recipient_address")}
-        defaultValue={"0xF5c2E252729136FbDC2E2e7486899859380c0B5B"}
         className="mb-[30px] mt-2"
         placeholder="Бизнес Кошелек"
       />
@@ -39,9 +39,9 @@ const page = () => {
         className="roboto mb-[30px] mt-2"
         placeholder="1000 USDT"
       />
-      <Button type="submit">Submit</Button>
+      <Button className="w-full" type="submit">Submit</Button>
     </form>
   );
 };
 
-export default page;
+export default Page;

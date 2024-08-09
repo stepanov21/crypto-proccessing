@@ -4,10 +4,9 @@ import React from "react";
 import WalletItem from "./WalletItem";
 import { Title } from "../ui/title";
 import { Button } from "../ui/button";
-import { Plus, Search, X } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
-import { client } from "@/providers/TanstackQueryClientProvider";
 
 const WalletsList = () => {
   const { data } = useWallets();

@@ -1,9 +1,7 @@
 "use client";
 import { useWallets } from "@/api/transaction/queries";
 import {
-  ArrowDownLeft,
   ArrowRightLeft,
-  ArrowUpRight,
   Bell,
   MoonStar,
   ReceiptText,
