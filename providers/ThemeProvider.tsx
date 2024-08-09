@@ -20,6 +20,7 @@ const ThemeProvider = ({
     console.log(token);
     if (token) return 
     router.push("/sign-in");
+    //eslint-disable-next-line
   }, [token]);
 
   return (
