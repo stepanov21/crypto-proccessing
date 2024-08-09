@@ -8,7 +8,7 @@ RUN npm install
 
 RUN npm run build
 
-RUN npm run dev
+RUN npm run start
 
 FROM node:22
 
