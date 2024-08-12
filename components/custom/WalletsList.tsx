@@ -4,26 +4,25 @@ import React from "react";
 import WalletItem from "./WalletItem";
 import { Title } from "../ui/title";
 import { Button } from "../ui/button";
-import { Plus, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
+import AddNewToken from "./AddNewToken";
 
 const WalletsList = () => {
   const { data } = useWallets();
   return (
-    <div>
+    <div className="mt-0 sm:mt-8">
       <div className="flex">
-        <Title className="mb-[18px] max-w-[200px] mr-auto">
+        <Title className="mb-[18px] mr-auto max-w-[200px] sm:leading-normal">
           Балансы личных кошельков
         </Title>
-        <Button variant={'wallet'} size={"icon"}>
+        <Button variant={"wallet"} size={"icon"}>
           <Search size={20} />
         </Button>
-        <Button className="ml-4" variant={'wallet'} size={"icon"}>
-          <Plus size={24} />
-        </Button>
+        <AddNewToken />
       </div>
-      <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10 dark:bg-none dark:bg-ourGray">
+      <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10 dark:bg-ourGray dark:bg-none">
         {data &&
           transformWalletsList(data).map((wallet) => (
             <WalletItem

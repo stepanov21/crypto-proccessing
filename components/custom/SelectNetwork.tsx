@@ -7,9 +7,14 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const SelectNetwork = () => {
+const SelectNetwork = ({ register }: { register?: any }) => {
   return (
-    <Select>
+    <Select
+      onValueChange={(value) => {
+        console.log(value)
+        register("network", {value});
+      }}
+    >
       <SelectTrigger className="h-[60px] w-full">
         <SelectValue placeholder="Выбрать сеть" />
       </SelectTrigger>
@@ -21,7 +26,6 @@ const SelectNetwork = () => {
         <SelectItem value="BnB Chain">BnB Chain</SelectItem>
         <SelectItem value="Kava">Kava</SelectItem>
         <SelectItem value="Optimism">Optimism</SelectItem>
-        <SelectItem value="Solana">Solana</SelectItem>
       </SelectContent>
     </Select>
   );

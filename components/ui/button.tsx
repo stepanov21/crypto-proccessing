@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-block items-center justify-center whitespace-nowrap rounded-full text-[18px] font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none font-semibold disabled:opacity-50 dark:bg-[#f1f1f1] dark:text-black",
+  "inline-block items-center justify-center whitespace-nowrap rounded-full text-[18px] font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none font-semibold disabled:opacity-50 dark:bg-[#f1f1f1] dark:text-black sm:text-sm",
   {
     variants: {
       variant: {
@@ -20,10 +20,10 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         wallet: "light-purple-gradient flex justify-between rounded-[18px] dark:bg-none dark:bg-white",
-        aside: "bg-ourPurple text-white w-full font-semibold dark:bg-[#f1f1f1] ",
+        aside: "bg-ourPurple text-white w-full font-semibold dark:bg-[#f1f1f1]",
       },
       size: {
-        default: "h-[60px] px-20",
+        default: "h-[60px] px-20 sm:h-[50px]",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         full: "w-full",

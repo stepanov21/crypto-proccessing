@@ -40,7 +40,7 @@ const CreateNewMerchantPopup = () => {
                   onChange={(e) => setMerchantName(e.target.value)}
                   value={merchantName}
                   placeholder="Имя продавца"
-                  icon={<UserRound />}
+                  icon={<UserRound size={20} />}
                 />
               </div>
               <Button

@@ -20,9 +20,9 @@ const Page = () => {
       className="mt-10 max-w-[520px]"
     >
       <Title>Выберите кошелек</Title>
-      <SelectNetwork/>
+      <SelectNetwork register={register}/>
       <Input
-        {...register("network")}
+        {...register("token")}
         className="mb-[30px] mt-2"
         placeholder="Выбрать крипто кошелек"
       />

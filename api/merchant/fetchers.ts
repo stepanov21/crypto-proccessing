@@ -47,7 +47,12 @@ export interface IMerchantInvoice {
 
 export const merchantPostInvoice = async (body: IMerchantInvoice) => {
   const response = await client.post(
-    "/merchant/invoice", body,
+    "/merchant/invoice", {
+      amount: +body.amount,
+      currency: 'usdt',
+      network: body.network,
+      payment_duration: body.payment_duration
+    },
     {
       headers: {
         "Content-Type": "application/json",

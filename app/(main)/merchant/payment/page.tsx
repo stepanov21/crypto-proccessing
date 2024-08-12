@@ -1,5 +1,6 @@
 "use client";
 
+import { IMerchantInvoice } from "@/api/merchant/fetchers";
 import { useMerchant } from "@/api/merchant/queries";
 import CreatePayment from "@/components/custom/CreatePayment";
 import SelectExpirationTime from "@/components/custom/SelectExpirationTime";
@@ -11,14 +12,23 @@ import { Input } from "@/components/ui/input";
 import { Title } from "@/components/ui/title";
 import { CircleAlert } from "lucide-react";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const Page = () => {
+  const {register, handleSubmit} = useForm<IMerchantInvoice>()
   const { useMerchantPostInvoice } = useMerchant();
   const { mutate, data } = useMerchantPostInvoice();
   console.log(data);
+
+  const postInvoice = (e: IMerchantInvoice) => {
+    console.log(e)
+    mutate(e)
+  }
+
+
   return (
     <>
-      <form className="mb-20 dark:text-black">
+      <form onSubmit={handleSubmit(postInvoice)} className="mb-20 dark:text-black">
         <Title className="text-2xl">Создать новую платежную ссылку</Title>
         <div className="flex gap-2.5 rounded-[10px] bg-[#A6142A] p-2.5 text-white">
           <CircleAlert />
@@ -31,9 +41,9 @@ const Page = () => {
           Примите оплату поделившись ссылкой
         </span>
         <Title className="mt-10">Выберите продавца</Title>
-        <SelectPaymentVariant />
+        <SelectPaymentVariant register={register}/>
         <Title className="mt-10">Введите сумму для оплаты</Title>
-        <Input className="roboto mt-2" placeholder="0.00" />
+        <Input {...register('amount')} type="number" className="roboto mt-2" placeholder="0.00"/>
         <div className="mt-3 flex items-center space-x-2">
           <Checkbox id="1" />
           <label
@@ -49,22 +59,14 @@ const Page = () => {
           Помогает понять за что платит Ваш клиент
         </span>
         <Title className="mt-10">Выберите валюту платежа</Title>
-        <Input className="roboto mt-2" placeholder="USDT" />
+        <Input className="roboto mt-2" disabled placeholder="USDT" />
         <Title className="mt-10">Выберите сеть</Title>
-        <SelectNetwork />
-        <SelectExpirationTime />
-
+        <SelectNetwork register={register} />
+        <SelectExpirationTime register={register}/>
+        <Button type="submit">Submit</Button>
         <div
-          onClick={() =>
-            mutate({
-              amount: 0,
-              currency: "usdt",
-              network: "erc20",
-              payment_duration: "15m",
-            })
-          }
         >
-          <CreatePayment {...data} />
+          {/* <CreatePayment {...data} /> */}
         </div>
       </form>
     </>

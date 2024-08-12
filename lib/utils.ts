@@ -10,6 +10,7 @@ export const transformWalletsList = (wallets: Record<string, number>) => {
   console.log(wallets)
   const list = [];
   for (let wallet in wallets) {
+    if(wallet === 'balance_eth') continue
     if (wallet.startsWith("balance")) {
       const iconName = wallet.split("_")[wallet.split("_").length - 1];
       const name = iconName[0].toUpperCase() + iconName.slice(1)

@@ -10,7 +10,7 @@ const page = () => {
   return (
     <div>
       <Title>Выберите сеть</Title>
-      <SelectNetwork/>
+      <SelectNetwork />
       <Title className="mt-[30px]">Тип получения</Title>
       <Input className="mb-[30px]" placeholder="Крипто" disabled/>
       <CopyWalletAdress />
