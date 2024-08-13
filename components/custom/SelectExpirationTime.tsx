@@ -4,14 +4,14 @@ import { Title } from "../ui/title";
 
 const expTime = ["15m", "30m", "1h"];
 
-const SelectExpirationTime = ({ register }: { register: any }) => {
+const SelectExpirationTime = ({ setValue }: { setValue: any }) => {
   return (
     <div className="mt-10">
       <Title>Выберите время истечения срока платежа</Title>
       <Slider
-        onChange={(e: any) => {
-          register("payment_duration", { value: expTime[e.target.value] });
-        }}
+        onChange={(e: any) =>
+          setValue("payment_duration", expTime[e.target.value])
+        }
         className="mt-6"
         defaultValue={[0]}
         max={2}

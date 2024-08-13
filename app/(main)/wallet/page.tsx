@@ -66,7 +66,7 @@ const Page = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      {fakeTransaction ? (
+      {fakeTransaction.length >= 1 ? (
         fakeTransaction
           .filter((trans) => {
             const date = intervalToDuration({

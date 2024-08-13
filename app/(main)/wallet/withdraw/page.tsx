@@ -13,11 +13,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
-  const { register, handleSubmit } = useForm<IWithdrawPayload>();
+  const { register, handleSubmit, setValue } = useForm<IWithdrawPayload>();
   const { useWithdrawSend } = useWithdraw();
 
   return (
@@ -26,13 +26,8 @@ const Page = () => {
       className="mt-10 max-w-[520px]"
     >
       <Title>Выберите кошелек</Title>
-      <SelectNetwork register={register} />
-      <Select
-        onValueChange={(value) => {
-          console.log(value);
-          register("token", { value });
-        }}
-      >
+      <SelectNetwork setValue={setValue} />
+      <Select onValueChange={(e) => setValue("token", e)}>
         <SelectTrigger className="my-[30px] h-[60px] w-full sm:mt-[16px]">
           <SelectValue placeholder="Выбрать токен" />
         </SelectTrigger>

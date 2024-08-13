@@ -10,11 +10,11 @@ import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
 import Image from "next/image";
 
-const SelectWallet = ({ register }: { register: any }) => {
+const SelectWallet = ({ setValue }: { setValue: any }) => {
   const { data } = useWallets();
 
   return (
-    <Select onValueChange={(e) => register("token_field", { value: e })}>
+    <Select onValueChange={(e) => setValue("token_field", e)}>
       <SelectTrigger className="h-[60px] w-full">
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>

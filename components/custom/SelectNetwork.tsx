@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -6,13 +6,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { UseFormSetValue } from "react-hook-form";
+import { IWithdrawPayload } from "@/api/wallets/fetchers";
 
-const SelectNetwork = ({ register }: { register?: any }) => {
+const SelectNetwork = ({ setValue }: { setValue: any }) => {
   return (
     <Select
-      onValueChange={(value) => {
-        console.log(value);
-        register("network", { value });
+      onValueChange={(e) => {
+        setValue("network", e);
       }}
     >
       <SelectTrigger className="h-[60px] w-full">

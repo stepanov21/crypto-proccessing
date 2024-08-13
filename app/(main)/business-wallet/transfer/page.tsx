@@ -9,13 +9,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   return (
     <div>
       <form className="mt-10 max-w-[520px]">
         <Title>Выберите кошелек</Title>
-        <SelectWallet register={register} />
+        <SelectWallet setValue={setValue} />
         <Title className="mt-[30px]">Передать</Title>
         <Input
           {...register("wallet_type")}

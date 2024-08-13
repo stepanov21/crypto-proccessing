@@ -53,10 +53,10 @@ export const sendWithdraw = async (body: IWithdrawPayload) => {
   const response = await client.post(
     "/wallets/withdraw",
     {
-      network: "arb",
+      network: body.network,
       amount: +body.amount,
       recipient_address: body.recipient_address,
-      token: "usdt_arb",
+      token: body.token,
     },
     {
       headers: {

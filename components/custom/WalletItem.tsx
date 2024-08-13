@@ -19,7 +19,7 @@ const WalletItem = ({
         <Image src={"/USDT.svg"} width={40} height={40} alt="usdt" />
         <Image
           className="absolute bottom-0 right-0"
-          src={`/wallet-icons/${icon}.svg`}
+          src={`/wallet-icons/${icon ? icon : "eth"}.svg`}
           width={16}
           height={16}
           alt="wallet"

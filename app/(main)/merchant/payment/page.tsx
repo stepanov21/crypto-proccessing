@@ -14,11 +14,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
-  const { register, handleSubmit } = useForm<IMerchantInvoice>();
+  const { register, handleSubmit, setValue } = useForm<IMerchantInvoice>();
   const { useMerchantPostInvoice } = useMerchant();
   const { mutate, data } = useMerchantPostInvoice();
 
   const postInvoice = (e: IMerchantInvoice) => {
+    console.log(e);
     mutate(e);
   };
 
@@ -65,8 +66,8 @@ const Page = () => {
         <Title className="mt-10">Выберите валюту платежа</Title>
         <Input className="roboto mt-2" disabled placeholder="USDT" />
         <Title className="mt-10">Выберите сеть</Title>
-        <SelectNetwork register={register} />
-        <SelectExpirationTime register={register} />
+        <SelectNetwork setValue={setValue} />
+        <SelectExpirationTime setValue={setValue} />
         <Button className="mt-10 w-full" type="submit">
           Создать платеж
         </Button>
