@@ -1,22 +1,15 @@
 "use client";
-import { useWallets } from "@/api/transaction/queries";
-import {
-  ArrowDownLeft,
-  ArrowRightLeft,
-  ArrowUpRight,
-  Bell,
-  MoonStar,
-  Sun,
-  UserRound,
-} from "lucide-react";
+import { ArrowRightLeft, Bell, MoonStar, Sun, UserRound } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useAuth } from "@/api/auth/queries";
 import { useTheme } from "@/zustand/store";
 import MobileAsideMenu from "./MobileAsideMenu";
+import { useMerchant } from "@/api/merchant/queries";
 
 const BusinessUserCard = () => {
-  const { data } = useWallets();
+  const { useBusinessWallets } = useMerchant();
+  const { data } = useBusinessWallets();
   const { useLogoutUser } = useAuth();
   const changeTheme = useTheme((state) => state.changeTheme);
   return (
@@ -30,7 +23,7 @@ const BusinessUserCard = () => {
             className="mr-10 h-8 px-4 text-sm sm:mr-0 sm:h-8"
             variant={"wallet"}
           >
-            API <span className="sm:hidden">Документация</span>
+            API <span className="ml-2 sm:hidden">Документация</span>
           </Button>
         </Link>
         <Button onClick={changeTheme} variant={"wallet"} size={"icon"}>
@@ -55,7 +48,7 @@ const BusinessUserCard = () => {
         </span>
         {data ? (
           <span className="roboto text-xl sm:text-[16px] sm:leading-none">
-            $ {data.total_usdt}
+            $ {data.total_balance}
           </span>
         ) : null}
       </div>

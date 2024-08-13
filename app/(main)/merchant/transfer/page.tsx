@@ -58,17 +58,25 @@ const Page = () => {
           className="mb-[30px] mt-2"
           placeholder="Личный Кошелек"
         />
-        
-        <Title className="text-[15px] font-medium">Ваши средства будут переведены на личный кошелек USDT</Title>
-        <div className="p-2.5 bg-ourPurple dark:bg-ourGray rounded-[18px] mb-[30px]"><WalletItem balance={300} icon="">{'USDT'}</WalletItem></div>
-        
+
+        <Title className="text-[15px] font-medium">
+          Ваши средства будут переведены на личный кошелек USDT
+        </Title>
+        <div className="mb-[30px] rounded-[18px] bg-ourPurple p-2.5 dark:bg-ourGray">
+          <WalletItem balance={300} icon="">
+            {"USDT"}
+          </WalletItem>
+        </div>
+
         <Title>Введите сумму для отправки</Title>
         <Input
           {...register("amount")}
           className="roboto mb-[30px] mt-2"
           placeholder="1000 USDT"
         />
-        <Button className="w-full" type="submit">Submit</Button>
+        <Button className="w-full" type="submit">
+          Submit
+        </Button>
       </form>
     </div>
   );

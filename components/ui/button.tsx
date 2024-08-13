@@ -19,7 +19,8 @@ const buttonVariants = cva(
         secondary: "w-full bg-transparent underline text-white",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        wallet: "light-purple-gradient flex justify-between rounded-[18px] dark:bg-none dark:bg-white",
+        wallet:
+          "light-purple-gradient flex justify-between rounded-[18px] dark:bg-none dark:bg-white",
         aside: "bg-ourPurple text-white w-full font-semibold dark:bg-[#f1f1f1]",
       },
       size: {

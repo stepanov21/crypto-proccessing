@@ -18,7 +18,6 @@ export const loginUser = async (body: TLoginPayload) => {
     const { data } = response;
 
     setHeaderToken(data.access_token);
-    
 
     return data;
   }
@@ -49,6 +48,6 @@ export const registerUser = async (body: TRegisterPayload) => {
       return data;
     }
   } catch (e) {
-    console.log(e);
+    throw new Error("Failed to fetch data.");
   }
 };

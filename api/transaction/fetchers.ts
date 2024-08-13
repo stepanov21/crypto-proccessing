@@ -4,9 +4,7 @@ import { client } from "@/providers/TanstackQueryClientProvider";
 import { TokenType } from "./types";
 
 export const fetchWallets = async () => {
-  const response = await client.get(
-    "/user/balance",
-  );
+  const response = await client.get("/user/balance");
 
   if (response.data) {
     const data: Record<string, number> = await response.data;

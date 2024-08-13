@@ -49,9 +49,7 @@ export const useToken = create<tokenState>()(
   ),
 );
 
-export const useFilterTime = create<FilterTimeState>()(
-  (set, get) => ({
-    days: 30,
-    changeDays: (e: number) => set((state) => ({ days: e })),
-  }),
-)
+export const useFilterTime = create<FilterTimeState>()((set, get) => ({
+  days: 30,
+  changeDays: (e: number) => set((state) => ({ days: e })),
+}));

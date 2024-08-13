@@ -7,7 +7,6 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
@@ -25,10 +24,8 @@ const Page = () => {
   } = useForm({ resolver: zodResolver(registerUserSchema) });
   const { useRegisterUser } = useAuth();
   const router = useRouter();
-  console.log(errors);
 
   const submitForm = async (data: any) => {
-    console.log(data);
     try {
       useRegisterUser.mutateAsync(data);
       router.push("/sign-in");

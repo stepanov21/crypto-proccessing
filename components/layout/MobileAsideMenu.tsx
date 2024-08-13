@@ -1,14 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Header from "./Header";
@@ -24,16 +19,17 @@ const MobileAsideMenu = () => {
           <Menu size={20} />
         </Button>
       </SheetTrigger>
-      <SheetContent className="bg-[#0c0716] border-none max-w-[600px] sm:max-w-full sm:w-full overflow-auto" side={"left"}>
-        <SheetHeader>
-        </SheetHeader>
+      <SheetContent
+        className="max-w-[600px] overflow-auto border-none bg-[#0c0716] sm:w-full sm:max-w-full"
+        side={"left"}
+      >
+        <SheetHeader></SheetHeader>
         <div className="grid gap-4 py-4">
           <Header />
           <WalletsList />
           <CreateNewMerchantPopup />
         </div>
-        <SheetFooter>
-        </SheetFooter>
+        <SheetFooter></SheetFooter>
       </SheetContent>
     </Sheet>
   );

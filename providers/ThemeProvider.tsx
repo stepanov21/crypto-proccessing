@@ -11,14 +11,12 @@ const ThemeProvider = ({
   className: string;
 }) => {
   const dark = useTheme((state) => state.dark);
-  const { token } = useToken((state) => state)
-  console.log(dark);
+  const { token } = useToken((state) => state);
 
   const router = useRouter();
 
   useEffect(() => {
-    console.log(token);
-    if (token) return 
+    if (token) return;
     router.push("/sign-in");
     //eslint-disable-next-line
   }, [token]);

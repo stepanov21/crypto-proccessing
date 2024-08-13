@@ -18,7 +18,7 @@ import { useFilterTime } from "@/zustand/store";
 
 const TransactionFilters = () => {
   const { data } = useGetDownloadTransaction();
-  const { changeDays } = useFilterTime(state => state)
+  const { changeDays } = useFilterTime((state) => state);
 
   const href = URL.createObjectURL(
     new Blob([data], {

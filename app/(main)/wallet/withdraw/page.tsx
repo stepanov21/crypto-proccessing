@@ -5,7 +5,13 @@ import { useWithdraw } from "@/api/wallets/queries";
 import SelectNetwork from "@/components/custom/SelectNetwork";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -20,12 +26,28 @@ const Page = () => {
       className="mt-10 max-w-[520px]"
     >
       <Title>Выберите кошелек</Title>
-      <SelectNetwork register={register}/>
-      <Input
-        {...register("token")}
-        className="mb-[30px] mt-2"
-        placeholder="Выбрать крипто кошелек"
-      />
+      <SelectNetwork register={register} />
+      <Select
+        onValueChange={(value) => {
+          console.log(value);
+          register("token", { value });
+        }}
+      >
+        <SelectTrigger className="my-[30px] h-[60px] w-full sm:mt-[16px]">
+          <SelectValue placeholder="Выбрать токен" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="usdt_erc">USDT (Erc)</SelectItem>
+          <SelectItem value="usdt_trc">USDT (Trc)</SelectItem>
+          <SelectItem value="usdt_arb">USDT (Arbitrum)</SelectItem>
+          <SelectItem value="usdt_polygon">USDT (Polygon)</SelectItem>
+          {/* <SelectItem value="Tron">Tron</SelectItem> */}
+          {/* <SelectItem value="Avalanche">Avalanche</SelectItem> */}
+          <SelectItem value="usdt_bep">USDT (BnB Chain)</SelectItem>
+          {/* <SelectItem value="Kava">Kava</SelectItem> */}
+          <SelectItem value="usdt_optimism">USDT (Optimism)</SelectItem>
+        </SelectContent>
+      </Select>
       <Title>Адресс</Title>
       <Input
         {...register("recipient_address")}
@@ -39,7 +61,9 @@ const Page = () => {
         className="roboto mb-[30px] mt-2"
         placeholder="1000 USDT"
       />
-      <Button className="w-full" type="submit">Submit</Button>
+      <Button className="w-full" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

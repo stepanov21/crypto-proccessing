@@ -6,28 +6,53 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import WalletItem from "./WalletItem";
 import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
+import Image from "next/image";
 
 const SelectWallet = ({ register }: { register: any }) => {
-  const { data, isError } = useWallets();
+  const { data } = useWallets();
 
   return (
-    <Select onValueChange={(e) => register("token_field", { value: 'balance_usdt_erc' })}>
+    <Select onValueChange={(e) => register("token_field", { value: e })}>
       <SelectTrigger className="h-[60px] w-full">
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>
       <SelectContent>
-        {data && transformWalletsList(data).map((wallet) => {
-          return (
-            <SelectItem value={wallet.id} key={wallet.id}>
-              <WalletItem balance={wallet.balance} icon={wallet.icon}>
-                {wallet.name}
-              </WalletItem>
-            </SelectItem>
-          );
-        })}
+        {data &&
+          transformWalletsList(data).map((wallet) => {
+            return (
+              <SelectItem className="" value={wallet.id} key={wallet.id}>
+                <div className="flex min-w-[200px] justify-between gap-4">
+                  <div className="relative">
+                    <Image
+                      src={"/USDT.svg"}
+                      width={40}
+                      height={40}
+                      alt="usdt"
+                    />
+                    <Image
+                      className="absolute bottom-0 right-0"
+                      src={`/wallet-icons/${wallet.icon}.svg`}
+                      width={16}
+                      height={16}
+                      alt="wallet"
+                    />
+                  </div>
+                  <div className="mr-auto flex flex-col items-start gap-2">
+                    <span className="text-[18px]">
+                      {wallet.name === "Eth" ? "ETH" : "USDT"}
+                    </span>
+                    <span className="text-ourLightPurple">{wallet.name}</span>
+                  </div>
+                  <div className="roboto flex flex-col items-end gap-2 font-medium">
+                    <span>$ {wallet.balance}</span>
+                    <span>0.00</span>
+                  </div>
+                </div>
+              </SelectItem>
+            );
+          })}
       </SelectContent>
     </Select>
   );

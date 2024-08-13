@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <TanstackQueryClientProvider>
-          <ThemeProvider className={raleway.className}>{children}</ThemeProvider>
-        </TanstackQueryClientProvider>
+      <TanstackQueryClientProvider>
+        <ThemeProvider className={raleway.className}>{children}</ThemeProvider>
+      </TanstackQueryClientProvider>
     </html>
   );
 }

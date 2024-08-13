@@ -1,5 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getDowloadTransactions, getMyTransaction, getMyWallet, IWithdrawPayload, sendWithdraw } from "./fetchers";
+import {
+  getDowloadTransactions,
+  getMyTransaction,
+  getMyWallet,
+  IWithdrawPayload,
+  sendWithdraw,
+} from "./fetchers";
 import { queryClient } from "@/providers/TanstackQueryClientProvider";
 
 export const useGetMyWallets = (network: string) =>
@@ -23,7 +29,7 @@ export const useGetDownloadTransaction = () =>
 export const useWithdraw = () => {
   const useWithdrawSend = useMutation({
     mutationFn: (e: IWithdrawPayload) => sendWithdraw(e),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['wallets'] })
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["wallets"] }),
   });
 
   return { useWithdrawSend };

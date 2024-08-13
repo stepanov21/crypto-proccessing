@@ -33,11 +33,10 @@ const Page = () => {
         <SelectWallet register={register} />
         <Select
           onValueChange={(value) => {
-            console.log(value)
             register("wallet_type", { value });
           }}
         >
-          <SelectTrigger className="h-[60px] w-full my-[30px]">
+          <SelectTrigger className="my-[30px] h-[60px] w-full">
             <SelectValue placeholder="Выбрать сеть" />
           </SelectTrigger>
           <SelectContent>

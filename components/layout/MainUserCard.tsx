@@ -5,7 +5,6 @@ import {
   ArrowRightLeft,
   ArrowUpRight,
   Bell,
-  Menu,
   MoonStar,
   Sun,
   UserRound,
@@ -41,7 +40,7 @@ const MainUserCard = () => {
         >
           <UserRound size={20} />
         </Button>
-        <MobileAsideMenu/>
+        <MobileAsideMenu />
       </div>
       <div className="mt-20 flex flex-col gap-2 dark:text-black sm:mt-2 sm:leading-none">
         <span className="text-xl text-ourLightPurple sm:text-[12px] sm:leading-none">

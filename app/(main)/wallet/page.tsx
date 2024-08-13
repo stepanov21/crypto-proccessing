@@ -3,7 +3,7 @@
 import { useGetMyTransaction } from "@/api/wallets/queries";
 import TransactionNotFound from "@/components/custom/TransactionNotFound";
 import React from "react";
-import { formatDuration, intervalToDuration, parseISO } from "date-fns";
+import { intervalToDuration, parseISO } from "date-fns";
 import Transaction from "@/components/custom/Transaction";
 import { useFilterTime } from "@/zustand/store";
 
@@ -63,11 +63,7 @@ const fakeTransaction = [
 const Page = () => {
   const { data } = useGetMyTransaction();
   const { days } = useFilterTime((state) => state);
-  console.log("🚀 ~ Page ~ data:", data);
-  const date = intervalToDuration({
-    start: parseISO("2024-08-09T17:13:51.789814"),
-    end: new Date(),
-  });
+
   return (
     <div className="flex flex-col gap-3">
       {fakeTransaction ? (

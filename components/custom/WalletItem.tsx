@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 
@@ -5,13 +6,15 @@ const WalletItem = ({
   children,
   icon,
   balance,
+  className,
 }: {
   children: ReactNode;
   icon: string;
   balance: number;
+  className?: string;
 }) => {
   return (
-    <div className="flex max-w-[450px] w-full items-center gap-1.5 dark:text-black">
+    <div className={cn("flex items-center gap-1.5 dark:text-black", className)}>
       <div className="relative">
         <Image src={"/USDT.svg"} width={40} height={40} alt="usdt" />
         <Image
@@ -23,7 +26,9 @@ const WalletItem = ({
         />
       </div>
       <div className="mr-auto flex flex-col gap-2">
-        <span className="text-[18px]">{children === 'Eth' ? "ETH"  : "USDT"}</span>
+        <span className="text-[18px]">
+          {children === "Eth" ? "ETH" : "USDT"}
+        </span>
         <span className="text-ourLightPurple">{children}</span>
       </div>
       <div className="roboto flex flex-col items-end gap-2 font-medium">

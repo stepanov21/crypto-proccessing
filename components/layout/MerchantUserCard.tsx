@@ -29,7 +29,7 @@ const BusinessUserCard = () => {
             className="mr-10 h-8 px-4 text-sm sm:mr-0 sm:h-8"
             variant={"wallet"}
           >
-            API <span className="sm:hidden">Документация</span>
+            API <span className="ml-2 sm:hidden">Документация</span>
           </Button>
         </Link>
         <Button onClick={changeTheme} variant={"wallet"} size={"icon"}>

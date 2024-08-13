@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { Title } from "../ui/title";
 import { DialogTitle } from "../ui/dialog";
 
 const MerchantWasCreated = () => {
@@ -8,14 +7,14 @@ const MerchantWasCreated = () => {
     <>
       <div className="text-center dark:text-black">
         <DialogTitle>Поздравляем!</DialogTitle>
-        <span className="inline-block mt-2">Новый продавец создан </span>
+        <span className="mt-2 inline-block">Новый продавец создан </span>
       </div>
-      <div className="relative flex gap-3 ">
-        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen dark:bg-black dark:text-white pb-0.5 font-semibold text-black">
+      <div className="relative flex gap-3">
+        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen pb-0.5 font-semibold text-black dark:bg-black dark:text-white">
           1
         </div>
         <div className="dark:text-black">
-          <h4 className="text-[18px] font-semibold mb-2.5 mt-1">
+          <h4 className="mb-2.5 mt-1 text-[18px] font-semibold">
             Пройти модерацию проэкта
           </h4>
           <p>
@@ -23,14 +22,14 @@ const MerchantWasCreated = () => {
             разместите их где угодно или отправьте каждому из своих клиентов.
           </p>
         </div>
-        <div className="absolute left-[11px] -z-10 top-5 h-36 border-l-2 border-dashed border-ourGreen  dark:border-[#7F808D]"></div>
+        <div className="absolute left-[11px] top-5 -z-10 h-36 border-l-2 border-dashed border-ourGreen dark:border-[#7F808D]"></div>
       </div>
       <div className="flex gap-3">
-        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen dark:bg-black dark:text-white pb-0.5 font-semibold text-black">
+        <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen pb-0.5 font-semibold text-black dark:bg-black dark:text-white">
           2
         </div>
         <div className="dark:text-black">
-          <h4 className="text-[18px] font-semibold mb-2.5 mt-1">
+          <h4 className="mb-2.5 mt-1 text-[18px] font-semibold">
             Интегрируйте NeutronX через API{" "}
           </h4>
           <p>

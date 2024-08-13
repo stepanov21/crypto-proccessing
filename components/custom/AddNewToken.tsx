@@ -8,7 +8,7 @@ import {
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { ArrowDownToLine, Mail, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const AddNewToken = () => {
   return (

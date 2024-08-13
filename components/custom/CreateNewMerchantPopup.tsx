@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Title } from "../ui/title";
-import { UserRound, X } from "lucide-react";
+import { UserRound } from "lucide-react";
 import MerchantWasCreated from "./MerchantWasCreated";
 import { useMerchant } from "@/api/merchant/queries";
 import {
@@ -48,9 +48,7 @@ const CreateNewMerchantPopup = () => {
                   try {
                     await useAddMerchant.mutateAsync({ name: merchantName });
                     setIsWasAdded(true);
-                  } catch (e) {
-                    setIsWasAdded(true);
-                  }
+                  } catch (e) {}
                 }}
                 className="self-center"
               >

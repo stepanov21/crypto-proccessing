@@ -10,8 +10,7 @@ const SelectExpirationTime = ({ register }: { register: any }) => {
       <Title>Выберите время истечения срока платежа</Title>
       <Slider
         onChange={(e: any) => {
-          register("payment_duration", { value: expTime[e.target.value] })
-          console.log(expTime[e.target.value]);
+          register("payment_duration", { value: expTime[e.target.value] });
         }}
         className="mt-6"
         defaultValue={[0]}

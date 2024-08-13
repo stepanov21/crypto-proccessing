@@ -9,7 +9,7 @@ export const useWallets = () =>
   useQuery({
     queryKey: [QueryKeys.WALLETS],
     queryFn: fetchWallets,
-});
+  });
 
 // export const prefetchNews = async (queryClient: QueryClient) =>
 //   await queryClient.prefetchQuery({

@@ -43,7 +43,9 @@ const DownloadPDF = () => {
           //     }
           //   }}
           className="self-center"
-        >Отправить</Button>
+        >
+          Отправить
+        </Button>
       </DialogContent>
     </Dialog>
   );

@@ -4,10 +4,8 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
@@ -34,9 +32,9 @@ const Page = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="bg-ourDarkPurple min-w-[400px] text-white dark:bg-ourGray">
+      <Card className="min-w-[400px] bg-ourDarkPurple text-white dark:bg-ourGray">
         <CardHeader>
-          <Title className="text-center text-2xl mb-0">SIGN IN</Title>
+          <Title className="mb-0 text-center text-2xl">SIGN IN</Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center gap-4">

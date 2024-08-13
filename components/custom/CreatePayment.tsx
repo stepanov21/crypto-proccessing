@@ -8,14 +8,17 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import { Label } from "../ui/label";
 import { CircleAlert } from "lucide-react";
-import SelectNetwork from "./SelectNetwork";
 import Image from "next/image";
 import { Title } from "../ui/title";
 import { IMerchantGetInvoice, IMerchantInvoice } from "@/api/merchant/fetchers";
 
-const CreatePayment = ({currency, payment_address, amount, network}: Partial<IMerchantGetInvoice>) => {
+const CreatePayment = ({
+  currency,
+  payment_address,
+  amount,
+  network,
+}: Partial<IMerchantGetInvoice>) => {
   return (
     <Dialog>
       <DialogTrigger className="mt-10" asChild>

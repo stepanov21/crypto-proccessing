@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { GitCompareArrows, House, Landmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
 
 const Header = ({ className }: { className?: string | undefined }) => {
   return (
@@ -24,7 +23,7 @@ const Header = ({ className }: { className?: string | undefined }) => {
         />
         <span className="text-[32px] dark:text-black sm:text-xl">Neutronx</span>
       </div>
-      <nav className="mt-14 sm:mt-8 flex flex-col gap-[30px]  sm:gap-4 dark:text-black sm:text-[16px]">
+      <nav className="mt-14 flex flex-col gap-[30px] dark:text-black sm:mt-8 sm:gap-4 sm:text-[16px]">
         <Link
           className="flex items-center gap-3 sm:text-[16px]"
           href={"/wallet"}
@@ -41,7 +40,7 @@ const Header = ({ className }: { className?: string | undefined }) => {
         </Link>
         <Link
           className="flex items-center gap-3 sm:text-[16px]"
-          href={"/merchant/transfer"}
+          href={"/merchant"}
         >
           <GitCompareArrows size={24} />
           <span>Торговый кошелек P2P</span>

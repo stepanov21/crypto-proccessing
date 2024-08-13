@@ -9,9 +9,9 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const SelectPaymentVariant = ({register} : {register: any}) => {
+const SelectPaymentVariant = ({ register }: { register: any }) => {
   return (
-    <Select onValueChange={(e) => register('payment', {value: e})}>
+    <Select onValueChange={(e) => register("payment", { value: e })}>
       <SelectTrigger className="h-[67px] w-full text-left">
         <SelectValue placeholder="Период" className="" />
       </SelectTrigger>

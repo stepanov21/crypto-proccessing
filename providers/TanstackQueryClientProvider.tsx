@@ -21,13 +21,13 @@ export const removeHeaderToken = () => {
 };
 
 client.interceptors.request.use((config) => {
-  const token = JSON.parse(localStorage?.getItem("access_token") as string) || null
+  const token =
+    JSON.parse(localStorage?.getItem("access_token") as string) || null;
 
-  config.headers["Authorization"] =
-    `Bearer ${token.state.token}`;
+  config.headers["Authorization"] = `Bearer ${token.state.token}`;
 
-    // const res = client.get('/auth/jwt/refresh')
-    // console.log(res)
+  // const res = client.get('/auth/jwt/refresh')
+  // console.log(res)
   return config;
 });
 

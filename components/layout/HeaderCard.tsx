@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -8,10 +8,9 @@ import MerchantUserCard from "./MerchantUserCard";
 
 const HeaderCard = () => {
   const pathname = usePathname();
-  console.log(pathname)
-  if(pathname.startsWith('/wallet')) return <MainUserCard/>
-  if(pathname.startsWith('/business-wallet')) return <BusinessUserCard/>
-  if(pathname.startsWith('/merchant')) return <MerchantUserCard/>
+  if (pathname.startsWith("/wallet")) return <MainUserCard />;
+  if (pathname.startsWith("/business-wallet")) return <BusinessUserCard />;
+  if (pathname.startsWith("/merchant")) return <MerchantUserCard />;
   return null;
 };
 

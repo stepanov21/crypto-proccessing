@@ -1,6 +1,6 @@
 import { client } from "@/providers/TanstackQueryClientProvider";
 import { ITransferPayload } from "../transaction/types";
-import { TNetwork } from '../wallets/types';
+import { TNetwork } from "../wallets/types";
 
 export const addMerchant = async (name: {}) => {
   const response = await client.post("/merchant/create_merchant", name, {
@@ -47,11 +47,12 @@ export interface IMerchantInvoice {
 
 export const merchantPostInvoice = async (body: IMerchantInvoice) => {
   const response = await client.post(
-    "/merchant/invoice", {
+    "/merchant/invoice",
+    {
       amount: +body.amount,
-      currency: 'usdt',
+      currency: "usdt",
       network: body.network,
-      payment_duration: body.payment_duration
+      payment_duration: body.payment_duration,
     },
     {
       headers: {
@@ -68,19 +69,29 @@ export const merchantPostInvoice = async (body: IMerchantInvoice) => {
 };
 
 export interface IMerchantGetInvoice {
-  id: number,
-  currency: "usdt",
-  payment_address: string,
-  status: string,
-  seller_id: number,
-  amount: number,
-  network: TNetwork,
-  expiration_time: Date,
-  created_at: Date
+  id: number;
+  currency: "usdt";
+  payment_address: string;
+  status: string;
+  seller_id: number;
+  amount: number;
+  network: TNetwork;
+  expiration_time: Date;
+  created_at: Date;
 }
 
 export const merchantGetInvoice = async () => {
   const response = await client.get<IMerchantGetInvoice[]>("/merchant/invoice");
+
+  if (response.status === 200) {
+    return response.data;
+  }
+
+  throw new Error("Failed to create merchant");
+};
+
+export const merchantGetBusinessWallet = async () => {
+  const response = await client.get("/merchant/business_wallet_balances");
 
   if (response.status === 200) {
     return response.data;
