@@ -19,10 +19,3 @@ RUN adduser -S nextjs -u 1001
 USER nextjs
 
 CMD ["npm", "start"]
-
-# Образ для розробки
-FROM base as dev
-ENV NODE_ENV=development
-RUN npm install
-COPY . .
-CMD ["npm", "run", "dev"]
