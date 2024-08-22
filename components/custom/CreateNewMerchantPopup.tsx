@@ -19,6 +19,9 @@ const CreateNewMerchantPopup = () => {
   const { useAddMerchant } = useMerchant();
   const [isWasAdded, setIsWasAdded] = useState(false);
   const [merchantName, setMerchantName] = useState("");
+  const { useAllMerchants } = useMerchant();
+  const { data } = useAllMerchants();
+  console.log("🚀 ~ CreateNewMerchantPopup ~ data:", data);
 
   return (
     <div>

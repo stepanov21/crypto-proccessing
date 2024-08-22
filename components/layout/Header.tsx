@@ -33,17 +33,10 @@ const Header = ({ className }: { className?: string | undefined }) => {
         </Link>
         <Link
           className="flex items-center gap-3 sm:text-[16px]"
-          href={"/business-wallet/transfer"}
+          href={"/business-wallet"}
         >
           <Landmark size={24} />
           <span>Бизнес кошелек</span>
-        </Link>
-        <Link
-          className="flex items-center gap-3 sm:text-[16px]"
-          href={"/merchant"}
-        >
-          <GitCompareArrows size={24} />
-          <span>Торговый кошелек P2P</span>
         </Link>
       </nav>
     </header>

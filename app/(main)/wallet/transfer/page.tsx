@@ -13,20 +13,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
+import useCustomToast from "@/hooks/useCustomToast";
 import React from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
   const { register, handleSubmit, setValue } = useForm();
 
-  const { useMerchantTransfer } = useMerchant();
+  const { useMerchantTransferOwnToBusiness } = useMerchant();
+  const { mutateAsync, isError, error } = useMerchantTransferOwnToBusiness();
+
+  useCustomToast({ isError, error });
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit((e) =>
-          useMerchantTransfer.mutateAsync(e as ITransferPayload),
-        )}
+        onSubmit={handleSubmit((e) => mutateAsync(e as ITransferPayload))}
         className="mt-10 max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>

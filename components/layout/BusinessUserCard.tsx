@@ -52,13 +52,22 @@ const BusinessUserCard = () => {
           </span>
         ) : null}
       </div>
-      <div className="mt-9 flex justify-between gap-10 sm:mt-4 sm:gap-5">
+      <div className="mt-9 flex gap-10 sm:mt-4 sm:gap-5">
         <Link
           className="w-full max-w-[256px]"
           href={"/business-wallet/transfer"}
         >
           <Button className="w-full px-2.5 font-semibold" variant={"wallet"}>
             <span>Перевести</span>
+            <ArrowRightLeft />
+          </Button>
+        </Link>
+        <Link
+          className="w-full max-w-[256px]"
+          href={"/business-wallet/payment"}
+        >
+          <Button className="w-full px-2.5 font-semibold" variant={"wallet"}>
+            <span>Оплата</span>
             <ArrowRightLeft />
           </Button>
         </Link>

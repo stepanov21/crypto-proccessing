@@ -14,7 +14,7 @@ export const loginUser = async (body: TLoginPayload) => {
     },
   });
 
-  if (response.status === 200) {
+  if (response?.status === 200) {
     const { data } = response;
 
     setHeaderToken(data.access_token);
@@ -22,7 +22,7 @@ export const loginUser = async (body: TLoginPayload) => {
     return data;
   }
 
-  throw new Error("Failed to fetch data.");
+  throw new Error("Failed to login");
 };
 
 export const logoutUser = async () => {
@@ -36,18 +36,15 @@ export const logoutUser = async () => {
     return data;
   }
 
-  throw new Error("Failed to fetch data.");
+  throw new Error("Failed to logout");
 };
 
 export const registerUser = async (body: TRegisterPayload) => {
-  try {
-    const response = await client.post("/auth/register", body);
-    if (response.status === 200) {
-      const { data } = response;
+  const response = await client.post("/auth/register", body);
+  if (response.status === 200) {
+    const { data } = response;
 
-      return data;
-    }
-  } catch (e) {
-    throw new Error("Failed to fetch data.");
+    return data;
   }
+  throw new Error("Failed to register");
 };

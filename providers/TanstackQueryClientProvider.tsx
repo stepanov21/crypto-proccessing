@@ -3,6 +3,7 @@
 import { BASE_URL } from "@/constants/varialbles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
+import { redirect } from "next/navigation";
 import React, { ReactNode } from "react";
 
 export const queryClient = new QueryClient();
@@ -30,6 +31,17 @@ client.interceptors.request.use((config) => {
   // console.log(res)
   return config;
 });
+
+// client.interceptors.response.use(undefined, err => {
+//   const error = err.response;
+//   // if error is 401
+//   if (error.status === 401 && error.config &&
+//   !error.config.__isRetryRequest) {
+//   // request for a new token
+//     localStorage.removeItem('access_token')
+//   }
+
+// });
 
 const TanstackQueryClientProvider = ({ children }: { children: ReactNode }) => {
   return (

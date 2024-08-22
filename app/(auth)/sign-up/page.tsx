@@ -15,6 +15,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUserSchema } from "./types";
 import { Title } from "@/components/ui/title";
+import { useToast } from "@/components/ui/use-toast";
+import { useEffect } from "react";
+import CustomButton from "@/components/ui/CustomButton";
+import useCustomToast from "@/hooks/useCustomToast";
 
 const Page = () => {
   const {
@@ -23,25 +27,32 @@ const Page = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerUserSchema) });
   const { useRegisterUser } = useAuth();
-  const router = useRouter();
+  const { mutateAsync, isError, isPending, error } = useRegisterUser();
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useCustomToast({ isError, error });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError])
+
 
   const submitForm = async (data: any) => {
     try {
-      useRegisterUser.mutateAsync(data);
-      router.push("/sign-in");
+      mutateAsync(data);
     } catch (err) {
-      console.log(err);
+
     }
   };
+
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="min-w-[400px] bg-ourDarkPurple text-white dark:bg-ourGray">
+      <Card className="min-w-[400px] middle-purple-gradient text-white dark:bg-ourGray">
         <CardHeader>
-          <Title className="mb-0 text-center text-2xl">SIGN UP</Title>
+          <Title className="mb-0 text-center text-2xl font-bold text-[28px]">Sign Up</Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center">
-            <div className="flex flex-col space-y-2.5">
+            <div className="flex flex-col space-y-4">
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="email"
@@ -55,7 +66,7 @@ const Page = () => {
                 className="rounded-ourRadius bg-transparent"
                 id="username"
                 placeholder={
-                  errors.username
+                  errors?.username
                     ? (errors.username?.message as string)
                     : "Login"
                 }
@@ -67,11 +78,11 @@ const Page = () => {
                 id="password"
                 placeholder={
                   errors.password
-                    ? (errors.password?.message as string)
+                    ? (errors?.password?.message as string)
                     : "Password"
                 }
                 {...register("password")}
-                error={errors.password?.message as string}
+                error={errors?.password?.message as string}
               />
               <Input
                 className="rounded-ourRadius bg-transparent"
@@ -88,10 +99,13 @@ const Page = () => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">
-          <Button className="w-full rounded-full bg-white text-black">
+          <CustomButton
+            isLoading={isPending}
+            className="w-full rounded-full bg-ourGreen text-black"
+          >
             Create account
-          </Button>
-          <Link href={"/sign-in"} className="w-full">
+          </CustomButton>
+          <Link href={"/sign-in"} className="w-full font-medium">
             <Button variant="secondary">Sign In</Button>
           </Link>
         </CardFooter>

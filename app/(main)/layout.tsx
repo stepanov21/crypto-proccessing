@@ -5,6 +5,7 @@ import WalletsList from "@/components/custom/WalletsList";
 import Header from "@/components/layout/Header";
 import React from "react";
 import HeaderCard from "@/components/layout/HeaderCard";
+import { Toaster } from "@/components/ui/toaster";
 
 const layout = ({
   children,
@@ -38,6 +39,7 @@ const layout = ({
         height={1200}
         alt="glow"
       />
+      <Toaster />
     </div>
   );
 };

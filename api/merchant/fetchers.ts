@@ -2,6 +2,17 @@ import { client } from "@/providers/TanstackQueryClientProvider";
 import { ITransferPayload } from "../transaction/types";
 import { TNetwork } from "../wallets/types";
 
+export const getAllMerchants = async () => {
+  const response = await client.get("/merchant");
+
+  if (response.data) {
+    const data = await response.data;
+    return data;
+  }
+
+  throw new Error("Failed to fetch merchants");
+};
+
 export const addMerchant = async (name: {}) => {
   const response = await client.post("/merchant/create_merchant", name, {
     headers: {
@@ -16,9 +27,31 @@ export const addMerchant = async (name: {}) => {
   throw new Error("Failed to create merchant");
 };
 
-export const merchantTransfer = async (body: ITransferPayload) => {
+export const merchantTransferOwnToBusiness = async (body: ITransferPayload) => {
   const response = await client.post<ITransferPayload>(
-    "/merchant/transfer",
+    "/merchant/transfer/business_wallet",
+    {
+      token_field: body.token_field,
+      wallet_type: body.wallet_type,
+      amount: +body.amount,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  if (response.status === 200) {
+    return response.data;
+  }
+
+  throw new Error("Failed to create merchant");
+};
+
+export const merchantTransferBusinessToOwn = async (body: ITransferPayload) => {
+  const response = await client.post<ITransferPayload>(
+    "/merchant/transfet/own_wallet",
     {
       token_field: body.token_field,
       wallet_type: body.wallet_type,

@@ -27,10 +27,11 @@ export const useGetDownloadTransaction = () =>
   });
 
 export const useWithdraw = () => {
-  const useWithdrawSend = useMutation({
-    mutationFn: (e: IWithdrawPayload) => sendWithdraw(e),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["wallets"] }),
-  });
+  const useWithdrawSend = () =>
+    useMutation({
+      mutationFn: (e: IWithdrawPayload) => sendWithdraw(e),
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: ["wallets"] }),
+    });
 
   return { useWithdrawSend };
 };

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Title } from "@/components/ui/title";
+import useCustomToast from "@/hooks/useCustomToast";
 import { CircleAlert } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -16,12 +17,15 @@ import { useForm } from "react-hook-form";
 const Page = () => {
   const { register, handleSubmit, setValue } = useForm<IMerchantInvoice>();
   const { useMerchantPostInvoice } = useMerchant();
-  const { mutate, data } = useMerchantPostInvoice();
+  const { mutate, data, isError, error } = useMerchantPostInvoice();
+  useCustomToast({ isError, error });
 
   const postInvoice = (e: IMerchantInvoice) => {
     console.log(e);
     mutate(e);
   };
+
+
 
   return (
     <>
@@ -45,12 +49,11 @@ const Page = () => {
         <Title className="mt-10">Введите сумму для оплаты</Title>
         <Input
           {...register("amount")}
-          type="number"
           className="roboto mt-2"
           placeholder="0.00"
         />
-        <div className="mt-3 flex items-center space-x-2">
-          <Checkbox id="1" />
+        <div aria-disabled className="mt-3 flex items-center space-x-2">
+          <Checkbox disabled checked id="1" />
           <label
             htmlFor="1"
             className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-black"

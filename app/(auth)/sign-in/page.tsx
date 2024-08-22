@@ -15,26 +15,30 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/api/auth/queries";
 import { Title } from "@/components/ui/title";
+import useCustomToast from "@/hooks/useCustomToast";
+import CustomButton from "@/components/ui/CustomButton";
 
 const Page = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { useLoginUser } = useAuth();
-  const router = useRouter();
+  const { mutateAsync, error, isError, isPending } = useLoginUser();
+
+  useCustomToast({ isError, error });
 
   const submitForm = async (data: any) => {
     try {
-      await useLoginUser.mutateAsync(data);
-      router.push("/wallet");
+      await mutateAsync(data);
     } catch (err) {
+      reset();
       console.log(err);
     }
   };
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="min-w-[400px] bg-ourDarkPurple text-white dark:bg-ourGray">
+      <Card className="min-w-[400px] middle-purple-gradient text-white dark:bg-ourGray">
         <CardHeader>
-          <Title className="mb-0 text-center text-2xl">SIGN IN</Title>
+          <Title className="mb-0 text-center text-[28px] font-bold">Sign In</Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center gap-4">
@@ -57,13 +61,13 @@ const Page = () => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">
-          <Button
-            type="submit"
-            className="w-full rounded-full bg-white text-black"
+          <CustomButton
+            isLoading={isPending}
+            className="w-full rounded-full bg-ourGreen text-black"
           >
             Login
-          </Button>
-          <Link href={"/sign-up"} className="w-full">
+          </CustomButton>
+          <Link href={"/sign-up"} className="w-full ">
             <Button variant="secondary">Sign Up</Button>
           </Link>
         </CardFooter>

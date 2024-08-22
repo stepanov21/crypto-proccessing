@@ -1,11 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   addMerchant,
+  getAllMerchants,
   IMerchantInvoice,
   merchantGetBusinessWallet,
   merchantGetInvoice,
   merchantPostInvoice,
-  merchantTransfer,
+  merchantTransferBusinessToOwn,
+  merchantTransferOwnToBusiness,
 } from "./fetchers";
 import { ITransferPayload } from "../transaction/types";
 
@@ -13,9 +15,18 @@ export const useMerchant = () => {
   const useAddMerchant = useMutation({
     mutationFn: (e: { name: string }) => addMerchant(e),
   });
-  const useMerchantTransfer = useMutation({
-    mutationFn: (e: ITransferPayload) => merchantTransfer(e),
-  });
+  const useMerchantTransferOwnToBusiness = () =>
+    useMutation({
+      mutationFn: (e: ITransferPayload) => merchantTransferOwnToBusiness(e),
+    });
+
+  const useMerchantTransferBusinessToOwn = () =>
+    useMutation({
+      mutationFn: (e: ITransferPayload) => merchantTransferBusinessToOwn(e),
+    });
+
+  const useAllMerchants = () =>
+    useQuery({ queryKey: ["merchants"], queryFn: getAllMerchants });
 
   const useMerchantPostInvoice = () =>
     useMutation({
@@ -35,9 +46,11 @@ export const useMerchant = () => {
 
   return {
     useAddMerchant,
-    useMerchantTransfer,
+    useMerchantTransferOwnToBusiness,
+    useMerchantTransferBusinessToOwn,
     useMerchantGetInvoice,
     useMerchantPostInvoice,
     useBusinessWallets,
+    useAllMerchants,
   };
 };
