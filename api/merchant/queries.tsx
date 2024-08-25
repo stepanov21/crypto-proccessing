@@ -11,20 +11,23 @@ import {
 } from "./fetchers";
 import { ITransferPayload } from "../transaction/types";
 import { useRouter } from "next/navigation";
+import { queryClient } from "@/providers/TanstackQueryClientProvider";
 
 export const useMerchant = () => {
   const router = useRouter()
-  const useAddMerchant = useMutation({
+  const useAddMerchant = () => useMutation({
     mutationFn: (e: { name: string }) => addMerchant(e),
   });
   const useMerchantTransferOwnToBusiness = () =>
     useMutation({
       mutationFn: (e: ITransferPayload) => merchantTransferOwnToBusiness(e),
+      onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['walletsAll'] })}
     });
 
   const useMerchantTransferBusinessToOwn = () =>
     useMutation({
       mutationFn: (e: ITransferPayload) => merchantTransferBusinessToOwn(e),
+      onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['business-wallet'] })}
     });
 
   const useAllMerchants = () =>

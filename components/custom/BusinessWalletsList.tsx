@@ -3,19 +3,19 @@
 import React from "react";
 import WalletItem from "./WalletItem";
 import { Title } from "../ui/title";
-import { Button } from "../ui/button";
-import { Search } from "lucide-react";
 import { transformWalletsList } from "@/lib/utils";
-import { useWallets } from "@/api/transaction/queries";
 import AddNewToken from "./AddNewToken";
+import { useMerchant } from "@/api/merchant/queries";
 
-const WalletsList = () => {
-  const { data } = useWallets();
+const BusinessWalletsList = () => {
+  const { useBusinessWallets } = useMerchant()
+  const { data } = useBusinessWallets()
+  console.log('Бизнес кошель ')
   return (
     <div className="mt-0 sm:mt-8">
       <div className="flex">
         <Title className="mb-[18px] mr-auto max-w-[200px] sm:leading-normal">
-          Балансы личных кошельков
+          Балансы бизнес кошельков
         </Title>
         <AddNewToken />
       </div>
@@ -35,4 +35,4 @@ const WalletsList = () => {
   );
 };
 
-export default WalletsList;
+export default BusinessWalletsList;

@@ -55,7 +55,7 @@ const Page = () => {
       <Input
         {...register("recipient_address")}
         className="mb-[30px] mt-2"
-        placeholder="Бизнес Кошелек"
+        placeholder="Введите адресс"
       />
       <Title>Введите сумму для отправки</Title>
       <Input
@@ -64,7 +64,7 @@ const Page = () => {
         className="roboto mb-[30px] mt-2"
         placeholder="1000 USDT"
       />
-      <CustomButton isLoading={isPending}>Submit</CustomButton>
+      <CustomButton isLoading={isPending}>Вывести</CustomButton>
     </form>
   );
 };

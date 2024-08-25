@@ -76,6 +76,7 @@ const Page = () => {
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="password"
+                type="password"
                 placeholder={
                   errors.password
                     ? (errors?.password?.message as string)
@@ -87,6 +88,7 @@ const Page = () => {
               <Input
                 className="rounded-ourRadius bg-transparent"
                 id="repeatPassword"
+                type="password"
                 {...register("repeatPassword")}
                 placeholder={
                   errors.repeatPassword

@@ -17,11 +17,14 @@ import { useAuth } from "@/api/auth/queries";
 import { Title } from "@/components/ui/title";
 import useCustomToast from "@/hooks/useCustomToast";
 import CustomButton from "@/components/ui/CustomButton";
+import { useState } from "react";
+import { EyeIcon, EyeOff } from "lucide-react";
 
 const Page = () => {
   const { register, handleSubmit, reset } = useForm();
   const { useLoginUser } = useAuth();
   const { mutateAsync, error, isError, isPending } = useLoginUser();
+  const [hidePassword, setHidePassword] = useState(true);
 
   useCustomToast({ isError, error });
 
@@ -35,10 +38,12 @@ const Page = () => {
   };
 
   return (
-    <form  onSubmit={handleSubmit(submitForm)}>
-      <Card className="middle-purple-gradient text-white dark:bg-none dark:bg-ourGray">
+    <form onSubmit={handleSubmit(submitForm)}>
+      <Card className="middle-purple-gradient text-white dark:bg-ourGray dark:bg-none">
         <CardHeader>
-          <Title className="mb-0 text-center text-[28px] font-bold sm:text-[20px]">Sign In</Title>
+          <Title className="mb-0 text-center text-[28px] font-bold sm:text-[20px]">
+            Sign In
+          </Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center gap-4">
@@ -50,13 +55,19 @@ const Page = () => {
                 placeholder="Login"
                 required
               />
-              <Input
-                {...register("password")}
-                className="rounded-ourRadius bg-transparent"
-                id="password"
-                placeholder="Password"
-                required
-              />
+              <div className="relative">
+                <Input
+                  {...register("password")}
+                  className="rounded-ourRadius bg-transparent"
+                  id="password"
+                  placeholder="Password"
+                  type={hidePassword ? "password" : "text"}
+                  required
+                />
+                <div onClick={() => setHidePassword(prev => !prev)} className="absolute right-4 top-1/2 -translate-y-1/2">
+                  {hidePassword ? <EyeOff /> : <EyeIcon />}
+                </div>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -67,7 +78,7 @@ const Page = () => {
           >
             Login
           </CustomButton>
-          <Link href={"/sign-up"} className="w-full ">
+          <Link href={"/sign-up"} className="w-full">
             <Button variant="secondary">Sign Up</Button>
           </Link>
         </CardFooter>

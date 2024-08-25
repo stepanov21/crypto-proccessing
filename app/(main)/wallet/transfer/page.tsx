@@ -32,17 +32,8 @@ const Page = () => {
         className="max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
-        <SelectWallet setValue={setValue} />
-        <Select onValueChange={(e) => setValue("wallet_type", e)}>
-          <SelectTrigger className="my-[30px] h-[60px] sm:h-[50px] w-full">
-            <SelectValue placeholder="Выбрать сеть" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="erc">Erc</SelectItem>
-            <SelectItem value="trc">Trc</SelectItem>
-          </SelectContent>
-        </Select>
-        <Title>Введите сумму для отправки</Title>
+        <SelectWallet walletType="own" setValue={setValue} />
+        <Title className="mt-[30px]">Введите сумму для отправки</Title>
         <Input
           {...register("amount")}
           type="number"
@@ -50,7 +41,7 @@ const Page = () => {
           placeholder="1000 USDT"
         />
         <Button className="w-full" type="submit">
-          Submit
+          Перевести
         </Button>
       </form>
     </div>

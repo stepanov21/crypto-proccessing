@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -14,20 +14,44 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import useCustomToast from "@/hooks/useCustomToast";
+import Image from "next/image";
+import { toast } from "../ui/use-toast";
 
 const CreateNewMerchantPopup = () => {
   const { useAddMerchant } = useMerchant();
   const [isWasAdded, setIsWasAdded] = useState(false);
   const [merchantName, setMerchantName] = useState("");
   const { useAllMerchants } = useMerchant();
+  const { mutateAsync, isError, error } = useAddMerchant();
   const { data } = useAllMerchants();
-  console.log("🚀 ~ CreateNewMerchantPopup ~ data:", data);
+
+  // console.log(error?.response?.data.detail);
+
+  useEffect(() => {
+    //@ts-ignore
+    if (error?.response?.data.detail) {
+      toast({
+        title: "Ошибка",
+        description: "Торговец уже создан",
+        variant: "destructive",
+      });
+    } else {
+      //eslint-disable-next-line
+      useCustomToast({ isError, error });
+    }
+    //eslint-disable-next-line
+  }, [isError]);
 
   return (
     <div>
       <Title>Мерчанты</Title>
+      <div className="mb-8 mt-4 flex items-center gap-4">
+        <Image src={"/avatar.png"} width={40} height={40} alt="avatar" />
+        <span>{data?.name}</span>
+      </div>
       <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger disabled={data} asChild>
           <Button variant={"aside"}>Создать продавца</Button>
         </DialogTrigger>
         <DialogContent
@@ -49,7 +73,7 @@ const CreateNewMerchantPopup = () => {
               <Button
                 onClick={async () => {
                   try {
-                    await useAddMerchant.mutateAsync({ name: merchantName });
+                    await mutateAsync({ name: merchantName });
                     setIsWasAdded(true);
                   } catch (e) {}
                 }}

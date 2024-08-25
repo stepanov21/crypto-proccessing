@@ -35,29 +35,20 @@ const Page = () => {
     <div>
       <form
         onSubmit={handleSubmit((e) => mutateAsync(e as ITransferPayload))}
-        className="mt-10 sm:mt-0 max-w-[520px]"
+        className="max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
-        <SelectWallet setValue={setValue} />
-        <Select onValueChange={(e) => setValue("wallet_type", e)}>
-          <SelectTrigger className="my-[30px] h-[60px] sm:h-[50px] w-full">
-            <SelectValue placeholder="Выбрать сеть" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="erc">Erc</SelectItem>
-            <SelectItem value="trc">Trc</SelectItem>
-          </SelectContent>
-        </Select>
-        <Title>Введите сумму для отправки</Title>
+        <SelectWallet walletType="business" setValue={setValue} />
+        <Title className="mt-[30px]">Введите сумму для отправки</Title>
         <Input
           {...register("amount")}
           type="number"
           className="roboto mb-[30px] mt-2"
           placeholder="1000 USDT"
         />
-        <CustomButton isLoading={isPending} className="w-full">
-          Submit
-        </CustomButton>
+        <Button className="w-full" type="submit">
+          Перевести
+        </Button>
       </form>
     </div>
   );

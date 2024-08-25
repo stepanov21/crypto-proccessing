@@ -24,7 +24,7 @@ const MobileAsideMenu = () => {
         side={"left"}
       >
         <SheetHeader></SheetHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-8 py-4">
           <Header />
           <WalletsList />
           <CreateNewMerchantPopup />

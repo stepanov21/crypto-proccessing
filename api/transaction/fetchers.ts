@@ -7,7 +7,7 @@ export const fetchWallets = async () => {
   const response = await client.get("/user/balance");
 
   if (response.data) {
-    const data: Record<string, number> = await response.data;
+    const data = await response.data;
     return data;
   }
 

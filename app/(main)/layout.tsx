@@ -6,6 +6,8 @@ import Header from "@/components/layout/Header";
 import React from "react";
 import HeaderCard from "@/components/layout/HeaderCard";
 import { Toaster } from "@/components/ui/toaster";
+import WalletAside from "@/components/custom/WalletAside";
+
 
 const layout = ({
   children,
@@ -17,7 +19,8 @@ const layout = ({
       <Header className="lg:hidden" />
       <HeaderCard />
       <aside className="space-y-[60px] lg:hidden">
-        <WalletsList />
+
+        <WalletAside />
         <CreateNewMerchantPopup />
       </aside>
       <div className="sm:pt-[210px]">

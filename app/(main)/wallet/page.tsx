@@ -66,6 +66,13 @@ const Page = () => {
 
   return (
     <div className="flex flex-col gap-3">
+      <div>
+        <div className="flex items-center justify-between px-[24px] text-center text-sm opacity-50">
+          <span className="text-start">ID</span>
+          <span>Хэш</span>
+          <span>Созданный</span>
+        </div>
+      </div>
       {fakeTransaction.length >= 1 ? (
         fakeTransaction
           .filter((trans) => {

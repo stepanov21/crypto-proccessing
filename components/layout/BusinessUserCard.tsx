@@ -30,9 +30,10 @@ const BusinessUserCard = () => {
           <Sun className={"dark:hidden"} size={20} />
           <MoonStar className={"hidden dark:block"} size={20} />
         </Button>
+        {/* Колокольчик-уведомления
         <Button variant={"wallet"} size={"icon"}>
           <Bell size={20} />
-        </Button>
+        </Button> */}
         <Button
           onClick={() => useLogoutUser.mutate()}
           variant={"wallet"}

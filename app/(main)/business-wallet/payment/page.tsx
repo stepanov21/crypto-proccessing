@@ -34,13 +34,6 @@ const Page = () => {
         className=" dark:text-black"
       >
         <Title className="text-2xl">Создать новую платежную ссылку</Title>
-        <div className="flex gap-2.5 rounded-[10px] bg-[#A6142A] p-2.5 text-white">
-          <CircleAlert />
-          <p className="font-semibold leading-6">
-            Чтобы создать платежную ссылку, пожалуйста сначала пройдите
-            модерацию
-          </p>
-        </div>
         <span className="mt-3 inline-block">
           Примите оплату поделившись ссылкой
         </span>

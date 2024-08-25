@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -9,18 +9,31 @@ import {
 import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
 import Image from "next/image";
+import { useMerchant } from "@/api/merchant/queries";
 
-const SelectWallet = ({ setValue }: { setValue: any }) => {
-  const { data } = useWallets();
+const SelectWallet = ({ setValue, walletType }: { setValue: any, walletType: 'own' | 'business' }) => {
+  const { useBusinessWallets } = useMerchant();
+  const { data: businessData } = useBusinessWallets()
+  const { data: ownData } = useWallets();
 
   return (
-    <Select onValueChange={(e) => setValue("token_field", e)}>
-      <SelectTrigger className="h-[60px] sm:h-[50px] w-full">
+    <Select
+      onValueChange={(e) => {
+        setValue("token_field", e);
+        console.log(e)
+        if(e.endsWith('trc')) {
+          setValue("wallet_type", 'trc')
+        } else {
+          setValue("wallet_type", 'erc')
+        }
+      }}
+    >
+      <SelectTrigger className="h-[60px] w-full sm:h-[50px]">
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>
       <SelectContent>
-        {data &&
-          transformWalletsList(data).map((wallet) => {
+        {(businessData || ownData) &&
+          transformWalletsList(walletType === 'business' ? businessData : ownData).map((wallet) => {
             return (
               <SelectItem className="" value={wallet.id} key={wallet.id}>
                 <div className="flex min-w-[200px] justify-between gap-4">
