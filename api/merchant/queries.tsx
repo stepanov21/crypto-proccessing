@@ -10,8 +10,10 @@ import {
   merchantTransferOwnToBusiness,
 } from "./fetchers";
 import { ITransferPayload } from "../transaction/types";
+import { useRouter } from "next/navigation";
 
 export const useMerchant = () => {
+  const router = useRouter()
   const useAddMerchant = useMutation({
     mutationFn: (e: { name: string }) => addMerchant(e),
   });
@@ -31,6 +33,7 @@ export const useMerchant = () => {
   const useMerchantPostInvoice = () =>
     useMutation({
       mutationFn: (e: IMerchantInvoice) => merchantPostInvoice(e),
+      onSuccess: () => router.push('/business-wallet')
     });
 
   const useMerchantGetInvoice = () =>

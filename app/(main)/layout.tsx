@@ -13,7 +13,7 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="container grid max-w-[1400px] grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px] lg:grid-cols-1 sm:px-[16px] sm:pt-0">
+    <div className="container grid max-w-[1400px] grid-cols-[4fr_8fr] gap-x-[30px] gap-y-[35px] px-[30px] pt-[110px] lg:grid-cols-1 sm:px-[16px] sm:pt-0 overflow-x-hidden">
       <Header className="lg:hidden" />
       <HeaderCard />
       <aside className="space-y-[60px] lg:hidden">

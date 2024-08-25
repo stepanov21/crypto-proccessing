@@ -29,12 +29,12 @@ const Page = () => {
     <div>
       <form
         onSubmit={handleSubmit((e) => mutateAsync(e as ITransferPayload))}
-        className="mt-10 max-w-[520px]"
+        className="max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
         <SelectWallet setValue={setValue} />
         <Select onValueChange={(e) => setValue("wallet_type", e)}>
-          <SelectTrigger className="my-[30px] h-[60px] w-full">
+          <SelectTrigger className="my-[30px] h-[60px] sm:h-[50px] w-full">
             <SelectValue placeholder="Выбрать сеть" />
           </SelectTrigger>
           <SelectContent>

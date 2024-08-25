@@ -4,7 +4,7 @@ import React from "react";
 
 const Transaction = ({ id, created_at, tx_hash }: Partial<ITransaction>) => {
   return (
-    <div className="middle-purple-gradient flex flex-col gap-2 rounded-[10px] p-2.5">
+    <div className="middle-purple-gradient dark:bg-none dark:bg-ourGray dark:text-black flex flex-col gap-2 rounded-[10px] p-2.5">
       <div className="flex items-center">
         <span className="opacity-40">Id:</span>
         <span className="roboto ml-auto line-clamp-1 inline-block text-ellipsis text-sm">
@@ -17,7 +17,7 @@ const Transaction = ({ id, created_at, tx_hash }: Partial<ITransaction>) => {
           {formatDistanceToNow(created_at!)} ago
         </span>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
         <span className="opacity-40">Hesh:</span>
         <span className="roboto ml-auto line-clamp-1 inline-block text-ellipsis text-sm">
           {tx_hash}

@@ -18,13 +18,13 @@ const SelectExpirationTime = ({ setValue }: { setValue: any }) => {
         step={1}
       />
       <div className="mt-4 flex items-center justify-between">
-        <div className="rounded-[10px] border border-white bg-ourPurple px-3 py-2">
+        <div className="rounded-[10px] border border-white bg-ourPurple dark:bg-ourGray px-3 py-2">
           15m
         </div>
-        <div className="relative -translate-x-1 rounded-[10px] border border-white bg-ourPurple px-3 py-2">
+        <div className="relative -translate-x-1 rounded-[10px] border border-white bg-ourPurple dark:bg-ourGray px-3 py-2">
           30m
         </div>
-        <div className="rounded-[10px] border border-white bg-ourPurple px-3 py-2">
+        <div className="rounded-[10px] border border-white bg-ourPurple dark:bg-ourGray px-3 py-2">
           1h
         </div>
       </div>

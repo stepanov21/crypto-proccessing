@@ -13,10 +13,10 @@ const BusinessUserCard = () => {
   const { useLogoutUser } = useAuth();
   const changeTheme = useTheme((state) => state.changeTheme);
   return (
-    <div className="purple-gradient z-10 rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-ourGray dark:bg-none sm:fixed sm:left-0 sm:w-full sm:rounded-none sm:p-4 sm:pb-[30px]">
+    <div className="purple-gradient z-10 rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-ourGray dark:bg-none sm:fixed sm:left-0 sm:w-[calc(100vw)] sm:rounded-none sm:p-4 sm:pb-[30px]">
       <div className="flex items-center">
         <span className="mr-auto text-[32px] font-semibold dark:text-black sm:w-[90px] sm:text-[16px]">
-          Личный кабинет
+          Бизнес кошелек
         </span>
         <Link href={"/neutronx-api"}>
           <Button
@@ -48,9 +48,11 @@ const BusinessUserCard = () => {
         </span>
         {data ? (
           <span className="roboto text-xl sm:text-[16px] sm:leading-none">
-            $ {data.total_balance}
+            $ {data.total_balance} USDT
           </span>
-        ) : null}
+        ) : (
+          <span>USDT</span>
+        )}
       </div>
       <div className="mt-9 flex gap-10 sm:mt-4 sm:gap-5">
         <Link

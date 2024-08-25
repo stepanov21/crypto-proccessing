@@ -31,7 +31,7 @@ const Page = () => {
     <>
       <form
         onSubmit={handleSubmit(postInvoice)}
-        className="mb-20 dark:text-black"
+        className=" dark:text-black"
       >
         <Title className="text-2xl">Создать новую платежную ссылку</Title>
         <div className="flex gap-2.5 rounded-[10px] bg-[#A6142A] p-2.5 text-white">

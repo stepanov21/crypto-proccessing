@@ -31,12 +31,12 @@ const Page = () => {
   return (
     <form
       onSubmit={handleSubmit((e) => mutateAsync(e))}
-      className="mt-10 max-w-[520px]"
+      className="max-w-[520px]"
     >
       <Title onClick={() => toast({ title: "Hello" })}>Выберите кошелек</Title>
       <SelectNetwork setValue={setValue} />
       <Select onValueChange={(e) => setValue("token", e)}>
-        <SelectTrigger className="my-[30px] h-[60px] w-full sm:mt-[16px]">
+        <SelectTrigger className="my-[30px] h-[60px] sm:h-[50px] w-full sm:mt-[16px]">
           <SelectValue placeholder="Выбрать токен" />
         </SelectTrigger>
         <SelectContent>

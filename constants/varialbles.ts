@@ -1,1 +1,1 @@
-export const BASE_URL = "https://app.neutronx.com";
+export const BASE_URL = "https://crypto-backend-staging.neutronx.com";

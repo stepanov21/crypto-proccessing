@@ -15,7 +15,7 @@ const SelectWallet = ({ setValue }: { setValue: any }) => {
 
   return (
     <Select onValueChange={(e) => setValue("token_field", e)}>
-      <SelectTrigger className="h-[60px] w-full">
+      <SelectTrigger className="h-[60px] sm:h-[50px] w-full">
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>
       <SelectContent>

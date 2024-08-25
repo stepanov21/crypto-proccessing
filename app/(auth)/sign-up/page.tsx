@@ -46,9 +46,9 @@ const Page = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="min-w-[400px] middle-purple-gradient text-white dark:bg-ourGray">
+      <Card className="middle-purple-gradient text-white dark:bg-none dark:bg-ourGray">
         <CardHeader>
-          <Title className="mb-0 text-center text-2xl font-bold text-[28px]">Sign Up</Title>
+          <Title className="mb-0 text-center text-2xl font-bold text-[28px] sm:text-[20px]">Sign Up</Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center">
