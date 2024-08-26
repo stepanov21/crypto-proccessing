@@ -37,7 +37,7 @@ const TransactionFilters = () => {
             <Popover>
               <PopoverTrigger asChild>
                 <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white bg-transparent px-4 text-sm text-white dark:border-[#7F808D] dark:bg-white dark:text-black">
-                  Тип транзакций
+                  Тип ссылки
                   <ChevronDown className="ml-auto" />
                 </Button>
               </PopoverTrigger>
@@ -83,13 +83,13 @@ const TransactionFilters = () => {
                 <SelectItem value="1">1 день </SelectItem>
               </SelectContent>
             </Select>
-            <Button
+            {/* <Button
               className="flex w-min gap-2.5 px-5 sm:w-full"
               variant={"aside"}
             >
               <Search size={20} />
               Найти транзакцию
-            </Button>
+            </Button> */}
 
             {/* Отправить на мейл
         <DownloadPDF/> */}
