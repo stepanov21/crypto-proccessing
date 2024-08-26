@@ -32,7 +32,7 @@ const Page = () => {
         className="max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
-        <SelectWallet walletType="own" setValue={setValue} />
+        <SelectWallet setValue={setValue} />
         <Title className="mt-[30px]">Введите сумму для отправки</Title>
         <Input
           {...register("amount")}
