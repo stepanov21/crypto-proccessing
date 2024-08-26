@@ -32,23 +32,22 @@ const Page = () => {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useCustomToast({ isError, error });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isError])
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError]);
 
   const submitForm = async (data: any) => {
     try {
       mutateAsync(data);
-    } catch (err) {
-
-    }
+    } catch (err) {}
   };
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Card className="middle-purple-gradient text-white dark:bg-none dark:bg-ourGray">
+      <Card className="middle-purple-gradient text-white dark:bg-ourGray dark:bg-none">
         <CardHeader>
-          <Title className="mb-0 text-center text-2xl font-bold text-[28px] sm:text-[20px]">Sign Up</Title>
+          <Title className="mb-0 text-center text-2xl text-[28px] font-bold sm:text-[20px]">
+            Sign Up
+          </Title>
         </CardHeader>
         <CardContent>
           <div className="grid w-full items-center">

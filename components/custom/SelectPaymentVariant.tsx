@@ -11,7 +11,11 @@ import {
 
 const SelectPaymentVariant = ({ register }: { register: any }) => {
   return (
-    <Select disabled defaultValue="30" onValueChange={(e) => register("payment", { value: e })}>
+    <Select
+      disabled
+      defaultValue="30"
+      onValueChange={(e) => register("payment", { value: e })}
+    >
       <SelectTrigger className="h-[67px] w-full text-left">
         <SelectValue placeholder="Период" className="" />
       </SelectTrigger>

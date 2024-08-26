@@ -27,7 +27,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div className="absolute left-0 top-1/2 -translate-y-1/2 pl-2.5 text-[#7F808D]">
           {icon}
         </div>
-        {props.disabled && <Lock size={20} className="opacity-20 dark:text-ourPurple absolute right-4 top-1/2 -translate-y-1/2"/>}
+        {props.disabled && (
+          <Lock
+            size={20}
+            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-20 dark:text-ourPurple"
+          />
+        )}
       </div>
     );
   },

@@ -25,14 +25,9 @@ const Page = () => {
     mutate(e);
   };
 
-
-
   return (
     <>
-      <form
-        onSubmit={handleSubmit(postInvoice)}
-        className=" dark:text-black"
-      >
+      <form onSubmit={handleSubmit(postInvoice)} className="dark:text-black">
         <Title className="text-2xl">Создать новую платежную ссылку</Title>
         <span className="mt-3 inline-block">
           Примите оплату поделившись ссылкой

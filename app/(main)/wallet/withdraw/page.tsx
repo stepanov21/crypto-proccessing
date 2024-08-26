@@ -36,7 +36,7 @@ const Page = () => {
       <Title onClick={() => toast({ title: "Hello" })}>Выберите кошелек</Title>
       <SelectNetwork setValue={setValue} />
       <Select onValueChange={(e) => setValue("token", e)}>
-        <SelectTrigger className="my-[30px] h-[60px] sm:h-[50px] w-full sm:mt-[16px]">
+        <SelectTrigger className="my-[30px] h-[60px] w-full sm:mt-[16px] sm:h-[50px]">
           <SelectValue placeholder="Выбрать токен" />
         </SelectTrigger>
         <SelectContent>

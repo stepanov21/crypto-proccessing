@@ -5,7 +5,7 @@ import { Check, Files } from "lucide-react";
 import { useGetMyWallets } from "@/api/wallets/queries";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const CopyWalletAdress = ({network}: {network: "erc20" | "trc20"}) => {
+const CopyWalletAdress = ({ network }: { network: "erc20" | "trc20" }) => {
   const { data, refetch } = useGetMyWallets(network);
   const [copy, setCopy] = useState(false);
   useEffect(() => {

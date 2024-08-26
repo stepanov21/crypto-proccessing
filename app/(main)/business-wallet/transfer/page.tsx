@@ -2,6 +2,7 @@
 
 import { useMerchant } from "@/api/merchant/queries";
 import { ITransferPayload } from "@/api/transaction/types";
+import SelectBusinessWallet from "@/components/custom/SelectBusinessWallet";
 import SelectWallet from "@/components/custom/SelectWallet";
 import WalletItem from "@/components/custom/WalletItem";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ const Page = () => {
         className="max-w-[520px]"
       >
         <Title>Выберите кошелек</Title>
-        <SelectWallet walletType="business" setValue={setValue} />
+        <SelectBusinessWallet setValue={setValue} />
         <Title className="mt-[30px]">Введите сумму для отправки</Title>
         <Input
           {...register("amount")}

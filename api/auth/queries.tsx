@@ -30,7 +30,7 @@ export const useAuth = () => {
       mutationFn: (e: TRegisterPayload) => registerUser(e),
       onSuccess: () => {
         router.push("/sign-in");
-      }
+      },
     });
 
   return { useLoginUser, useLogoutUser, useRegisterUser };

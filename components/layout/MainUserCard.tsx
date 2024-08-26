@@ -49,7 +49,7 @@ const MainUserCard = () => {
         </span>
         {data ? (
           <span className="roboto text-xl sm:text-[16px] sm:leading-none">
-            $ {data.total_usdt}
+            $ {data.balances.total_usdt}
           </span>
         ) : (
           <span>USDT</span>

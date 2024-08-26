@@ -20,7 +20,7 @@ const MobileAsideMenu = () => {
         </Button>
       </SheetTrigger>
       <SheetContent
-        className="max-w-[600px] overflow-auto border-none bg-[#0c0716] sm:w-full sm:max-w-full dark:bg-white"
+        className="max-w-[600px] overflow-auto border-none bg-[#0c0716] dark:bg-white sm:w-full sm:max-w-full"
         side={"left"}
       >
         <SheetHeader></SheetHeader>

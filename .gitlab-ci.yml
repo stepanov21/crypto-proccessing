@@ -1,4 +1,3 @@
 include:
-  - project: 'neutronx1/devops_general'
+  - project: "neutronx1/devops_general"
     file: "crypto_proccesing/ci_cd/crypto_proccesing_front.yml"
-    

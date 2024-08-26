@@ -27,7 +27,6 @@ export default function RootLayout({
         />
         <meta name="viewport" content="user-scalable=no" />
       </Head>
-      <Script src="../lib/disableZoom.ts"/>
       <TanstackQueryClientProvider>
         <ThemeProvider className={raleway.className}>{children}</ThemeProvider>
       </TanstackQueryClientProvider>

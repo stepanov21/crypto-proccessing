@@ -11,8 +11,9 @@ import { useWallets } from "@/api/transaction/queries";
 import Image from "next/image";
 import { useMerchant } from "@/api/merchant/queries";
 
-const SelectWallet = ({ setValue }: { setValue: any }) => {
-  const { data: ownData } = useWallets();
+const SelectBusinessWallet = ({ setValue }: { setValue: any }) => {
+  const { useBusinessWallets } = useMerchant();
+  const { data: businessData } = useBusinessWallets();
 
   return (
     <Select
@@ -30,8 +31,8 @@ const SelectWallet = ({ setValue }: { setValue: any }) => {
         <SelectValue placeholder="Выбрать крипто кошелек" />
       </SelectTrigger>
       <SelectContent>
-        {ownData?.balances &&
-          transformWalletsList(ownData?.balances).map((wallet) => {
+        {businessData &&
+          transformWalletsList(businessData).map((wallet) => {
             return (
               <SelectItem className="" value={wallet.id} key={wallet.id}>
                 <div className="flex min-w-[200px] justify-between gap-4">
@@ -69,4 +70,4 @@ const SelectWallet = ({ setValue }: { setValue: any }) => {
   );
 };
 
-export default SelectWallet;
+export default SelectBusinessWallet;

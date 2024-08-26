@@ -20,8 +20,8 @@ const WalletsList = () => {
         <AddNewToken />
       </div>
       <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10 dark:bg-ourGray dark:bg-none">
-        {data &&
-          transformWalletsList(data).map((wallet) => (
+        {data?.balances &&
+          transformWalletsList(data?.balances).map((wallet) => (
             <WalletItem
               balance={wallet.balance}
               key={wallet.id}

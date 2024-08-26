@@ -8,9 +8,9 @@ import AddNewToken from "./AddNewToken";
 import { useMerchant } from "@/api/merchant/queries";
 
 const BusinessWalletsList = () => {
-  const { useBusinessWallets } = useMerchant()
-  const { data } = useBusinessWallets()
-  console.log('Бизнес кошель ')
+  const { useBusinessWallets } = useMerchant();
+  const { data } = useBusinessWallets();
+  console.log("Бизнес кошель ");
   return (
     <div className="mt-0 sm:mt-8">
       <div className="flex">

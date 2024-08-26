@@ -16,7 +16,7 @@ const SelectNetwork = ({ setValue }: { setValue: any }) => {
         setValue("network", e);
       }}
     >
-      <SelectTrigger className="h-[60px] sm:h-[50px] w-full">
+      <SelectTrigger className="h-[60px] w-full sm:h-[50px]">
         <SelectValue placeholder="Выбрать сеть" />
       </SelectTrigger>
       <SelectContent>
