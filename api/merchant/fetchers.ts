@@ -123,6 +123,18 @@ export const merchantGetInvoice = async () => {
   throw new Error("Failed to create merchant");
 };
 
+export const merchantGetInvoiceById = async (id: string) => {
+  const response = await client.get<IMerchantGetInvoice>(`/merchant/invoice/${id}`, {
+    params: { id: id },
+  });
+
+  if (response.status === 200) {
+    return response.data;
+  }
+
+  throw new Error("Failed to create merchant");
+};
+
 export const merchantGetBusinessWallet = async () => {
   const response = await client.get("/merchant/business_wallet_balances");
 

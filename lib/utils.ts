@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { getTime, millisecondsToMinutes } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -23,3 +24,6 @@ export const transformWalletsList = (wallets: Record<string, number>) => {
   }
   return list;
 };
+
+
+export const getExpTime = (time: any) => millisecondsToMinutes(getTime(time) - getTime(new Date())) - new Date().getTimezoneOffset();

@@ -2,6 +2,7 @@
 
 import { IMerchantInvoice } from "@/api/merchant/fetchers";
 import { useMerchant } from "@/api/merchant/queries";
+import CreatePayment from "@/components/custom/CreatePayment";
 import SelectExpirationTime from "@/components/custom/SelectExpirationTime";
 import SelectNetwork from "@/components/custom/SelectNetwork";
 import SelectPaymentVariant from "@/components/custom/SelectPaymentVariant";
@@ -62,7 +63,6 @@ const Page = () => {
         <Button className="mt-10 w-full" type="submit">
           Создать платеж
         </Button>
-        <div>{/* <CreatePayment {...data} /> */}</div>
       </form>
     </>
   );

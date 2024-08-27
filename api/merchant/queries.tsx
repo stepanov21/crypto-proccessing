@@ -5,6 +5,7 @@ import {
   IMerchantInvoice,
   merchantGetBusinessWallet,
   merchantGetInvoice,
+  merchantGetInvoiceById,
   merchantPostInvoice,
   merchantTransferBusinessToOwn,
   merchantTransferOwnToBusiness,
@@ -49,6 +50,14 @@ export const useMerchant = () => {
       queryKey: ["merchant-invoice"],
       queryFn: () => merchantGetInvoice(),
     });
+
+  const useMerchantGetInvoiceById = (id: string) =>
+    useQuery({
+      queryKey: ["merchant-invoice", id],
+      queryFn: () => merchantGetInvoiceById(id),
+      refetchInterval: 10000,
+      retry: 0
+    });
   const useBusinessWallets = () =>
     useQuery({
       queryKey: ["business-wallet"],
@@ -60,6 +69,7 @@ export const useMerchant = () => {
     useMerchantTransferOwnToBusiness,
     useMerchantTransferBusinessToOwn,
     useMerchantGetInvoice,
+    useMerchantGetInvoiceById,
     useMerchantPostInvoice,
     useBusinessWallets,
     useAllMerchants,
