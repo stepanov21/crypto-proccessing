@@ -17,14 +17,17 @@ import { Title } from "@/components/ui/title";
 import { toast } from "@/components/ui/use-toast";
 import useCustomToast from "@/hooks/useCustomToast";
 import { Loader2 } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
-  const { register, handleSubmit, setValue } = useForm<IWithdrawPayload>();
+  const [networkState, setNetworkState] = useState();
+  const { register, handleSubmit, setValue, getValues } =
+    useForm<IWithdrawPayload>();
   const { useWithdrawSend } = useWithdraw();
   const { mutateAsync, error, isError, isPending } = useWithdrawSend();
-  console.log("🚀 ~ Page ~ error:", error);
+
+  console.log("🚀 ~ Page ~ getValues:", getValues("network"));
 
   useCustomToast({ isError, error });
 
@@ -33,22 +36,24 @@ const Page = () => {
       onSubmit={handleSubmit((e) => mutateAsync(e))}
       className="max-w-[520px]"
     >
-      <Title onClick={() => toast({ title: "Hello" })}>Выберите кошелек</Title>
-      <SelectNetwork setValue={setValue} />
+      <Title>Выберите кошелек</Title>
+      <SelectNetwork setNetwork={setNetworkState} setValue={setValue} />
       <Select onValueChange={(e) => setValue("token", e)}>
         <SelectTrigger className="my-[30px] h-[60px] w-full sm:mt-[16px] sm:h-[50px]">
           <SelectValue placeholder="Выбрать токен" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="usdt_erc">USDT (Erc)</SelectItem>
-          <SelectItem value="usdt_trc">USDT (Trc)</SelectItem>
-          <SelectItem value="usdt_arb">USDT (Arbitrum)</SelectItem>
-          <SelectItem value="usdt_polygon">USDT (Polygon)</SelectItem>
-          {/* <SelectItem value="Tron">Tron</SelectItem> */}
-          {/* <SelectItem value="Avalanche">Avalanche</SelectItem> */}
-          <SelectItem value="usdt_bep">USDT (BnB Chain)</SelectItem>
-          {/* <SelectItem value="Kava">Kava</SelectItem> */}
-          <SelectItem value="usdt_optimism">USDT (Optimism)</SelectItem>
+          {networkState === "trc" ? (
+            <SelectItem value="usdt_trc">USDT (Trc)</SelectItem>
+          ) : (
+            <>
+              <SelectItem value="usdt_erc">USDT (Erc)</SelectItem>
+              <SelectItem value="usdt_arb">USDT (Arbitrum)</SelectItem>
+              <SelectItem value="usdt_polygon">USDT (Polygon)</SelectItem>
+              <SelectItem value="usdt_bep">USDT (BnB Chain)</SelectItem>
+              <SelectItem value="usdt_optimism">USDT (Optimism)</SelectItem>
+            </>
+          )}
         </SelectContent>
       </Select>
       <Title>Адресс</Title>

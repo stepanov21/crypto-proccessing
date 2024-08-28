@@ -56,7 +56,7 @@ export const useMerchant = () => {
       queryKey: ["merchant-invoice", id],
       queryFn: () => merchantGetInvoiceById(id),
       refetchInterval: 10000,
-      retry: 0
+      retry: 0,
     });
   const useBusinessWallets = () =>
     useQuery({

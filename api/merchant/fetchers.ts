@@ -111,6 +111,8 @@ export interface IMerchantGetInvoice {
   network: TNetwork;
   expiration_time: Date;
   created_at: Date;
+  invoice_link: string;
+  invoice_uuid: string;
 }
 
 export const merchantGetInvoice = async () => {
@@ -124,9 +126,12 @@ export const merchantGetInvoice = async () => {
 };
 
 export const merchantGetInvoiceById = async (id: string) => {
-  const response = await client.get<IMerchantGetInvoice>(`/merchant/invoice/${id}`, {
-    params: { id: id },
-  });
+  const response = await client.get<IMerchantGetInvoice>(
+    `/merchant/invoice/${id}`,
+    {
+      params: { id: id },
+    },
+  );
 
   if (response.status === 200) {
     return response.data;

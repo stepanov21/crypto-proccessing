@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
+import { toast } from "@/components/ui/use-toast";
 import useCustomToast from "@/hooks/useCustomToast";
 import { client } from "@/providers/TanstackQueryClientProvider";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -27,10 +28,16 @@ const Page = () => {
   const { register, handleSubmit, setValue } = useForm();
 
   const { useMerchantTransferBusinessToOwn } = useMerchant();
-  const { mutateAsync, isPending, isError, error } =
+  const { mutateAsync, isPending, isError, isSuccess, error } =
     useMerchantTransferBusinessToOwn();
 
   useCustomToast({ isError, error });
+
+  if (isSuccess) {
+    toast({
+      title: "Перевод успешно отправлен!",
+    });
+  }
 
   return (
     <div>
@@ -47,9 +54,9 @@ const Page = () => {
           className="roboto mb-[30px] mt-2"
           placeholder="1000 USDT"
         />
-        <Button className="w-full" type="submit">
+        <CustomButton isLoading={isPending} className="w-full">
           Перевести
-        </Button>
+        </CustomButton>
       </form>
     </div>
   );

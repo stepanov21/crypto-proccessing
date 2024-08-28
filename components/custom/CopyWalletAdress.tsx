@@ -6,7 +6,7 @@ import { useGetMyWallets } from "@/api/wallets/queries";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const CopyWalletAdress = ({ network }: { network: "erc20" | "trc20" }) => {
-  const { data, refetch } = useGetMyWallets(network);
+  const { data } = useGetMyWallets(network);
   const [copy, setCopy] = useState(false);
   useEffect(() => {
     if (!copy) return;
@@ -18,14 +18,6 @@ const CopyWalletAdress = ({ network }: { network: "erc20" | "trc20" }) => {
       <p className="mb-7 dark:text-black">
         Сообщите адрес USDT кошелька отправителю чтобы принять переводы валют
       </p>
-      <Button
-        onClick={() => refetch()}
-        className="mb-4 w-full"
-        variant={"default"}
-      >
-        Сгенерировать новый адрес
-      </Button>
-
       <div className="flex h-[60px] w-full cursor-pointer items-center justify-center gap-4 rounded-full border border-ourGreen text-[18px] font-semibold dark:border-black dark:text-black">
         <CopyToClipboard
           text={data?.wallet_address}

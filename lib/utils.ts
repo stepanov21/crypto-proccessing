@@ -25,5 +25,6 @@ export const transformWalletsList = (wallets: Record<string, number>) => {
   return list;
 };
 
-
-export const getExpTime = (time: any) => millisecondsToMinutes(getTime(time) - getTime(new Date())) - new Date().getTimezoneOffset();
+export const getExpTime = (time: any) =>
+  millisecondsToMinutes(getTime(time) - getTime(new Date())) -
+  new Date().getTimezoneOffset();

@@ -7,6 +7,7 @@ import React from "react";
 import HeaderCard from "@/components/layout/HeaderCard";
 import { Toaster } from "@/components/ui/toaster";
 import WalletAside from "@/components/custom/WalletAside";
+import MainWidth from "@/components/layout/MainWidth";
 
 const layout = ({
   children,
@@ -23,7 +24,7 @@ const layout = ({
       </aside>
       <div className="sm:pt-[210px]">
         <TransactionFilters />
-        <main className="max-w-[520px]">{children}</main>
+        <MainWidth>{children}</MainWidth>
       </div>
       {/* Background glow */}
       <Image

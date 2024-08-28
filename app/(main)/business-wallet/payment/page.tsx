@@ -50,11 +50,6 @@ const Page = () => {
             Клиент платит коммисию
           </label>
         </div>
-        <Title className="mt-10">ID ордера</Title>
-        <Input className="roboto mt-2" placeholder="Введите ID ордера" />
-        <span className="mt-3 inline-block">
-          Помогает понять за что платит Ваш клиент
-        </span>
         <Title className="mt-10">Выберите валюту платежа</Title>
         <Input className="roboto mt-2" disabled placeholder="USDT" />
         <Title className="mt-10">Выберите сеть</Title>
