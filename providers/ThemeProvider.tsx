@@ -1,6 +1,6 @@
 "use client";
 import { useTheme, useToken } from "@/zustand/store";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { ReactNode, useEffect } from "react";
 
 const ThemeProvider = ({
@@ -14,9 +14,11 @@ const ThemeProvider = ({
   const { token } = useToken((state) => state);
 
   const router = useRouter();
+  const pathname = usePathname()
 
   useEffect(() => {
     if (token) return;
+    if(pathname.startsWith('/invoice/')) return
     router.push("/sign-in");
     //eslint-disable-next-line
   }, [token]);

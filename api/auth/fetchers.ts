@@ -1,5 +1,3 @@
-import { BASE_URL } from "@/constants/varialbles";
-import { BasicResponse } from "../common/types";
 import {
   client,
   removeHeaderToken,
