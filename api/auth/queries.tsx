@@ -4,16 +4,23 @@ import { TLoginPayload, TRegisterPayload } from "./types";
 import { removeHeaderToken } from "@/providers/TanstackQueryClientProvider";
 import { useToken } from "@/zustand/store";
 import { useRouter } from "next/navigation";
+import { useUserRole } from "../admin/queries";
 
 export const useAuth = () => {
   const { setToken, deleteToken } = useToken((state) => state);
+  const { data: dataRole, refetch } = useUserRole();
   const router = useRouter();
   const useLoginUser = () =>
     useMutation({
       mutationFn: (e: TLoginPayload) => loginUser(e),
-      onSuccess: (data) => {
+      onSuccess: async (data) => {
         setToken(data.access_token);
-        router.push("/wallet");
+        await refetch();
+        if (dataRole.user === "admin") {
+          router.push("admin/get-networks");
+        } else {
+          router.push("/wallet");
+        }
       },
     });
 

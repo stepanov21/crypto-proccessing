@@ -17,14 +17,18 @@ import { useAuth } from "@/api/auth/queries";
 import { Title } from "@/components/ui/title";
 import useCustomToast from "@/hooks/useCustomToast";
 import CustomButton from "@/components/ui/CustomButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EyeIcon, EyeOff } from "lucide-react";
+import { useUserRole } from "@/api/admin/queries";
 
 const Page = () => {
   const { register, handleSubmit, reset } = useForm();
   const { useLoginUser } = useAuth();
   const { mutateAsync, error, isError, isPending } = useLoginUser();
   const [hidePassword, setHidePassword] = useState(true);
+  const router = useRouter()
+
+  
 
   useCustomToast({ isError, error });
 
