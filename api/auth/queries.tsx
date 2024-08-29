@@ -15,8 +15,9 @@ export const useAuth = () => {
       mutationFn: (e: TLoginPayload) => loginUser(e),
       onSuccess: async (data) => {
         setToken(data.access_token);
-        await refetch();
-        if (dataRole.user === "admin") {
+        const res = await refetch();
+        console.log(res.data.user)
+        if (res.data.user === "admin") {
           router.push("admin/get-networks");
         } else {
           router.push("/wallet");
