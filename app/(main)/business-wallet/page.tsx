@@ -1,6 +1,7 @@
 "use client";
 
 import { useMerchant } from "@/api/merchant/queries";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { toast } from "@/components/ui/use-toast";
 import Transition from "@/providers/Transition";
 import { Check, ExternalLink, Files, Loader } from "lucide-react";
@@ -11,7 +12,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 const Page = () => {
   const [copy, setCopy] = useState(false);
   const { useMerchantGetInvoice } = useMerchant();
-  const { data } = useMerchantGetInvoice();
+  const { data } = useMerchantGetInvoice(1);
   console.log("🚀 ~ Page ~ data:", data);
 
   return (
@@ -22,7 +23,7 @@ const Page = () => {
         <span className="text-center">Status</span>
         <div className="text-right">Payment URL</div>
       </div>
-      {data?.map((invoice) => {
+      {data?.invoices?.map((invoice) => {
         return (
           //@ts-ignore
 
@@ -63,6 +64,22 @@ const Page = () => {
           </div>
         );
       })}
+      {/* <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination> */}
     </div>
   );
 };

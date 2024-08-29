@@ -45,10 +45,10 @@ export const useMerchant = () => {
       onSuccess: () => router.push("/business-wallet"),
     });
 
-  const useMerchantGetInvoice = () =>
+  const useMerchantGetInvoice = (page: number = 1) =>
     useQuery({
-      queryKey: ["merchant-invoice"],
-      queryFn: () => merchantGetInvoice(),
+      queryKey: ["merchant-invoice", page],
+      queryFn: () => merchantGetInvoice(page),
     });
 
   const useMerchantGetInvoiceById = (id: string) =>

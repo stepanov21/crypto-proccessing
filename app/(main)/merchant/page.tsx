@@ -8,7 +8,7 @@ const Page = () => {
   const { data } = useMerchantGetInvoice();
   return (
     <div className="space-y-4">
-      {data?.map((invoice) => {
+      {data?.invoices.map((invoice) => {
         return (
           <div
             key={invoice.id}

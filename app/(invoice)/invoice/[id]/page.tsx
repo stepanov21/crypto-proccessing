@@ -21,6 +21,7 @@ const Page = () => {
     params.id as string,
   );
 
+  console.log("🚀 ~ Page ~ data:", data)
   useEffect(() => {
     if (!copy) return;
     setTimeout(() => setCopy(false), 3000);

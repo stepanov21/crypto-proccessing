@@ -115,8 +115,13 @@ export interface IMerchantGetInvoice {
   invoice_uuid: string;
 }
 
-export const merchantGetInvoice = async () => {
-  const response = await client.get<IMerchantGetInvoice[]>("/merchant/invoice");
+type IDataMerchantGetInvoice = {
+  invoices: IMerchantGetInvoice[]
+}
+
+
+export const merchantGetInvoice = async (page: number = 1) => {
+  const response = await client.get<IDataMerchantGetInvoice>("/merchant/invoice", {params: {page: page}});
 
   if (response.status === 200) {
     return response.data;
