@@ -32,8 +32,12 @@ export const getDowloadTransactions = async () => {
   throw new Error("Failed to create Exel");
 };
 
-export const getMyTransaction = async () => {
-  const response = await client.get<ITransaction[]>(`/wallets/transactions`);
+export const getMyTransaction = async (page: number = 1) => {
+  const response = await client.get<{
+    invoices: ITransaction[];
+    page: number;
+    total_pages: number;
+  }>(`/wallets/transactions`, { params: { page: page } });
 
   if (response.status === 200) {
     return response.data;

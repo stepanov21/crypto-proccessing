@@ -22,7 +22,7 @@ const AdminCard = () => {
   const { data: turnoverTotal } = useAdminTotalTurnover();
   console.log("🚀 ~ AdminCard ~ turnoverTotal:", turnoverTotal);
   return (
-    <div className="purple-gradient dark:bg-none dark:bg-ourGray dark:text-black rounded-[18px] px-5 py-[50px] sm:bg-none sm:p-0">
+    <div className="purple-gradient rounded-[18px] px-5 py-[50px] dark:bg-ourGray dark:bg-none dark:text-black sm:bg-none sm:p-0">
       <Bage />
       <div className="mt-16 grid grid-cols-5 gap-2.5 lg:grid-cols-3 sm:grid-cols-1 sm:text-start">
         <CardWrapper>
@@ -46,7 +46,9 @@ const AdminCard = () => {
         <CardWrapper>
           <span>Получено всего:</span>
           <span className="roboto text-xl font-semibold">
-            {turnover?.total_invoice_turnover ? turnover?.total_invoice_turnover : 0}
+            {turnover?.total_invoice_turnover
+              ? turnover?.total_invoice_turnover
+              : 0}
           </span>
         </CardWrapper>
         <CardWrapper>
@@ -65,9 +67,11 @@ const AdminCard = () => {
 };
 
 const CardWrapper = ({ children }: { children: ReactNode }) => {
-  return <div className="flex h-[140px] sm:h-auto flex-col sm:flex-row items-center justify-between rounded-[18px] border border-[#B585FC] dark:border-black sm:border-none px-2.5 sm:p-0 py-[18px] text-center">
-    {children}
-  </div>;
+  return (
+    <div className="flex h-[140px] flex-col items-center justify-between rounded-[18px] border border-[#B585FC] px-2.5 py-[18px] text-center dark:border-black sm:h-auto sm:flex-row sm:border-none sm:p-0">
+      {children}
+    </div>
+  );
 };
 
 export default AdminCard;

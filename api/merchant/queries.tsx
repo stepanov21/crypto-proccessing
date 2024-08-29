@@ -49,6 +49,8 @@ export const useMerchant = () => {
     useQuery({
       queryKey: ["merchant-invoice", page],
       queryFn: () => merchantGetInvoice(page),
+      //@ts-ignore
+      keepPreviousData: true,
     });
 
   const useMerchantGetInvoiceById = (id: string) =>

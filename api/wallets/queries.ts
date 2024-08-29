@@ -14,10 +14,10 @@ export const useGetMyWallets = (network: string) =>
     queryFn: () => getMyWallet(network),
   });
 
-export const useGetMyTransaction = () =>
+export const useGetMyTransaction = (page: number) =>
   useQuery({
-    queryKey: ["my-transaction"],
-    queryFn: getMyTransaction,
+    queryKey: ["my-transaction", page],
+    queryFn: () => getMyTransaction(page),
   });
 
 export const useGetDownloadTransaction = () =>

@@ -113,15 +113,20 @@ export interface IMerchantGetInvoice {
   created_at: Date;
   invoice_link: string;
   invoice_uuid: string;
+  was_cancelled: boolean;
 }
 
 type IDataMerchantGetInvoice = {
-  invoices: IMerchantGetInvoice[]
-}
-
+  invoices: IMerchantGetInvoice[];
+  page: number;
+  total_pages: number;
+};
 
 export const merchantGetInvoice = async (page: number = 1) => {
-  const response = await client.get<IDataMerchantGetInvoice>("/merchant/invoice", {params: {page: page}});
+  const response = await client.get<IDataMerchantGetInvoice>(
+    "/merchant/invoice",
+    { params: { page: page } },
+  );
 
   if (response.status === 200) {
     return response.data;

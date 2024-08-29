@@ -14,11 +14,11 @@ const ThemeProvider = ({
   const { token } = useToken((state) => state);
 
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
     if (token) return;
-    if(pathname.startsWith('/invoice/')) return
+    if (pathname.startsWith("/invoice/")) return;
     router.push("/sign-in");
     //eslint-disable-next-line
   }, [token]);

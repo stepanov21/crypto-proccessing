@@ -2,7 +2,7 @@
 
 import { useGetMyTransaction } from "@/api/wallets/queries";
 import TransactionNotFound from "@/components/custom/TransactionNotFound";
-import React from "react";
+import React, { useState } from "react";
 import { intervalToDuration, parseISO } from "date-fns";
 import Transaction from "@/components/custom/Transaction";
 import { useFilterTime } from "@/zustand/store";
@@ -61,7 +61,10 @@ const fakeTransaction = [
 ];
 
 const Page = () => {
-  const { data } = useGetMyTransaction();
+  const [page, setPage] = useState(1);
+
+  const { data } = useGetMyTransaction(page);
+  console.log("🚀 ~ Page ~ data:", data);
   const { days } = useFilterTime((state) => state);
 
   return (

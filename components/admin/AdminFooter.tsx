@@ -2,7 +2,7 @@ import React from "react";
 
 const AdminFooter = () => {
   return (
-    <footer className="container mx-auto max-w-[1200px] my-40 lg:my-20 dark:text-black">
+    <footer className="container mx-auto my-40 max-w-[1200px] dark:text-black lg:my-20">
       <div className="grid grid-cols-4 lg:grid-cols-2">
         <div className="flex flex-col gap-4">
           <h5>Our Service </h5>
@@ -24,7 +24,7 @@ const AdminFooter = () => {
           <a href="">Merchant Telegram bot </a>
         </div>
       </div>
-      <div className="flex items-center justify-between text-[#7F808D] text-sm border-t border-[#7F808D] pt-6 mt-16 flex-wrap lg:gap-4">
+      <div className="mt-16 flex flex-wrap items-center justify-between border-t border-[#7F808D] pt-6 text-sm text-[#7F808D] lg:gap-4">
         <span>© 2024 merch, All Rights Reserved.</span>
         <span>Privacy policy</span>
         <span>Terms of condition</span>

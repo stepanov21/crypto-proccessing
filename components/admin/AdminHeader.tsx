@@ -19,17 +19,17 @@ import { Button } from "../ui/button";
 const AdminHeader = () => {
   const changeTheme = useTheme((state) => state.changeTheme);
   return (
-    <header className="flex items-center justify-between container mx-auto max-w-[1200px] mt-11 lg:gap-10">
+    <header className="container mx-auto mt-11 flex max-w-[1200px] items-center justify-between lg:gap-10">
       <div>
         <Image
-          className="lg:size-[50px] dark:hidden"
+          className="dark:hidden lg:size-[50px]"
           src={"/Neutronx.svg"}
           width={67}
           height={67}
           alt="logo"
         />
         <Image
-          className="lg:size-[50px] hidden dark:block"
+          className="hidden dark:block lg:size-[50px]"
           src={"/Neutronx-light.svg"}
           width={67}
           height={67}
@@ -37,23 +37,23 @@ const AdminHeader = () => {
         />
       </div>
       <Select>
-        <SelectTrigger className="w-[95px] px-6 dark:bg-[#F1F1F1] dark:border-[#d0d0d0] lg:hidden">
+        <SelectTrigger className="w-[95px] px-6 dark:border-[#d0d0d0] dark:bg-[#F1F1F1] lg:hidden">
           <SelectValue placeholder="EN" />
         </SelectTrigger>
-        <SelectContent className="dark:bg-[#F1F1F1] dark:text-black dark:border-[#d0d0d0]">
+        <SelectContent className="dark:border-[#d0d0d0] dark:bg-[#F1F1F1] dark:text-black">
           <SelectGroup>
             <SelectItem value="apple">EN</SelectItem>
             <SelectItem value="banana">RU</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
-      <nav className="flex gap-10 lg:hidden rounded-full bg-ourDarkPurple dark:bg-ourGray dark:text-black h-[60px] items-center px-5">
+      <nav className="flex h-[60px] items-center gap-10 rounded-full bg-ourDarkPurple px-5 dark:bg-ourGray dark:text-black lg:hidden">
         <Link href={"#"}>Home</Link>
         <Link href={"#"}>Rules</Link>
         <Link href={"#"}>Contacts</Link>
       </nav>
       <Button
-        className="px-0 size-10 bg-white dark:border dark:border-black dark:bg-[#F1F1F1] dark:text-black sm:w-10 lg:hidden flex"
+        className="flex size-10 bg-white px-0 dark:border dark:border-black dark:bg-[#F1F1F1] dark:text-black lg:hidden sm:w-10"
         onClick={changeTheme}
       >
         <Sun className={"dark:hidden"} size={20} />

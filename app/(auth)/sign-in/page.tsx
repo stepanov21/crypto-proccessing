@@ -26,9 +26,7 @@ const Page = () => {
   const { useLoginUser } = useAuth();
   const { mutateAsync, error, isError, isPending } = useLoginUser();
   const [hidePassword, setHidePassword] = useState(true);
-  const router = useRouter()
-
-  
+  const router = useRouter();
 
   useCustomToast({ isError, error });
 

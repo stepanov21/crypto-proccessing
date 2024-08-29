@@ -71,7 +71,7 @@ export const getAdminTurnover = async () => {
 type TTurnover = { currency: string; network: string; total_turnover: number };
 
 interface INetworkBalance {
-  invoice_turnover_period: TTurnover[]
+  invoice_turnover_period: TTurnover[];
 }
 
 export const getAdminTurnoverPerPeriod = async (

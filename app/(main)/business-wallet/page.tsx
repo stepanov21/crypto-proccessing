@@ -1,18 +1,29 @@
 "use client";
 
 import { useMerchant } from "@/api/merchant/queries";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import CustomPagination from "@/components/custom/CustomPagination";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { toast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 import Transition from "@/providers/Transition";
-import { Check, ExternalLink, Files, Loader } from "lucide-react";
+import { Check, ExternalLink, Files, Loader, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const Page = () => {
+  const [page, setPage] = useState(1);
   const [copy, setCopy] = useState(false);
   const { useMerchantGetInvoice } = useMerchant();
-  const { data } = useMerchantGetInvoice(1);
+  const { data } = useMerchantGetInvoice(page);
   console.log("🚀 ~ Page ~ data:", data);
 
   return (
@@ -20,7 +31,7 @@ const Page = () => {
       <div className="grid grid-cols-4 rounded-[18px] p-4 dark:text-black sm:h-[50px]">
         <span>Amount</span>
         <span className="text-center">Network</span>
-        <span className="text-center">Status</span>
+        <span className="text-right">Status</span>
         <div className="text-right">Payment URL</div>
       </div>
       {data?.invoices?.map((invoice) => {
@@ -33,14 +44,22 @@ const Page = () => {
           >
             <span className="roboto">{`${invoice.amount} ${invoice.currency.toUpperCase()}`}</span>
             <span className="text-center">{invoice.network}</span>
-            <div className="mx-auto ml-auto flex items-center gap-4">
-              {invoice.status === "pending" && (
+            <div className="ml-auto flex items-center gap-4">
+              {invoice?.was_cancelled ? (
+                <X className="text-red-400" />
+              ) : (
+                invoice.status === "finished" && (
+                  <Check className="text-ourGreen" />
+                )
+              )}
+              {invoice.status === "pending" && !invoice?.was_cancelled && (
                 <div className="loader dark:border-black"></div>
               )}
-              {invoice.status === "finished" && (
-                <Check className="text-ourGreen" />
+              {!invoice?.was_cancelled ? (
+                <span>{invoice.status}</span>
+              ) : (
+                <span>Cancelled</span>
               )}
-              <span>{invoice.status}</span>
             </div>
 
             <div
@@ -64,22 +83,9 @@ const Page = () => {
           </div>
         );
       })}
-      {/* <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination> */}
+      {data?.total_pages > 1 && (
+        <CustomPagination data={data} setPage={setPage} />
+      )}
     </div>
   );
 };

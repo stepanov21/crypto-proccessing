@@ -18,7 +18,7 @@ const SelectNetwork = ({
     <Select
       onValueChange={(e) => {
         setValue("network", e);
-        if(setNetwork) setNetwork(e);
+        if (setNetwork) setNetwork(e);
       }}
     >
       <SelectTrigger className="h-[60px] w-full sm:h-[50px]">

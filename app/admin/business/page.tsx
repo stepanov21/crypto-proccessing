@@ -1,11 +1,8 @@
-
-import BusinessAccounts from '@/components/admin/BusinessAccounts'
-import React from 'react'
+import BusinessAccounts from "@/components/admin/BusinessAccounts";
+import React from "react";
 
 const Page = () => {
-  return (
-    <BusinessAccounts />
-  )
-}
+  return <BusinessAccounts />;
+};
 
-export default Page
+export default Page;
