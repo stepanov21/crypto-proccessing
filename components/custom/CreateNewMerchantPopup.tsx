@@ -17,8 +17,10 @@ import {
 import useCustomToast from "@/hooks/useCustomToast";
 import Image from "next/image";
 import { toast } from "../ui/use-toast";
+import { useTranslations } from "next-intl";
 
 const CreateNewMerchantPopup = () => {
+  const t = useTranslations("Create Merchant Popap");
   const { useAddMerchant } = useMerchant();
   const [isWasAdded, setIsWasAdded] = useState(false);
   const [merchantName, setMerchantName] = useState("");
@@ -45,14 +47,14 @@ const CreateNewMerchantPopup = () => {
 
   return (
     <div>
-      <Title>Мерчанты</Title>
+      <Title>{t("title")}</Title>
       <div className="mb-8 mt-4 flex items-center gap-4">
         <Image src={"/avatar.png"} width={40} height={40} alt="avatar" />
         <span>{data?.name}</span>
       </div>
       <Dialog>
         <DialogTrigger disabled={data} asChild>
-          <Button variant={"aside"}>Создать продавца</Button>
+          <Button variant={"aside"}>{t("btn")}</Button>
         </DialogTrigger>
         <DialogContent
           className="sm:max-w-[569px]"
@@ -60,13 +62,13 @@ const CreateNewMerchantPopup = () => {
         >
           {!isWasAdded ? (
             <>
-              <DialogTitle>Создать нового продавца</DialogTitle>
+              <DialogTitle>{t("title")}</DialogTitle>
               <div className="space-y-2.5">
-                <Label>Введите имя продавца</Label>
+                <Label>{t("title")}</Label>
                 <Input
                   onChange={(e) => setMerchantName(e.target.value)}
                   value={merchantName}
-                  placeholder="Имя продавца"
+                  placeholder={t("select")}
                   icon={<UserRound size={20} />}
                 />
               </div>
@@ -79,7 +81,7 @@ const CreateNewMerchantPopup = () => {
                 }}
                 className="self-center"
               >
-                Создать продавца
+                {t("btn")}
               </Button>
             </>
           ) : null}

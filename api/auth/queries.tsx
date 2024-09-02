@@ -8,7 +8,7 @@ import { useUserRole } from "../admin/queries";
 
 export const useAuth = () => {
   const { setToken, deleteToken } = useToken((state) => state);
-  const { data: dataRole, refetch } = useUserRole();
+  const { refetch } = useUserRole();
   const router = useRouter();
   const useLoginUser = () =>
     useMutation({
@@ -16,7 +16,7 @@ export const useAuth = () => {
       onSuccess: async (data) => {
         setToken(data.access_token);
         const res = await refetch();
-        console.log(res.data.user)
+        console.log(res.data.user);
         if (res.data.user === "admin") {
           router.push("admin/get-networks");
         } else {

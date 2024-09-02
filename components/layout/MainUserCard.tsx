@@ -14,8 +14,12 @@ import { Button } from "../ui/button";
 import { useAuth } from "@/api/auth/queries";
 import { useTheme } from "@/zustand/store";
 import MobileAsideMenu from "./MobileAsideMenu";
+import { useLocale, useTranslations } from "next-intl";
+import ChangeLanguage from "./ChangeLanguage";
 
 const MainUserCard = () => {
+  const t = useTranslations("Personal wallet");
+  const local = useLocale();
   const { data } = useWallets();
   const { useLogoutUser } = useAuth();
   const changeTheme = useTheme((state) => state.changeTheme);
@@ -24,16 +28,13 @@ const MainUserCard = () => {
     <div className="purple-gradient z-10 rounded-[18px] px-[30px] pb-[60px] pt-10 dark:bg-ourGray dark:bg-none sm:fixed sm:left-0 sm:top-0 sm:w-[calc(100vw)] sm:rounded-none sm:p-4 sm:pb-[30px]">
       <div className="flex items-center">
         <span className="mr-auto text-[32px] font-semibold dark:text-black sm:w-[90px] sm:text-[16px]">
-          Личный кошелек
+          {t("title")}
         </span>
         <Button onClick={changeTheme} variant={"wallet"} size={"icon"}>
           <Sun className={"dark:hidden"} size={20} />
           <MoonStar className={"hidden dark:block"} size={20} />
         </Button>
-        {/* Колокольчик-уведомления
-        <Button variant={"wallet"} size={"icon"}>
-          <Bell size={20} />
-        </Button> */}
+        <ChangeLanguage />
         <Button
           onClick={() => useLogoutUser.mutate()}
           variant={"wallet"}
@@ -45,7 +46,7 @@ const MainUserCard = () => {
       </div>
       <div className="mt-20 flex flex-col gap-2 dark:text-black sm:mt-2 sm:leading-none">
         <span className="text-xl text-ourLightPurple sm:text-[12px] sm:leading-none">
-          Доступный баланс
+          {t("balance")}
         </span>
         {data ? (
           <span className="roboto text-xl sm:text-[16px] sm:leading-none">
@@ -56,30 +57,30 @@ const MainUserCard = () => {
         )}
       </div>
       <div className="scrollbar-hidden relative mt-9 flex justify-between gap-10 sm:mt-4 sm:gap-5 sm:overflow-auto">
-        <Link className="w-full" href={"/wallet/receipt"}>
+        <Link className="w-full" href={`/${local}/wallet/receipt`}>
           <Button
             className="w-full px-2.5 font-semibold sm:w-[210px]"
             variant={"wallet"}
           >
-            <span>Получить</span>
+            <span>{t("1st btn")}</span>
             <ArrowDownLeft />
           </Button>
         </Link>
-        <Link className="w-full" href={"/wallet/withdraw"}>
+        <Link className="w-full" href={`/${local}/wallet/withdraw`}>
           <Button
             className="w-full px-2.5 font-semibold sm:w-[210px]"
             variant={"wallet"}
           >
-            <span>Вывод</span>
+            <span>{t("2st btn")}</span>
             <ArrowUpRight />
           </Button>
         </Link>
-        <Link className="w-full" href={"/wallet/transfer"}>
+        <Link className="w-full" href={`/${local}/wallet/transfer`}>
           <Button
             className="w-full px-2.5 font-semibold sm:w-[210px]"
             variant={"wallet"}
           >
-            <span>Перевести</span>
+            <span>{t("3st btn")}</span>
             <ArrowRightLeft />
           </Button>
         </Link>

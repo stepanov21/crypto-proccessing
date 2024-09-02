@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -16,8 +16,11 @@ import DownloadPDF from "./DownloadPDF";
 import { useGetDownloadTransaction } from "@/api/wallets/queries";
 import { useFilterTime } from "@/zustand/store";
 import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 const TransactionFilters = () => {
+  const local = useLocale();
+  const t = useTranslations("Filters");
   const { data } = useGetDownloadTransaction();
   const { changeDays } = useFilterTime((state) => state);
   const pathname = usePathname();
@@ -31,13 +34,14 @@ const TransactionFilters = () => {
 
   return (
     <>
-      {pathname === "/wallet" || pathname === "/business-wallet" ? (
+      {pathname === `/${local}/wallet` ||
+      pathname === `/${local}/business-wallet` ? (
         <>
           <div className="ml-[30px] flex flex-wrap items-center gap-3 sm:ml-0">
             <Popover>
               <PopoverTrigger asChild>
-                <Button className="flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white bg-transparent px-4 text-sm text-white dark:border-[#7F808D] dark:bg-white dark:text-black">
-                  Тип ссылки
+                <Button className="text-md flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white bg-transparent px-4 font-medium text-white dark:border-[#7F808D] dark:bg-white dark:text-black">
+                  {t("1st select")}
                   <ChevronDown className="ml-auto" />
                 </Button>
               </PopoverTrigger>
@@ -48,7 +52,7 @@ const TransactionFilters = () => {
                       htmlFor="1"
                       className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Отправленные
+                      {t("1st 1v")}
                     </label>
                     <Checkbox id="1" />
                   </div>
@@ -57,7 +61,7 @@ const TransactionFilters = () => {
                       htmlFor="2"
                       className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Полученные
+                      {t("1st 2v")}
                     </label>
                     <Checkbox id="2" />
                   </div>
@@ -66,7 +70,7 @@ const TransactionFilters = () => {
                       htmlFor="3"
                       className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Ошибочные
+                      {t("1st 3v")}
                     </label>
                     <Checkbox id="3" />
                   </div>
@@ -75,12 +79,12 @@ const TransactionFilters = () => {
             </Popover>
             <Select onValueChange={(e) => changeDays(+e)}>
               <SelectTrigger className="mr-auto w-[180px]">
-                <SelectValue placeholder="Период" />
+                <SelectValue placeholder={t("2st select")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="30">30 дней</SelectItem>
-                <SelectItem value="7">7 дней</SelectItem>
-                <SelectItem value="1">1 день </SelectItem>
+                <SelectItem value="30">{t("2st 3v")}</SelectItem>
+                <SelectItem value="7">{t("2st 2v")}</SelectItem>
+                <SelectItem value="1">{t("2st 1v")}</SelectItem>
               </SelectContent>
             </Select>
             {/* <Button
@@ -100,7 +104,7 @@ const TransactionFilters = () => {
                 variant={"aside"}
               >
                 <ArrowDownToLine size={20} />
-                Скачать
+                {t("btn")}
               </Button>
             </a>
           </div>

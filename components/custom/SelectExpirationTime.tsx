@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { Slider } from "../ui/slider";
 import { Title } from "../ui/title";
+import { useTranslations } from "next-intl";
 
 const expTime = ["15m", "30m", "1h"];
 
 const SelectExpirationTime = ({ setValue }: { setValue: any }) => {
+  const t = useTranslations("Payment");
   useEffect(() => {
     setValue("payment_duration", expTime[0]);
     //eslint-disable-next-line
   }, []);
   return (
     <div className="mt-10">
-      <Title>Выберите время истечения срока платежа</Title>
+      <Title>{t("5st title")}</Title>
       <Slider
         onChange={(e: any) =>
           setValue("payment_duration", expTime[e.target.value])

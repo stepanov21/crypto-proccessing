@@ -10,8 +10,10 @@ import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
 import Image from "next/image";
 import { useMerchant } from "@/api/merchant/queries";
+import { useTranslations } from "next-intl";
 
 const SelectBusinessWallet = ({ setValue }: { setValue: any }) => {
+  const t = useTranslations("Transfer");
   const { useBusinessWallets } = useMerchant();
   const { data: businessData } = useBusinessWallets();
 
@@ -28,7 +30,7 @@ const SelectBusinessWallet = ({ setValue }: { setValue: any }) => {
       }}
     >
       <SelectTrigger className="h-[60px] w-full sm:h-[50px]">
-        <SelectValue placeholder="Выбрать крипто кошелек" />
+        <SelectValue placeholder={t("1st select")} />
       </SelectTrigger>
       <SelectContent>
         {businessData &&

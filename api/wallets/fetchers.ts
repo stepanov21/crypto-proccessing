@@ -1,7 +1,7 @@
 import { client } from "@/providers/TanstackQueryClientProvider";
 import { WalletType } from "../transaction/types";
 import { TWithdrawNetwork } from "./types";
-import { ITransaction } from "@/app/(main)/wallet/page";
+import { ITransaction } from "@/app/[locale]/(main)/wallet/page";
 
 export const getMyWallet = async (network: string) => {
   const response = await client.get(`/wallets/`, {

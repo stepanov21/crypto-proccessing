@@ -1,16 +1,19 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import React, { ReactNode } from "react";
 
 const MainWidth = ({ children }: { children: ReactNode }) => {
+  const local = useLocale();
   const pathname = usePathname();
   return (
     <main
       className={cn(
         "max-w-[520px]",
-        (pathname === "/wallet" || pathname === "/business-wallet") &&
+        (pathname === `/${local}/wallet` ||
+          pathname === `/${local}/business-wallet`) &&
           "max-w-full",
       )}
     >

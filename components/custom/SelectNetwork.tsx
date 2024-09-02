@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { useTranslations } from "next-intl";
 
 const SelectNetwork = ({
   setValue,
@@ -14,6 +15,7 @@ const SelectNetwork = ({
   setValue: any;
   setNetwork?: any;
 }) => {
+  const t = useTranslations("Withdraw");
   return (
     <Select
       onValueChange={(e) => {
@@ -22,7 +24,7 @@ const SelectNetwork = ({
       }}
     >
       <SelectTrigger className="h-[60px] w-full sm:h-[50px]">
-        <SelectValue placeholder="Выбрать сеть" />
+        <SelectValue placeholder={t("2st select")} />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="erc">Erc</SelectItem>

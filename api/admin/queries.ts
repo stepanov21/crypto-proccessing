@@ -12,7 +12,7 @@ import {
 export const useUserRole = () =>
   useQuery({
     queryKey: ["user-role"],
-    queryFn: () => getUserRole()
+    queryFn: () => getUserRole(),
   });
 
 export const useAdminUsers = () =>

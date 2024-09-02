@@ -1,0 +1,93 @@
+{
+  "Navigation": {
+    "personal": "Personal wallet",
+    "business": "Business wallet"
+  },
+  "Aside": {
+    "wallets": "Personal wallet balances",
+    "business-wallets": "Business wallet balances",
+    "merchants": "Merchants",
+    "merchants-btn": "Create merchant"
+  },
+  "Personal wallet": {
+    "title": "Personal wallet",
+    "balance": "Available balance",
+    "1st btn": "Get",
+    "2st btn": "Withdraw",
+    "3st btn": "Transfer "
+  },
+  "Business wallet": {
+    "title": "Business wallet",
+    "balance": "Available balance",
+    "api": "Documentation",
+    "1st btn": "Transfer",
+    "2st btn": "Payment"
+  },
+  "Get": {
+    "1st select": "Select a network",
+    "2st select": "Receipt type",
+    "2st placeholder": "Crypto",
+    "title": "Share wallet address",
+    "text": "Provide the USDT wallet address to the sender to accept currency transfers"
+  },
+  "Withdraw": {
+    "1st title": "Choose a wallet",
+    "2st title": "Address",
+    "3st title": "Enter the amount to be sent",
+    "1st select": "Select a network",
+    "2st select": "Select a token",
+    "3st select": "Enter the address"
+  },
+  "Transfer": {
+    "1st title": "Choose a wallet",
+    "2st title": "Enter the amount to be sent",
+    "1st select": "Choose a crypto wallet",
+    "btn": "Transfer "
+  },
+  "Payment": {
+    "h1": "Create a new payment link",
+    "text": "Accept payment by sharing this link",
+    "1st title": "Invoice",
+    "2st title": "Enter the amount to be paid",
+    "3st title": "Select payment currency",
+    "comment": "Customer pays commission",
+    "4st title": "Select a network",
+    "5st title": "Select a payment expiration time",
+    "1st select": "Choose a crypto wallet",
+    "btn": "Create a payment"
+  },
+  "Filters": {
+    "1st select": "Reference type",
+    "1st 1v": "Sent",
+    "1st 2v": "Received",
+    "1st 3v": "Erroneous",
+    "2st select": "Period",
+    "2st 1v": "1d",
+    "2st 2v": "7d",
+    "2st 3v": "30d",
+    "btn": "Download"
+  },
+  "Create Merchant Popap": {
+    "h1": "Create a new merchant",
+    "title": "Enter merchant's name",
+    "select": "Merchant Name",
+    "btn": "Create merchant"
+  },
+  "Success Merchant Popap": {
+    "h1": "Congratulations!",
+    "text": "A new seller has been created",
+    "1st title": "Pass moderation of the project",
+    "2st title": "Integrate NeutronX via API",
+    "1st text": "Get API key. Create one-time payment links and post them anywhere or send them to each of your customers.",
+    "2st text": "Automatically create a payment right on your website so your customers can see it",
+    "btn": "Go to settings"
+  },
+  "Invoice": {
+    "warn": "You pay a commission to the network",
+    "address": "Recipient's wallet address",
+    "desc": "You will be notified as soon as your payment status changes.",
+    "time": "Expiration time",
+    "minutes": "minutes",
+    "verify": "Verify the transaction on the blockchain"
+  }
+}

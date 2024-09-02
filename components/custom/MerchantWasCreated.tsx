@@ -1,13 +1,15 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { DialogTitle } from "../ui/dialog";
+import { useTranslations } from "next-intl";
 
 const MerchantWasCreated = () => {
+  const t = useTranslations("Success Merchant Popap");
   return (
     <>
       <div className="text-center dark:text-black">
-        <DialogTitle>Поздравляем!</DialogTitle>
-        <span className="mt-2 inline-block">Новый продавец создан </span>
+        <DialogTitle>{t("h1")}</DialogTitle>
+        <span className="mt-2 inline-block">{t("text")}</span>
       </div>
       <div className="relative flex gap-3">
         <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-ourGreen pb-0.5 font-semibold text-black dark:bg-black dark:text-white">
@@ -15,12 +17,9 @@ const MerchantWasCreated = () => {
         </div>
         <div className="dark:text-black">
           <h4 className="mb-2.5 mt-1 text-[18px] font-semibold">
-            Пройти модерацию проэкта
+            {t("1st title")}
           </h4>
-          <p>
-            Получите ключ API. Создайте ссылки для одноразовой оплаты и
-            разместите их где угодно или отправьте каждому из своих клиентов.
-          </p>
+          <p>{t("1st text")}</p>
         </div>
         <div className="absolute left-[11px] top-5 -z-10 h-36 border-l-2 border-dashed border-ourGreen dark:border-[#7F808D]"></div>
       </div>
@@ -30,15 +29,12 @@ const MerchantWasCreated = () => {
         </div>
         <div className="dark:text-black">
           <h4 className="mb-2.5 mt-1 text-[18px] font-semibold">
-            Интегрируйте NeutronX через API{" "}
+            {t("2st title")}
           </h4>
-          <p>
-            Автоматически создавайте платеж прямо на своем сайте чтобы ваши
-            клиенты могли его увидеть
-          </p>
+          <p>{t("2st text")}</p>
         </div>
       </div>
-      <Button className="self-center">Перейти к настройкам</Button>
+      <Button className="self-center">{t("btn")}</Button>
     </>
   );
 };

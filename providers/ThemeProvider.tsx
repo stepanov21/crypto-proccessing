@@ -1,5 +1,6 @@
 "use client";
 import { useTheme, useToken } from "@/zustand/store";
+import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import React, { ReactNode, useEffect } from "react";
 
@@ -15,16 +16,18 @@ const ThemeProvider = ({
 
   const router = useRouter();
   const pathname = usePathname();
+  const local = useLocale();
 
   useEffect(() => {
     if (token) return;
-    if (pathname.startsWith("/invoice/")) return;
-    router.push("/sign-in");
+    if (pathname.startsWith(`/${local}/invoice/`)) return;
+    router.push("/en/sign-in");
     //eslint-disable-next-line
   }, [token]);
 
   return (
     <body
+      suppressHydrationWarning
       className={`${className} ${dark ? "bg-white" : ""}`}
       data-mode={dark ? "dark" : ""}
     >
