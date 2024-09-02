@@ -13,9 +13,11 @@ import {
 import { ITransferPayload } from "../transaction/types";
 import { useRouter } from "next/navigation";
 import { queryClient } from "@/providers/TanstackQueryClientProvider";
+import { useLocale } from "next-intl";
 
 export const useMerchant = () => {
   const router = useRouter();
+  const local = useLocale()
   const useAddMerchant = () =>
     useMutation({
       mutationFn: (e: { name: string }) => addMerchant(e),
@@ -42,7 +44,7 @@ export const useMerchant = () => {
   const useMerchantPostInvoice = () =>
     useMutation({
       mutationFn: (e: IMerchantInvoice) => merchantPostInvoice(e),
-      onSuccess: () => router.push("/business-wallet"),
+      onSuccess: () => router.push(`/${local}/business-wallet`),
     });
 
   const useMerchantGetInvoice = (page: number = 1) =>

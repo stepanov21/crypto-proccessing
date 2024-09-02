@@ -18,9 +18,9 @@ export const useAuth = () => {
         const res = await refetch();
         console.log(res.data.user);
         if (res.data.user === "admin") {
-          router.push("admin/get-networks");
+          router.push("/en/admin/get-networks");
         } else {
-          router.push("/wallet");
+          router.push("/en/wallet");
         }
       },
     });
@@ -37,7 +37,7 @@ export const useAuth = () => {
     useMutation({
       mutationFn: (e: TRegisterPayload) => registerUser(e),
       onSuccess: () => {
-        router.push("/sign-in");
+        router.push("/en/sign-in");
       },
     });
 
