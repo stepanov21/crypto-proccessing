@@ -54,7 +54,8 @@
     "4st title": "Select a network",
     "5st title": "Select a payment expiration time",
     "1st select": "Choose a crypto wallet",
-    "btn": "Create a payment"
+    "btn": "Create a payment",
+    "payment variant": "Payment variant"
   },
   "Filters": {
     "1st select": "Reference type",

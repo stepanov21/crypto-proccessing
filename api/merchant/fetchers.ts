@@ -110,7 +110,7 @@ export interface IMerchantGetInvoice {
   amount: number;
   network: TNetwork;
   expiration_time: Date;
-  created_at: Date;
+  created_at: string;
   invoice_link: string;
   invoice_uuid: string;
   was_cancelled: boolean;

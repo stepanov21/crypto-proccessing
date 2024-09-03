@@ -33,9 +33,9 @@ const Page = () => {
       <form onSubmit={handleSubmit(postInvoice)} className="dark:text-black">
         <Title className="text-2xl">{t("1st title")}</Title>
         <span className="mt-3 inline-block">{t("text")}</span>
-        <Title className="mt-10">{t("2st title")}</Title>
+        <Title className="mt-10">{t("payment variant")}</Title>
         <SelectPaymentVariant register={register} />
-        <Title className="mt-10">{t("3st title")}</Title>
+        <Title className="mt-10">{t("2st title")}</Title>
         <Input
           {...register("amount")}
           className="roboto mt-2"
@@ -50,9 +50,9 @@ const Page = () => {
             {t("comment")}
           </label>
         </div>
-        <Title className="mt-10">{t("4st title")}</Title>
+        <Title className="mt-10">{t("3st title")}</Title>
         <Input className="roboto mt-2" disabled placeholder="USDT" />
-        <Title className="mt-10">{t("5st title")}</Title>
+        <Title className="mt-10">{t("4st title")}</Title>
         <SelectNetwork setValue={setValue} />
         <SelectExpirationTime setValue={setValue} />
         <Button className="mt-10 w-full" type="submit">

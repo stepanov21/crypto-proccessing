@@ -14,6 +14,8 @@ import {
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import Transition from "@/providers/Transition";
+import { useFilterTime } from "@/zustand/store";
+import { intervalToDuration, parseISO } from "date-fns";
 import { Check, ExternalLink, Files, Loader, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -22,9 +24,12 @@ import CopyToClipboard from "react-copy-to-clipboard";
 const Page = () => {
   const [page, setPage] = useState(1);
   const [copy, setCopy] = useState(false);
+  const { days } = useFilterTime((state) => state);
   const { useMerchantGetInvoice } = useMerchant();
   const { data } = useMerchantGetInvoice(page);
   console.log("🚀 ~ Page ~ data:", data);
+
+  
 
   return (
     <div className="space-y-4">
@@ -34,7 +39,15 @@ const Page = () => {
         <span className="text-right sm:text-center">Status</span>
         <div className="text-right">Payment URL</div>
       </div>
-      {data?.invoices?.map((invoice) => {
+      {data?.invoices?.filter((invoice) => {
+            const date = intervalToDuration({
+              start: parseISO(invoice?.created_at),
+              end: new Date(),
+            });
+
+            console.log(date)
+            if (date?.days! < days || !date.days) return invoice;
+          }).map((invoice) => { 
         return (
           //@ts-ignore
 
@@ -74,7 +87,7 @@ const Page = () => {
               </Link>
 
               <CopyToClipboard
-                text={invoice.invoice_link}
+                text={invoice.invoice_link.replace('https://crypto-staging.neutronx.com/merchant/', 'https://crypto-staging.neutronx.com/en/')}
                 onCopy={() => toast({ title: "Copied to clipboard" })}
               >
                 <Files className="cursor-pointer" size={20} />

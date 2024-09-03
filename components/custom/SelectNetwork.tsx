@@ -24,7 +24,7 @@ const SelectNetwork = ({
       }}
     >
       <SelectTrigger className="h-[60px] w-full sm:h-[50px]">
-        <SelectValue placeholder={t("2st select")} />
+        <SelectValue placeholder={t("1st select")} />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="erc">Erc</SelectItem>

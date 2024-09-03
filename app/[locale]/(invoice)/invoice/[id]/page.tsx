@@ -69,10 +69,10 @@ const Page = () => {
             <Image src={"/Neutronx.svg"} width={40} height={40} alt="logo" />
             <span>Neutronx</span>
           </div>
-          <Title className="roboto mb-4 text-[28px]">{`${data?.amount} ${data?.currency?.toUpperCase()}`}</Title>
+          <Title className="roboto mb-4 text-[28px] dark:text-white">{`${data?.amount} ${data?.currency?.toUpperCase()}`}</Title>
           <div className="space-y-4">
-            <Title>
-              <span className="mr-4 opacity-40">Network:</span>
+            <Title className="dark:text-white">
+              <span className="mr-4 opacity-40 ">Network:</span>
               {data?.network?.toUpperCase()}
             </Title>
             <div className="flex gap-2.5 rounded-[10px] text-ourGray opacity-30">
