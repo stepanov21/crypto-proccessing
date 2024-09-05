@@ -39,7 +39,7 @@ export const logoutUser = async () => {
 
 export const registerUser = async (body: TRegisterPayload) => {
   const response = await client.post("/auth/register", body);
-  if (response.status === 200) {
+  if (response.status === 200 || response.status === 201) {
     const { data } = response;
 
     return data;
