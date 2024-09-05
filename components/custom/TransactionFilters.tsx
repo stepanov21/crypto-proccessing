@@ -38,7 +38,8 @@ const TransactionFilters = () => {
       pathname === `/${local}/business-wallet` ? (
         <>
           <div className="ml-[30px] flex flex-wrap items-center gap-3 sm:ml-0">
-            <Popover>
+            {/* Тип ссылки */}
+            {/* <Popover>
               <PopoverTrigger asChild>
                 <Button className="text-md flex h-[50px] w-[180px] justify-between rounded-[18px] border-[1px] border-white bg-transparent px-4 font-medium text-white dark:border-[#7F808D] dark:bg-white dark:text-black">
                   {t("1st select")}
@@ -76,15 +77,15 @@ const TransactionFilters = () => {
                   </div>
                 </div>
               </PopoverContent>
-            </Popover>
-            <Select onValueChange={(e) => changeDays(+e)}>
+            </Popover> */}
+            <Select onValueChange={(e: "30d" | "1d" | "7d") => changeDays(e)}>
               <SelectTrigger className="mr-auto w-[180px]">
                 <SelectValue placeholder={t("2st select")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="30">{t("2st 3v")}</SelectItem>
-                <SelectItem value="7">{t("2st 2v")}</SelectItem>
-                <SelectItem value="1">{t("2st 1v")}</SelectItem>
+                <SelectItem value="30d">{t("2st 3v")}</SelectItem>
+                <SelectItem value="7d">{t("2st 2v")}</SelectItem>
+                <SelectItem value="1d">{t("2st 1v")}</SelectItem>
               </SelectContent>
             </Select>
             {/* <Button

@@ -63,9 +63,10 @@ const fakeTransaction = [
 const Page = () => {
   const [page, setPage] = useState(1);
 
-  const { data } = useGetMyTransaction(page);
-  console.log("🚀 ~ Page ~ data:", data);
   const { days } = useFilterTime((state) => state);
+  const { data } = useGetMyTransaction({ page: page, period: days });
+
+  console.log("🚀 ~ Page ~ data:", data);
 
   return (
     <div className="flex flex-col gap-3">
@@ -76,25 +77,18 @@ const Page = () => {
           <span>Created</span>
         </div>
       </div>
-      {fakeTransaction.length >= 1 ? (
-        fakeTransaction
-          .filter((trans) => {
-            const date = intervalToDuration({
-              start: parseISO(trans?.created_at),
-              end: new Date(),
-            });
-            if (date?.days! - 1 < days && !date.months) return trans;
-          })
-          .map((trans) => {
-            return (
-              <Transaction
-                key={trans.id}
-                tx_hash={trans.tx_hash}
-                created_at={trans.created_at}
-                id={trans.id}
-              />
-            );
-          })
+      {data?.transactions?.length! >= 1 ? (
+        data?.transactions?.map((trans) => {
+          console.log(trans);
+          return (
+            <Transaction
+              key={trans.id}
+              tx_hash={trans.tx_hash}
+              created_at={trans.created_at}
+              id={trans.id}
+            />
+          );
+        })
       ) : (
         <TransactionNotFound />
       )}

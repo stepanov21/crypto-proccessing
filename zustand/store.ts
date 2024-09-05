@@ -7,8 +7,8 @@ interface themeState {
 }
 
 interface FilterTimeState {
-  days: number;
-  changeDays: (days: number) => void;
+  days: "1d" | "7d" | "30d";
+  changeDays: (days: "1d" | "7d" | "30d") => void;
 }
 
 interface tokenState {
@@ -50,6 +50,6 @@ export const useToken = create<tokenState>()(
 );
 
 export const useFilterTime = create<FilterTimeState>()((set, get) => ({
-  days: 30,
-  changeDays: (e: number) => set((state) => ({ days: e })),
+  days: "30d",
+  changeDays: (e) => set((state) => ({ days: e })),
 }));

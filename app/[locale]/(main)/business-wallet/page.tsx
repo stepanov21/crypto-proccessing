@@ -26,10 +26,8 @@ const Page = () => {
   const [copy, setCopy] = useState(false);
   const { days } = useFilterTime((state) => state);
   const { useMerchantGetInvoice } = useMerchant();
-  const { data } = useMerchantGetInvoice(page);
+  const { data } = useMerchantGetInvoice({ page: page, period: days });
   console.log("🚀 ~ Page ~ data:", data);
-
-  
 
   return (
     <div className="space-y-4">
@@ -39,18 +37,9 @@ const Page = () => {
         <span className="text-right sm:text-center">Status</span>
         <div className="text-right">Payment URL</div>
       </div>
-      {data?.invoices?.filter((invoice) => {
-            const date = intervalToDuration({
-              start: parseISO(invoice?.created_at),
-              end: new Date(),
-            });
-
-            console.log(date)
-            if (date?.days! < days || !date.days) return invoice;
-          }).map((invoice) => { 
+      {data?.invoices?.map((invoice) => {
         return (
           //@ts-ignore
-
           <div
             key={invoice.id}
             className="middle-purple-gradient mb-4 grid h-[60px] grid-cols-4 items-center rounded-[18px] p-4 dark:bg-ourGray dark:bg-none dark:text-black"
@@ -87,7 +76,10 @@ const Page = () => {
               </Link>
 
               <CopyToClipboard
-                text={invoice.invoice_link.replace('https://crypto-staging.neutronx.com/merchant/', 'https://crypto-staging.neutronx.com/en/')}
+                text={invoice.invoice_link.replace(
+                  "https://crypto-staging.neutronx.com/merchant/",
+                  "https://crypto-staging.neutronx.com/en/",
+                )}
                 onCopy={() => toast({ title: "Copied to clipboard" })}
               >
                 <Files className="cursor-pointer" size={20} />

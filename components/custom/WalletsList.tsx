@@ -9,10 +9,11 @@ import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
 import AddNewToken from "./AddNewToken";
 import { useTranslations } from "next-intl";
+import WalletSkeleton from "./WalletSkeleton";
 
 const WalletsList = () => {
   const t = useTranslations("Aside");
-  const { data } = useWallets();
+  const { data, isPending } = useWallets();
   return (
     <div className="mt-0 sm:mt-8">
       <div className="flex">
@@ -21,7 +22,9 @@ const WalletsList = () => {
         </Title>
         <AddNewToken />
       </div>
+      {}
       <div className="purple-gradient mb-[30px] space-y-[30px] rounded-[18px] p-5 pt-10 dark:bg-ourGray dark:bg-none">
+        {/* <WalletSkeleton/> */}
         {data?.balances &&
           transformWalletsList(data?.balances).map((wallet) => (
             <WalletItem

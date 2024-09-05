@@ -14,16 +14,23 @@ export const useGetMyWallets = (network: string) =>
     queryFn: () => getMyWallet(network),
   });
 
-export const useGetMyTransaction = (page: number) =>
+export const useGetMyTransaction = ({
+  page = 1,
+  period = "30d",
+}: {
+  page: number;
+  period: "1d" | "7d" | "30d";
+}) =>
   useQuery({
-    queryKey: ["my-transaction", page],
-    queryFn: () => getMyTransaction(page),
+    queryKey: ["my-transaction", [page, period]],
+    queryFn: () => getMyTransaction({ page, period }),
   });
 
 export const useGetDownloadTransaction = () =>
   useQuery({
     queryKey: ["my-transaction"],
     queryFn: getDowloadTransactions,
+    retry: 2,
   });
 
 export const useWithdraw = () => {

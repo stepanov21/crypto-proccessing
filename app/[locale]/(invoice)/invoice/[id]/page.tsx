@@ -72,7 +72,7 @@ const Page = () => {
           <Title className="roboto mb-4 text-[28px] dark:text-white">{`${data?.amount} ${data?.currency?.toUpperCase()}`}</Title>
           <div className="space-y-4">
             <Title className="dark:text-white">
-              <span className="mr-4 opacity-40 ">Network:</span>
+              <span className="mr-4 opacity-40">Network:</span>
               {data?.network?.toUpperCase()}
             </Title>
             <div className="flex gap-2.5 rounded-[10px] text-ourGray opacity-30">

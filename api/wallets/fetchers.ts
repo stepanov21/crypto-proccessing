@@ -32,12 +32,18 @@ export const getDowloadTransactions = async () => {
   throw new Error("Failed to create Exel");
 };
 
-export const getMyTransaction = async (page: number = 1) => {
+export const getMyTransaction = async ({
+  page = 1,
+  period = "30d",
+}: {
+  page: number;
+  period: "1d" | "7d" | "30d";
+}) => {
   const response = await client.get<{
-    invoices: ITransaction[];
+    transactions: ITransaction[];
     page: number;
     total_pages: number;
-  }>(`/wallets/transactions`, { params: { page: page } });
+  }>(`/wallets/transactions`, { params: { page: page, period: period } });
 
   if (response.status === 200) {
     return response.data;

@@ -9,15 +9,23 @@ import SelectPaymentVariant from "@/components/custom/SelectPaymentVariant";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Title } from "@/components/ui/title";
 import useCustomToast from "@/hooks/useCustomToast";
 import { CircleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
   const t = useTranslations("Payment");
+  const [networkState, setNetworkState] = useState();
   const { register, handleSubmit, setValue } = useForm<IMerchantInvoice>();
   const { useMerchantPostInvoice } = useMerchant();
   const { mutate, data, isError, error } = useMerchantPostInvoice();
@@ -50,10 +58,27 @@ const Page = () => {
             {t("comment")}
           </label>
         </div>
-        <Title className="mt-10">{t("3st title")}</Title>
-        <Input className="roboto mt-2" disabled placeholder="USDT" />
         <Title className="mt-10">{t("4st title")}</Title>
-        <SelectNetwork setValue={setValue} />
+        <SelectNetwork setValue={setValue} setNetwork={setNetworkState} />
+        <Title className="mt-10">{t("3st title")}</Title>
+        <Select onValueChange={(e) => setValue("currency", e)}>
+          <SelectTrigger className="h-[60px] w-full sm:mt-[16px] sm:h-[50px]">
+            <SelectValue placeholder={t("3st title")} />
+          </SelectTrigger>
+          <SelectContent>
+            {networkState === "trc" ? (
+              <SelectItem value="usdt_trc">USDT (Trc)</SelectItem>
+            ) : (
+              <>
+                <SelectItem value="usdt_erc">USDT (Erc)</SelectItem>
+                <SelectItem value="usdt_arb">USDT (Arbitrum)</SelectItem>
+                <SelectItem value="usdt_polygon">USDT (Polygon)</SelectItem>
+                <SelectItem value="usdt_bep">USDT (BnB Chain)</SelectItem>
+                <SelectItem value="usdt_optimism">USDT (Optimism)</SelectItem>
+              </>
+            )}
+          </SelectContent>
+        </Select>
         <SelectExpirationTime setValue={setValue} />
         <Button className="mt-10 w-full" type="submit">
           {t("btn")}

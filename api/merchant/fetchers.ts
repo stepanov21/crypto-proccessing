@@ -83,7 +83,7 @@ export const merchantPostInvoice = async (body: IMerchantInvoice) => {
     "/merchant/invoice",
     {
       amount: +body.amount,
-      currency: "usdt",
+      currency: body.currency,
       network: body.network,
       payment_duration: body.payment_duration,
     },
@@ -116,16 +116,22 @@ export interface IMerchantGetInvoice {
   was_cancelled: boolean;
 }
 
-type IDataMerchantGetInvoice = {
+export type IDataMerchantGetInvoice = {
   invoices: IMerchantGetInvoice[];
   page: number;
   total_pages: number;
 };
 
-export const merchantGetInvoice = async (page: number = 1) => {
+export const merchantGetInvoice = async ({
+  page = 1,
+  period = "30d",
+}: {
+  page: number;
+  period: "1d" | "7d" | "30d";
+}) => {
   const response = await client.get<IDataMerchantGetInvoice>(
     "/merchant/invoice",
-    { params: { page: page } },
+    { params: { page: page, period: period } },
   );
 
   if (response.status === 200) {

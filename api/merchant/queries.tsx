@@ -17,7 +17,7 @@ import { useLocale } from "next-intl";
 
 export const useMerchant = () => {
   const router = useRouter();
-  const local = useLocale()
+  const local = useLocale();
   const useAddMerchant = () =>
     useMutation({
       mutationFn: (e: { name: string }) => addMerchant(e),
@@ -47,10 +47,16 @@ export const useMerchant = () => {
       onSuccess: () => router.push(`/${local}/business-wallet`),
     });
 
-  const useMerchantGetInvoice = (page: number = 1) =>
+  const useMerchantGetInvoice = ({
+    page = 1,
+    period = "30d",
+  }: {
+    page: number;
+    period: "1d" | "7d" | "30d";
+  }) =>
     useQuery({
-      queryKey: ["merchant-invoice", page],
-      queryFn: () => merchantGetInvoice(page),
+      queryKey: ["merchant-invoice", [page, period]],
+      queryFn: () => merchantGetInvoice({ page, period }),
       //@ts-ignore
       keepPreviousData: true,
     });

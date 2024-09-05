@@ -43,15 +43,16 @@ client.interceptors.request.use((config) => {
 
 // });
 
-axios.interceptors.response.use(
+client.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log("🚀 ~ error:", error);
     if (
-      error.response.status === 403 &&
-      window.location.href !== "en/sign-in"
+      (error.response.status === 403 || error.response.status === 401) &&
+      error.response.config.url !== "/user/role"
     ) {
       localStorage.clear();
-      window.location.href = "en/sign-in";
+      window.location.href = "/en/sign-in";
     }
 
     // reject with error if response status is not 403
