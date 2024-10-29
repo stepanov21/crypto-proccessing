@@ -1,5 +1,3 @@
-import React from "react";
-
 const WalletSkeleton = () => {
   return (
     <div className="flex animate-pulse items-center gap-1.5 dark:text-black">

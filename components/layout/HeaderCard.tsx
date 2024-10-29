@@ -1,9 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import React from "react";
-import MainUserCard from "./MainUserCard";
 import BusinessUserCard from "./BusinessUserCard";
+import MainUserCard from "./MainUserCard";
 import MerchantUserCard from "./MerchantUserCard";
 
 const HeaderCard = () => {

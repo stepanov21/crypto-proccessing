@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { Button } from "../ui/button";
 import { Link as LinkTrans } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const ChangeLanguage = () => {
   const local = useLocale();

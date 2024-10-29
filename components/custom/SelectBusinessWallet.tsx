@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useMerchant } from "@/api/merchant/queries";
+import { transformWalletsList } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import {
   Select,
   SelectContent,
@@ -6,11 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { transformWalletsList } from "@/lib/utils";
-import { useWallets } from "@/api/transaction/queries";
-import Image from "next/image";
-import { useMerchant } from "@/api/merchant/queries";
-import { useTranslations } from "next-intl";
 
 const SelectBusinessWallet = ({ setValue }: { setValue: any }) => {
   const t = useTranslations("Transfer");

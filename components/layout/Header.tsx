@@ -1,7 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { Link as LinkTrans } from "@/i18n/routing";
-import { GitCompareArrows, House, Landmark } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { House, Landmark } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";

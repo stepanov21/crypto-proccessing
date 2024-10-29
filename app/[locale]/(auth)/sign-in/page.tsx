@@ -9,18 +9,17 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { useForm } from "react-hook-form";
 import { useAuth } from "@/api/auth/queries";
+import CustomButton from "@/components/ui/CustomButton";
 import { Title } from "@/components/ui/title";
 import useCustomToast from "@/hooks/useCustomToast";
-import CustomButton from "@/components/ui/CustomButton";
-import { useEffect, useState } from "react";
 import { EyeIcon, EyeOff } from "lucide-react";
-import { useUserRole } from "@/api/admin/queries";
 import { useLocale } from "next-intl";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Page = () => {
   const { register, handleSubmit, reset } = useForm();

@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 const MainWidth = ({ children }: { children: ReactNode }) => {
   const local = useLocale();

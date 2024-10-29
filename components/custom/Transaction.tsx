@@ -1,6 +1,5 @@
 import { ITransaction } from "@/app/[locale]/(main)/wallet/page";
 import { formatDistanceToNow } from "date-fns";
-import React from "react";
 
 const Transaction = ({ id, created_at, tx_hash }: Partial<ITransaction>) => {
   return (

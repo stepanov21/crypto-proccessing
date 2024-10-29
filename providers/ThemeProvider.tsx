@@ -2,7 +2,7 @@
 import { useTheme, useToken } from "@/zustand/store";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import React, { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 
 const ThemeProvider = ({
   children,

@@ -1,21 +1,20 @@
 "use client";
+import { useAuth } from "@/api/auth/queries";
 import { useWallets } from "@/api/transaction/queries";
+import { useTheme } from "@/zustand/store";
 import {
   ArrowDownLeft,
   ArrowRightLeft,
   ArrowUpRight,
-  Bell,
   MoonStar,
   Sun,
   UserRound,
 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useAuth } from "@/api/auth/queries";
-import { useTheme } from "@/zustand/store";
-import MobileAsideMenu from "./MobileAsideMenu";
-import { useLocale, useTranslations } from "next-intl";
 import ChangeLanguage from "./ChangeLanguage";
+import MobileAsideMenu from "./MobileAsideMenu";
 
 const MainUserCard = () => {
   const t = useTranslations("Personal wallet");

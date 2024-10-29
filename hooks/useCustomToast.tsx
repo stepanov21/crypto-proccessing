@@ -1,5 +1,4 @@
 import { toast } from "@/components/ui/use-toast";
-import React from "react";
 
 const useCustomToast = ({ isError, error }: { isError: any; error?: any }) => {
   console.log(error);

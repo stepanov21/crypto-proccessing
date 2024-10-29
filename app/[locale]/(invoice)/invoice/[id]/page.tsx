@@ -1,14 +1,13 @@
 "use client";
 import { useMerchant } from "@/api/merchant/queries";
-import { Button } from "@/components/ui/button";
 import { Title } from "@/components/ui/title";
-import { Check, CircleAlert, Files } from "lucide-react";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { getExpTime } from "@/lib/utils";
-import CopyToClipboard from "react-copy-to-clipboard";
+import { Check, CircleAlert, Files } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const Page = () => {
   const params = useParams();

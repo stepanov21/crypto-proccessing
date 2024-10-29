@@ -1,13 +1,13 @@
 "use client";
-import { ArrowRightLeft, Bell, MoonStar, Sun, UserRound } from "lucide-react";
+import { useAuth } from "@/api/auth/queries";
+import { useMerchant } from "@/api/merchant/queries";
+import { useTheme } from "@/zustand/store";
+import { ArrowRightLeft, MoonStar, Sun, UserRound } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useAuth } from "@/api/auth/queries";
-import { useTheme } from "@/zustand/store";
-import MobileAsideMenu from "./MobileAsideMenu";
-import { useMerchant } from "@/api/merchant/queries";
-import { useLocale, useTranslations } from "next-intl";
 import ChangeLanguage from "./ChangeLanguage";
+import MobileAsideMenu from "./MobileAsideMenu";
 
 const BusinessUserCard = () => {
   const t = useTranslations("Business wallet");

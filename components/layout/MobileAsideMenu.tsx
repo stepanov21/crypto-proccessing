@@ -6,10 +6,10 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Header from "./Header";
-import WalletsList from "../custom/WalletsList";
-import CreateNewMerchantPopup from "../custom/CreateNewMerchantPopup";
 import { Menu } from "lucide-react";
+import CreateNewMerchantPopup from "../custom/CreateNewMerchantPopup";
+import WalletsList from "../custom/WalletsList";
+import Header from "./Header";
 
 const MobileAsideMenu = () => {
   return (

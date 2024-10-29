@@ -3,8 +3,7 @@
 import { BASE_URL } from "@/constants/varialbles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
-import { redirect } from "next/navigation";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 export const queryClient = new QueryClient();
 

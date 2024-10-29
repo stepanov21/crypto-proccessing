@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { useGetDownloadTransaction } from "@/api/wallets/queries";
 import {
   Select,
   SelectContent,
@@ -8,15 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "../ui/checkbox";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
-import { ArrowDownToLine, ChevronDown, Search } from "lucide-react";
-import DownloadPDF from "./DownloadPDF";
-import { useGetDownloadTransaction } from "@/api/wallets/queries";
 import { useFilterTime } from "@/zustand/store";
-import { usePathname } from "next/navigation";
+import { ArrowDownToLine } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const TransactionFilters = () => {
   const local = useLocale();

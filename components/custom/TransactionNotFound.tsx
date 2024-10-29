@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { Title } from "../ui/title";
-import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { Title } from "../ui/title";
 
 const TransactionNotFound = () => {
   const router = useRouter();

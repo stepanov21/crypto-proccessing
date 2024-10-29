@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserRole } from "@/api/admin/queries";
-import React, { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 const UserRoleProvider = ({ children }: { children: ReactNode }) => {
   const { data, isPending } = useUserRole();

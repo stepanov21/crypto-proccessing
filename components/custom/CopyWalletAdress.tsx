@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Title } from "../ui/title";
-import { Button } from "../ui/button";
-import { Check, Files } from "lucide-react";
 import { useGetMyWallets } from "@/api/wallets/queries";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Check, Files } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Title } from "../ui/title";
 
 const CopyWalletAdress = ({ network }: { network: "erc20" | "trc20" }) => {
   const t = useTranslations("Get");

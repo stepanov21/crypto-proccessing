@@ -1,15 +1,11 @@
 "use client";
 
-import React from "react";
-import WalletItem from "./WalletItem";
-import { Title } from "../ui/title";
-import { Button } from "../ui/button";
-import { Search } from "lucide-react";
-import { transformWalletsList } from "@/lib/utils";
 import { useWallets } from "@/api/transaction/queries";
-import AddNewToken from "./AddNewToken";
+import { transformWalletsList } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import WalletSkeleton from "./WalletSkeleton";
+import { Title } from "../ui/title";
+import AddNewToken from "./AddNewToken";
+import WalletItem from "./WalletItem";
 
 const WalletsList = () => {
   const t = useTranslations("Aside");

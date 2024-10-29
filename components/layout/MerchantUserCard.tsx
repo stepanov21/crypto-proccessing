@@ -1,5 +1,7 @@
 "use client";
+import { useAuth } from "@/api/auth/queries";
 import { useWallets } from "@/api/transaction/queries";
+import { useTheme } from "@/zustand/store";
 import {
   ArrowRightLeft,
   Bell,
@@ -10,8 +12,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useAuth } from "@/api/auth/queries";
-import { useTheme } from "@/zustand/store";
 import MobileAsideMenu from "./MobileAsideMenu";
 
 const BusinessUserCard = () => {
